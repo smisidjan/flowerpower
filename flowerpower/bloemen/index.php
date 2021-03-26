@@ -1,33 +1,44 @@
 <?php
-include('default/header.html');
+require '../Controllers/BloemenController.php';
+include 'header.html';
 ?>
-    <header>
-        <nav class="navbar fixed-top navbar-light bg-light navbar-expand-md">
-            <div class="container">
+<div class="row" style="margin-top: 100px">
+    <?php
+    $host = 'localhost';
+    $user = 'root';
+    $pass = 'root';
+    $dbnaam = "flowerpower";
 
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
-                        aria-controls="navbarCollapse"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
-                <div class="collapse navbar-collapse justify-content-end" id="main-nav-collapse">
-                    <ul class="navbar-nav">
-                        <li class="nav-item" style="margin-right: 10px"><a class="nav-link" href="/flowerpower/default/index.php">Home</a></li>
-                        <li class="nav-item active" style="margin-right: 10px"><a class="nav-link" href="flowerpower/bloemen/index.php">Bloemen</a></li>
-                        <li class="nav-item" style="margin-right: 10px"><a class="nav-link" href="/flowerpower/gelegenheid/index.php">Gelegenheid</a></li>
-                        <li class="nav-item" style="margin-right: 50px"><a class="nav-link" href="/flowerpower/contact.index.php">Contact</a></li>
-                        <li class="nav-"><a class="nav-link" href="/flowerpower/login.php"><span
-                                        class="glyphicon glyphicon-user"></span></a></li>
-                        <li class="nav-item"><a class="nav-link" href="#offers"><span
-                                        class="glyphicon glyphicon-shopping-cart"></span></a></li>
-                    </ul>
+    if (!$dbh) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    if (isset($_POST['pluk'])) {
+        $sql = "select * from artikel where categorie is 'pluk'";
+    } elseif (isset($_POST['voorjaar'])) {
+        $sql = "select * from artikel where categorie is 'voorjaar'";
+    } else {
+        $sql = "select * from artikel";
+        var_dump($_POST['alle']);
+    }
+
+    if ($result = $dbh -> query($sql)) {
+        while ($row = $result -> fetch_row()) {
+            ?>
+            <div class="column">
+                <div class="card">
+                    <h3><?php printf ( $row[1] ); ?></h3>
+                    <p><?php printf ( $row[2] ); ?></p>
                 </div>
             </div>
-        </nav>
-    </header>
-    <body>
-    </body>
-<?php
-include('default/footer.html');
-?>
+            <?php
+        }
+        $result -> free_result();
+    }
+    ?>
+</div>
+</body>
+</div>
+</html>
