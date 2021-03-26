@@ -8,21 +8,36 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="login.css">
-    <link rel="stylesheet" href="../default/menu.css">
+    <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="../default/css/menu.css">
 </head>
 <div class="card" style="border: 1px solid #FF6F83; width: 100%; height: 150%; margin-bottom: 100px;">
     <div class="container1">
-        <li class="li"><a href="#" class="cool-link"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-basket-fill" viewBox="0 0 16 16">
+        <li class="li"><a href="../winkelmand/index.php" class="cool-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
+                     class="bi bi-basket-fill" viewBox="0 0 16 16">
                     <path d="M5.071 1.243a.5.5 0 0 1 .858.514L3.383 6h9.234L10.07 1.757a.5.5 0 1 1 .858-.514L13.783 6H15.5a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5H15v5a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V9H.5a.5.5 0 0 1-.5-.5v-2A.5.5 0 0 1 .5 6h1.717L5.07 1.243zM3.5 10.5a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3zm2.5 0a.5.5 0 1 0-1 0v3a.5.5 0 0 0 1 0v-3z"/>
-                </svg></a></li>
-        <li class="li"><a href="#" class="cool-link"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                </svg>
+            </a></li>
+        <li class="li" style="margin-left: 50px"><a href="../profiel/index.php" class="cool-link">
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                     class="bi bi-person-fill" viewBox="0 0 16 16">
                     <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
-                </svg></a></li>
-        <li class="li"><a href="#" class="cool-link">Contact</a></li>
-        <li class="li"><a href="#" class="cool-link">Gelegenheid</a></li>
-        <li class="li"><a href="#" class="cool-link">Bloemen</a></li>
-        <li class="li"><a href="#" class="cool-link">Home</a></li>
+                </svg>
+            </a></li>
+        <li class="li" style="margin-left: -5px"><a href="../contact.index.php" class="cool-link">Contact</a></li>
+        <li class="li" style="margin-left: -5px"><a href="../gelegenheid/index.php" class="cool-link">Gelegenheid</a></li>
+        <li class="li dropdown" style="margin-left: -5px">
+            <a class="nav-link dropdown-toggle cool-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Bloemen
+            </a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <form class="dropdown-item" action="../bloemen/index.php" method="post" name="alle"><button name="alle" value="alle" type="submit">Alle Bloemen</button></form>
+                <form class="dropdown-item" action="../bloemen/index.php" method="post" name="pluk"><button name="pluk" value="pluk" type="submit">Plukboeketten</button></form>
+                <form class="dropdown-item" action="../bloemen/index.php" method="post" name="voorjaar"><button name="voorjaar" value="voorjaar" type="submit">Voorjaars boeketten</button></form>
+            </div>
+        </li>
+        <li class="li"><a href="../default/index.php" class="cool-link">Home</a></li>
     </div>
     <body>
     <div class="container" style="margin-top: 100px">

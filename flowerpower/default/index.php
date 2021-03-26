@@ -1,7 +1,7 @@
 <?php
 require '../Controllers/BloemenController.php';
 include 'header.html';
-include 'card.html';
+include 'card.php';
 
 $host = 'localhost';
 $user = 'root';
