@@ -1,7 +1,7 @@
 <?php
 
 
-class Inloggen
+class LoginController
 {
     public function getLogin($gebruikersnaam, $wachtwoord) {
         $host = 'localhost';

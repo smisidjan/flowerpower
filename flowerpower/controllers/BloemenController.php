@@ -4,7 +4,7 @@
 class BloemenController
 {
 
-    public function getBloemenLijst()
+    public function getBloemenLijst($sql)
     {
         $host = 'localhost';
         $user = 'root';
@@ -17,13 +17,12 @@ class BloemenController
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        if (isset($_POST['pluk'])) {
+        if (isset($_POST['pluk']) == 'pluk') {
             $sql = "select * from artikel where categorie is 'pluk'";
-        } elseif (isset($_POST['voorjaar'])) {
+        } elseif (isset($_POST['voorjaar']) == 'voorjaar') {
             $sql = "select * from artikel where categorie is 'voorjaar'";
-        } else {
+        } elseif (isset($_POST['alle']) == 'alle'){
             $sql = "select * from artikel";
-            var_dump($_POST['alle']);
         }
 
         if ($result = $dbh -> query($sql)) {

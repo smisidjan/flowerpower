@@ -46,6 +46,7 @@ body {
 }
 
 .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     border: 5px solid #C3DF0E;
     background-color: white;
     padding: 20px;
