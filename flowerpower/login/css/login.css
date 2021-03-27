@@ -4,35 +4,6 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    padding: 10px;
-    background: #f1f1f1;
-}
-
-.header {
-    border: 5px solid #C3DF0E;
-    width: 100%;
-    height: 300px;
-    background-size: cover;
-    padding: 30px;
-    background: white;
-}
-
-.topnav {
-    overflow: hidden;
-    background-color: #C3DF0E;
-}
-.topnav a {
-    float: left;
-    display: block;
-    color: #333;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-}
-
-.topnav a:hover {
-    background-color: #ddd;
-    color: black;
 }
 
 .leftcolumn {
