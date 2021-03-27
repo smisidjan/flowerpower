@@ -31,7 +31,7 @@ $inloggen->getLogin($gebruikersnaam, $wachtwoord);
 
             echo "<div class='total-rows' style='font-size: 55px; text-align: left; margin-left: 150px; margin-bottom: -20px;'>" . $row_count . "</div><p style=''>bestellingen </p>";
             ?>
-            <a href="bestelling/index.php" style="text-align: left; text-decoration-line: underline; font-size: 11px;">Bekijk alle bestellingen</a>
+            <a href="bestellinglijst/index.php" style="text-align: left; text-decoration-line: underline; font-size: 11px;">Bekijk alle bestellingen</a>
         </div>
     </div>
 
@@ -76,7 +76,7 @@ $inloggen->getLogin($gebruikersnaam, $wachtwoord);
 
             echo "<div class='total-rows' style='font-size: 55px; text-align: left; margin-left: 150px; margin-bottom: -20px;'>" . $row_count . "</div><p>berichten </p>";
             ?>
-            <a style="text-align: left; text-decoration-line: underline; font-size: 11px;">Bekijk alle berichten</a>
+            <a href="berichten/index.php" style="text-align: left; text-decoration-line: underline; font-size: 11px;">Bekijk alle berichten</a>
         </div>
     </div>
 
