@@ -11,8 +11,8 @@ include "header.html";
     </ol>
 </nav>
 <table class="table rounded"
-       style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-    <thead style="background-color: #C3DF0E;">
+       style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 20rem;">
+    <thead style="background-color: #C3DF0E; border-radius: 20rem;">
     <tr>
         <th scope="col">#</th>
         <th scope="col">Naam</th>
