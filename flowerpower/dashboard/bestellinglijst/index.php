@@ -49,7 +49,6 @@ include "header.html";
             while ($row = $result -> fetch_assoc()) {
                 echo "<tr><th>" . $row["idfactuur"] . "</th>";
             }
-            echo "<td>" . $row1["naam"]. "</td><td>" . $row1["telefoonnummer"] . "</td><td>" . $row1["email"] . "</td></td>";
             echo "<td><button class='button button4'>Bekijken</button></td></tr>";
         }
     }
