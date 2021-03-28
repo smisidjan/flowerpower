@@ -38,17 +38,23 @@ include "header.html";
 
     foreach ($result as $factuur) {
         $idklant = $factuur['idklant'];
-        var_dump($idklant);
+
+        $sql1 = "SELECT idklant FROM klant where idklant is '$idklant'";
+        $klant = $dbh -> query($sql1);
+        echo $klant;
+
+        $row_count = $result->num_rows;
+        while ($row1 = $klant -> fetch_assoc()) {
+
+            while ($row = $result -> fetch_assoc()) {
+                echo "<tr><th>" . $row["idfactuur"] . "</th>";
+            }
+            echo "<td>" . $row1["naam"]. "</td><td>" . $row1["telefoonnummer"] . "</td><td>" . $row1["email"] . "</td></td>";
+            echo "<td><button class='button button4'>Bekijken</button></td></tr>";
+        }
     }
 
-    $sql1 = "SELECT * FROM klant where idklant is '$idklant'";
-    $result1 = $dbh -> query($sql1);
-
-    $row_count = $result->num_rows;
-    while ($row = $result -> fetch_assoc() and $row1 = $result1 -> fetch_assoc()) {
-        echo "<tr><th>" . $row["idfactuur"] . "</th><td>" . $row1["naam"]. "</td><td>" . $row1["telefoonnummer"] . "</td><td>" . $row1["email"] . "</td></td>";
-        echo "<td><button class='button button4'>Bekijken</button></td></tr>";
-    }
+    var_dump($idklant);
     ?>
     <tr>
         <th scope="row">1</th>

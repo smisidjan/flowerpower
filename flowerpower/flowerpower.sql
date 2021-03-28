@@ -105,12 +105,12 @@ DROP TABLE IF EXISTS `flowerpower`.`factuur`;
 
 CREATE TABLE IF NOT EXISTS `flowerpower`.`factuur`
 (
-    `idfactuur`    INT     NOT NULL AUTO_INCREMENT,
-    `idklant`      INT     NOT NULL,
-    `datum`        DATE    NULL,
-    `afgehaald`    TINYINT NOT NULL,
-    `idmedewerker` INT     NULL,
-    `idwinkel`     INT     NOT NULL,
+    `idfactuur`    INT                NOT NULL AUTO_INCREMENT,
+    `idklant`      INT                NOT NULL,
+    `datum`        DATE               NULL,
+    `afgehaald`    ENUM ('JA', 'NEE') NOT NULL,
+    `idmedewerker` INT                NULL,
+    `idwinkel`     INT                NULL,
     PRIMARY KEY (`idfactuur`),
     INDEX `fk_factuur_klant_idx` (`idklant` ASC),
     INDEX `fk_factuur_medewerker1_idx` (`idmedewerker` ASC),
