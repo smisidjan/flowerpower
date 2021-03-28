@@ -2,12 +2,12 @@
 include "header.html";
 
 ?>
-<h3 style="text-align: left; margin-bottom: 10px;">Overzicht medewerkers</h3>
+<h3 style="text-align: left; margin-bottom: 10px;">Overzicht artikelen</h3>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb" style="float: right; background-color: white; margin-top: 50px;">
         <li class="breadcrumb-item"><a href="../../default/index.php" style="color: #10AB43;">Home</a></li>
         <li class="breadcrumb-item"><a href="../index.php" style="color: #10AB43;">FlowerPower</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Overzicht medewerkers</li>
+        <li class="breadcrumb-item active" aria-current="page">Overzicht artikelen</li>
     </ol>
 </nav>
 <table class="table rounded" style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
