@@ -1,5 +1,20 @@
 <?php
 include "header.html";
+include "../../Controllers/MedewerkerController.php";
+
+if (isset($_POST['submit'])) {
+    $voegToe = new MedewerkerController();
+
+    $naam = $_POST['naam'];
+    $tussenvoegsel = $_POST['tussenvoegsel'];
+    $achternaam = $_POST['achternaam'];
+    $rol = $_POST['rol'];
+    $email = $_POST['email'];
+    $telefoonnummer = $_POST['telefoonnummer'];
+    $geboortedatum = $_POST['geboortedatum'];
+
+    $voegToe->voegMedewerkerToe($naam, $tussenvoegsel, $achternaam, $rol, $email, $telefoonnummer, $geboortedatum);
+}
 
 ?>
 <h3 style="text-align: left; margin-bottom: 10px;" xmlns="http://www.w3.org/1999/html">Overzicht medewerkers</h3>
@@ -82,7 +97,7 @@ include "header.html";
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <form action="index.php" method="post">
+                <form action="index.php" method="post" name="voegToe">
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-8">
                             <input type="text" class="form-control form-rounded" name="naam" placeholder="Naam">
@@ -96,6 +111,18 @@ include "header.html";
                         <div class="col-12">
                             <input type="text" class="form-control form-rounded" name="achternaam"
                                    placeholder="Achternaam">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-12">
+                            <input type="text" class="form-control form-rounded" name="email"
+                                   placeholder="E-mailadres">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-12">
+                            <input type="text" class="form-control form-rounded" name="telefoonnummer"
+                                   placeholder="Telefoonnummer">
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 20px;">
