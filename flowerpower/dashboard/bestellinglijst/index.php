@@ -22,6 +22,34 @@ include "header.html";
     </tr>
     </thead>
     <tbody>
+    <?php
+    $host = 'localhost';
+    $user = 'root';
+    $pass = 'root';
+    $dbnaam = "flowerpower";
+
+    $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
+    if (!$dbh) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $sql = "SELECT * FROM factuur";
+    $result = $dbh -> query($sql);
+
+    foreach ($result as $factuur) {
+        $idklant = $factuur['idklant'];
+        var_dump($idklant);
+    }
+
+    $sql1 = "SELECT * FROM klant where idklant is '$idklant'";
+    $result1 = $dbh -> query($sql1);
+
+    $row_count = $result->num_rows;
+    while ($row = $result -> fetch_assoc() and $row1 = $result1 -> fetch_assoc()) {
+        echo "<tr><th>" . $row["idfactuur"] . "</th><td>" . $row1["naam"]. "</td><td>" . $row1["telefoonnummer"] . "</td><td>" . $row1["email"] . "</td></td>";
+        echo "<td><button class='button button4'>Bekijken</button></td></tr>";
+    }
+    ?>
     <tr>
         <th scope="row">1</th>
         <td>Mark</td>

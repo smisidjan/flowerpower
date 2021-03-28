@@ -21,12 +21,26 @@ include "header.html";
     </tr>
     </thead>
     <tbody>
-    <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td><button class="button button4">Bekijken</button></td>
-    </tr>
+    <?php
+    $host = 'localhost';
+    $user = 'root';
+    $pass = 'root';
+    $dbnaam = "flowerpower";
+
+    $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
+    if (!$dbh) {
+        die("Connection failed: " . mysqli_connect_error());
+    }
+
+    $sql = "SELECT * FROM contact";
+    $result = $dbh -> query($sql);
+
+
+    $row_count = $result->num_rows;
+    while ($row = $result -> fetch_assoc()) {
+        echo "<tr><th>" . $row["idcontact"] . "</th><td>" . $row["naam"]. "</td><td>" . $row["telefoon"] . "</td><td>" . $row["email"] . "</td></td>";
+        echo "<td><button class='button button4'>Bekijken</button></td></tr>";
+    }
+    ?>
     </tbody>
 </table>

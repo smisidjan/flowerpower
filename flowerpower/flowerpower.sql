@@ -173,14 +173,7 @@ CREATE TABLE IF NOT EXISTS `flowerpower`.`contact`
     `telefoon`  VARCHAR(45) NULL,
     `email`     VARCHAR(45) NULL,
     `notitie`   VARCHAR(45) NULL,
-    `idwinkel`  INT         NOT NULL,
-    PRIMARY KEY (`idcontact`),
-    INDEX `fk_contact_winkel1_idx` (`idwinkel` ASC),
-    CONSTRAINT `fk_contact_winkel1`
-        FOREIGN KEY (`idwinkel`)
-            REFERENCES `flowerpower`.`winkel` (`idwinkel`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION
+    PRIMARY KEY (`idcontact`)
 )
     ENGINE = InnoDB;
 
