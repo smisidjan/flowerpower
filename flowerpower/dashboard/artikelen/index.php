@@ -76,9 +76,34 @@ include "header.html";
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <input class="button button4" style="width: 100px; background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);"
-                       type="button" name="opslaan" value="opslaan"
-                       data-dismiss="modal">
+                <form action="index.php" method="post">
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-12">
+                            <input type="text" class="form-control form-rounded" name="naam" placeholder="Naam">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-12">
+                            <textarea class="form-control form-rounded" name="omschrijving" rows="3" placeholder="Omschrijving"></textarea>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-6">
+                            <input type="text" class="form-control form-rounded" name="prijs" placeholder="Rol">
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control form-rounded" name="categorie" placeholder="categorie">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-12">
+                            <input style=" height: 35px;" type="file" class="form-control form-rounded" name="afbeelding">
+                        </div>
+                    </div>
+                    <input class="button button4"
+                           style="width: 100px; background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);"
+                           type="submit" name="opslaan" value="opslaan">
+                </form>
             </div>
         </div>
     </div>

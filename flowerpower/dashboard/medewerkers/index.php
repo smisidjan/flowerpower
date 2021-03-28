@@ -82,7 +82,7 @@ include "header.html";
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
-                <div action="index.php" method="post">
+                <form action="index.php" method="post">
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-8">
                             <input type="text" class="form-control form-rounded" name="naam" placeholder="Naam">
@@ -109,8 +109,7 @@ include "header.html";
                     <input class="button button4"
                            style="width: 100px; background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);"
                            type="submit" name="opslaan" value="opslaan">
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
