@@ -1,6 +1,22 @@
 <?php
 include "header.html";
+include "../../Controllers/ArtikelController.php";
 
+if (isset($_POST['submit'])) {
+    $voegToe = new ArtikelController();
+
+    $naam = $_POST['naam'];
+    $omschrijving = $_POST['omschrijving'];
+    $prijs = $_POST['prijs'];
+    $categorie = 'pluk';
+    if (isset($_POST['afbeelding'])) {
+        $afbeelding = $_POST['afbeelding'];
+    } else {
+        $afbeelding = null;
+    }
+
+    $voegToe->voegArtikelToe($naam, $omschrijving, $prijs, $categorie, $afbeelding);
+}
 ?>
 <h3 style="text-align: left; margin-bottom: 10px;">Overzicht artikelen</h3>
 <nav aria-label="breadcrumb">
@@ -89,7 +105,7 @@ include "header.html";
                     </div>
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-6">
-                            <input type="text" class="form-control form-rounded" name="prijs" placeholder="Rol">
+                            <input type="text" class="form-control form-rounded" name="prijs" placeholder="Prijs">
                         </div>
                         <div class="col-6">
                             <input type="text" class="form-control form-rounded" name="categorie" placeholder="categorie">
@@ -102,7 +118,7 @@ include "header.html";
                     </div>
                     <input class="button button4"
                            style="width: 100px; background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);"
-                           type="submit" name="opslaan" value="opslaan">
+                           type="submit" name="submit" value="opslaan">
                 </form>
             </div>
         </div>
