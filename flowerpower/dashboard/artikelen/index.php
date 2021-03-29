@@ -1,6 +1,7 @@
 <?php
 include "header.html";
 include "../../Controllers/ArtikelController.php";
+require "verwijderArtikel.php";
 
 if (isset($_POST['submit'])) {
     $voegToe = new ArtikelController();
@@ -17,6 +18,7 @@ if (isset($_POST['submit'])) {
 
     $voegToe->voegArtikelToe($naam, $omschrijving, $prijs, $categorie, $afbeelding);
 }
+
 ?>
 <h3 style="text-align: left; margin-bottom: 10px;">Overzicht artikelen</h3>
 <nav aria-label="breadcrumb">
@@ -39,6 +41,7 @@ if (isset($_POST['submit'])) {
     </thead>
     <tbody>
         <?php
+
         $host = 'localhost';
         $user = 'root';
         $pass = 'root';
@@ -54,9 +57,10 @@ if (isset($_POST['submit'])) {
         $row_count = $result->num_rows;
         while ($row = $result -> fetch_assoc()) {
             echo "<tr><th>" . $row["idartikel"] . "</th><td>" . $row["naam"] . "</td><td>" . $row["omschrijving"] . "</td><td>" . $row["prijs"] . "</td><td>" . $row["categorie"] . "</td></td>";
-            echo "<td><span data-toggle='modal' data-target='#toevoegModal' style='font-size: 20px; text-align: center; margin-right: -300px;'>Bewerken</span><span data-toggle='modal' data-target='#myModal' style='cursor: pointer; float: right; margin-right: 20px;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
-            <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></span></td></tr>";
+            echo "<td><span data-toggle='modal' data-target='#toevoegModal' style='font-size: 20px; text-align: center; margin-right: -300px;'>Bewerken</span><a data-toggle='modal' data-target='#myModal' data-id='".$row["idartikel"]."' href='javascript:void(0)' id='mybutton' style='cursor: pointer; float: right; margin-right: 20px;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
+            <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></a></td></tr>";
         }
+
         ?>
     </tbody>
 </table>
@@ -71,9 +75,10 @@ if (isset($_POST['submit'])) {
             </div>
             <div class="modal-body">
                 <h4 class="modal-title" style="margin-bottom: 30px;">Weet u zeker dat u dit artikel wilt verwijderen?</h4>
-                <input class="button button4" style="margin-right: 30px; background-color: #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);"
-                       type="button" name="ja" value="ja"
-                       data-dismiss="modal">
+                <a id="confirm-button">
+                    <input class="button button4" style="margin-right: 30px; background-color: #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);" id="confirm-button"
+                           type="submit" name="verwijder" value="ja">
+                </a>
                 <input class="button button4" style="background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);"
                        type="button" name="nee" value="nee"
                        data-dismiss="modal">
@@ -124,3 +129,23 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 </div>
+<script>
+    $('#mybutton').click(function(){
+        var ID = $(this).data('id');
+        $('#confirm-button').data('id', ID); //set the data attribute on the modal button
+    });
+
+    $('#confirm-button').click(function(){
+        var ID = $(this).data('id');
+        $.ajax({
+            url: "<?php echo base_url(); ?>verwijderArtikel.php"+ID,
+            type: "post",
+            data: ID,
+            success: function (data) {
+                $("#confirm_delete_modal").modal('hide');
+                $("#deleted").modal('show');
+
+            }
+        });
+    });
+</script>
