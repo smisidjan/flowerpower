@@ -1,5 +1,17 @@
 <?php
 include 'header.html';
+require '../Controllers/DefaultController.php';
+
+if (isset($_POST['submit'])) {
+    $voegToe = new DefaultController();
+
+    $naam = $_POST['naam'];
+    $telefoonnummer = $_POST['telefoon'];
+    $email = $_POST['email'];
+    $notitie = $_POST['notitie'];
+
+    $voegToe->voegBerichtToe($naam, $telefoonnummer, $email, $notitie);
+}
 ?>
 <div class="row" style="margin-top: 100px">
     <div class="column">
@@ -9,64 +21,49 @@ include 'header.html';
                     <div class="card-body">
                         <h2 class="card-title" style="float:left; margin-left: 22px;">Contact</h2>
                         <div class="card-text" style="margin-top: 50px;">
-                            <h3 class="card-text" style="float: left; margin-bottom: 50px; margin-left: -80px;">Mail
-                                ons</h3>
-                            <div class="col-12">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <input type="text" class="form-control" name="naam" placeholder="Naam">
+                            <h3 class="card-text" style="float: left; margin-bottom: 50px; margin-left: -90px;">Mail ons</h3>
+                            <form action="index.php" method="post">
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input type="text" class="form-control" name="naam" placeholder="Naam" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <br>
-                            <div class="col-12">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <input type="password" class="form-control" name="email"
-                                           placeholder="E-mailadres">
+                                <br>
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input type="email" class="form-control" name="email"
+                                               placeholder="E-mailadres" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <br>
-                            <div class="col-12">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <input type="password" class="form-control" name="telefoon"
-                                           placeholder="Telefoonnummer">
+                                <br>
+                                <div class="col-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <input type="tel" class="form-control" name="telefoon"
+                                               placeholder="Telefoonnummer">
+                                    </div>
                                 </div>
-                            </div>
-                            <br>
-                            <div class="col-6">
-                                <div class="input-group">
-                                    <span class="input-group-addon"></span>
-                                    <textarea rows="5" name="notitie" class="form-control"
-                                              placeholder="Notitie"></textarea>
+                                <br>
+                                <div class="col-6">
+                                    <div class="input-group">
+                                        <span class="input-group-addon"></span>
+                                        <textarea rows="5" name="notitie" class="form-control"
+                                                  placeholder="Notitie" required></textarea>
+                                    </div>
                                 </div>
-                            </div>
                             <br>
                             <hr class="solid">
-                           <!-- Modal -->
-                            <div class="modal fade" id="myModal" role="dialog">
-                                <div class="modal-dialog modal-dialog-centered">
-                                    <!-- Modal content-->
-                                    <div class="modal-content" style="border: 2px solid #FF6F83;">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <h4 class="modal-title" style="margin-bottom: 30px;">Uw email is verzonden!</h4>
-                                            <input style="background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);"
-                                                   type="button" name="knop" value="Oké"
-                                                   class="btn rounded-pill" data-dismiss="modal">
-                                        </div>
+                                <div class="col-4" style="float: right">
+                                    <div class="form-group">
+                                        <!-- Button trigger modal -->
+                                        <button style="background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);" class="btn btn-info btn-lg" type="submit" name="submit" value="opslaan" id="myBtn">
+                                            Opslaan
+                                        </button>
                                     </div>
-
                                 </div>
-                            </div>
-                            <div class="col-4" style="float: right">
-                                <div class="form-group">
-                                    <!-- Button trigger modal -->
-                                    <button style="background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);" type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
-                                </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -78,7 +75,8 @@ include 'header.html';
 
                             <div class="row" style="margin-top: 100px">
                                 <div class="column" style="width: 50%;">
-                                    <div class="card rounded" style="height: 300px; border: 1px solid #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+                                    <div class="card rounded"
+                                         style="height: 300px; border: 1px solid #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                                     </div>
                                 </div>
                                 <div class="column" style="width: 50%">
@@ -91,11 +89,10 @@ include 'header.html';
 
                                         <h4 class="card-title" style="margin-top: 50px;">Openingstijden</h4>
                                         <p class="card-text">Dag - Tijd</p>
-                                    </p>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
-
-
                         </div>
                     </div>
                 </div>
@@ -103,16 +100,6 @@ include 'header.html';
         </div>
     </div>
 </div>
-
-</div>
 </body>
 </div>
 </html>
-<script>
-    var myModal = document.getElementById('exampleModal')
-    var myInput = document.getElementById('exampleModalLabel')
-
-    myModal.addEventListener('shown.bs.modal', function () {
-        myInput.focus()
-    })
-</script>
