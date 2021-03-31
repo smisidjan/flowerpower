@@ -69,20 +69,6 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
                 <div class="vl"></div>
-                <?php
-                $host = 'localhost';
-                $user = 'root';
-                $pass = 'root';
-                $dbnaam = "flowerpower";
-
-                $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
-
-                if (!$dbh) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-
-
-                ?>
                 <div class="column" style="width: 48%">
                     <div class="card-body">
                         <h2 class="card-title" style="float:left; margin-left: 22px;">Contact</h2>
@@ -97,6 +83,8 @@ if (isset($_POST['submit'])) {
                                 <div class="column" style="width: 50%">
                                     <div class="card-body" style="text-align: left">
                                         <?php
+                                        require "../default/dbh.php";
+
                                         $sqlHoofd = "select * from winkel where naam = 'Hoofdkantoor'";
                                         $sqlAms = "select * from winkel where naam = 'Stadionplein'";
                                         $sqlDen = "select * from winkel where naam = 'Den Haag CS'";

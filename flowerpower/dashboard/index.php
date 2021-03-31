@@ -15,15 +15,7 @@ $inloggen->getLogin($gebruikersnaam, $wachtwoord);
             <h4 style="text-align: left;">Bestellinglijst</h4>
             <hr class="solid" style="margin-top: -8px;">
             <?php
-            $host = 'localhost';
-            $user = 'root';
-            $pass = 'root';
-            $dbnaam = "flowerpower";
-
-            $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
-            if (!$dbh) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
+            require "../default/dbh.php";
 
             $sql = "SELECT * FROM factuur";
             $result = $dbh -> query($sql);
