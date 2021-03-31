@@ -103,8 +103,8 @@ if (isset($_POST['submit'])) {
 
                                         if ($result = $dbh -> query($sqlHoofd) or $result = $dbh -> query($sqlAms) or $result = $dbh -> query($sqlDen)) {
                                             while ($row = $result -> fetch_assoc()) {
-                                                echo "<h4 class='card-title' style='font-size: 22px; font-weight: bold;'>FlowerPower! ".$row['naam']."</h4>";
-                                                echo "<p class='card-text' style='margin-top: 40px; font-size: 17px;'>".$row['adres']." ".$row['huisnummer']."</p>";
+                                                echo "<h4 class='card-title' style='font-size: 19px; font-weight: bold;'>FlowerPower! ".$row['naam']."</h4>";
+                                                echo "<p class='card-text' style='margin-top: 40px; font-size: 15px;'>".$row['adres']." ".$row['huisnummer']."</p>";
                                                 echo "<p class='card-text' style='font-size: 17px; margin-top: -8px;'>".$row['postcode']." ".$row['plaats']."</p>";
                                                 echo "<p class='card-text' style='font-size: 17px; margin-top: -8px;'>".$row['email']."</p>";
                                                 echo "<p class='card-text' style='font-size: 17px; margin-top: -8px;'>".$row['telefoon']."</p>";
@@ -112,9 +112,9 @@ if (isset($_POST['submit'])) {
                                             $result -> free_result();
                                         }
                                         ?>
-                                        <span><h4 class="card-title" style="margin-top: 40px; font-size: 20px; font-weight: bold;">Openingstijden</h4></span>
-                                        <p class="card-text" style="margin-bottom: -6px; font-size: 17px;">Ma/za - 8:30 t/m 18:00</p>
-                                        <p class="card-text" style="font-size: 17px;">Zo - gesloten</p>
+                                        <span><h4 class="card-title" style="margin-top: 40px; font-size: 18px; font-weight: bold;">Openingstijden</h4></span>
+                                        <p class="card-text" style="margin-bottom: -6px; font-size: 17px;">Ma/za -<span> 8:30 t/m 18:00</span></p>
+                                        <p class="card-text" style="font-size: 17px;">Zo - <span>gesloten</span></p>
                                         </p>
                                     </div>
                                 </div>
