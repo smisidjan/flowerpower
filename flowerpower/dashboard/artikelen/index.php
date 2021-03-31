@@ -55,7 +55,6 @@ if (isset($_POST['submit'])) {
         $sql = "SELECT * FROM artikel";
         $result = $dbh -> query($sql);
 
-        $row_count = $result->num_rows;
         while ($row = $result -> fetch_assoc()) {
             echo "<tr><th style='font-size: 17px;'>" . $row["idartikel"] . "</th><td style='font-size: 17px; text-align: left; padding-left: 80px;'>" . $row["naam"] . "</td><td style='font-size: 17px; text-align: left;'>" . $row["omschrijving"] . "</td><td style='font-size: 17px; text-align: left;'>" . $row["prijs"] . "</td><td style='font-size: 17px; text-align: left; padding-left: 25px;'>" . $row["categorie"] . "</td></td>";
             echo "<td><span data-toggle='modal' data-target='#toevoegModal' style='font-size: 20px; text-align: center; margin-right: -250px; cursor: pointer;'>Bewerken</span><a data-toggle='modal' data-target='#myModal' data-id='".$row["idartikel"]."' href='javascript:void(0)' id='mybutton' style='cursor: pointer; float: right; margin-right: 20px; color: black;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>

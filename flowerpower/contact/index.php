@@ -13,15 +13,14 @@ if (isset($_POST['submit'])) {
     $voegToe->voegBerichtToe($naam, $telefoonnummer, $email, $notitie);
 }
 ?>
-<div class="row" style="margin-top: 100px">
+<div class="row" style="margin-top: 100px; margin-bottom: 200px;">
     <div class="column">
         <div class="card rounded">
             <div class="row">
                 <div class="column" style="width: 48%">
                     <div class="card-body">
-                        <h2 class="card-title" style="float:left; margin-left: 22px;">Contact</h2>
+                        <h2 class="card-title" style="float:left; margin-left: 22px; margin-bottom: 50px;">Mail ons</h2>
                         <div class="card-text" style="margin-top: 50px;">
-                            <h3 class="card-text" style="float: left; margin-bottom: 50px; margin-left: -90px;">Mail ons</h3>
                             <form action="index.php" method="post">
                                 <div class="col-12">
                                     <div class="input-group">
@@ -41,7 +40,7 @@ if (isset($_POST['submit'])) {
                                 <div class="col-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"></span>
-                                        <input type="tel" class="form-control" name="telefoon"
+                                        <input type="text" class="form-control" name="telefoon"
                                                placeholder="Telefoonnummer">
                                     </div>
                                 </div>
@@ -53,12 +52,14 @@ if (isset($_POST['submit'])) {
                                                   placeholder="Notitie" required></textarea>
                                     </div>
                                 </div>
-                            <br>
-                            <hr class="solid">
+                                <br>
+                                <hr class="solid">
                                 <div class="col-4" style="float: right">
                                     <div class="form-group">
                                         <!-- Button trigger modal -->
-                                        <button style="background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);" class="btn btn-info btn-lg" type="submit" name="submit" value="opslaan" id="myBtn">
+                                        <button style="background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); float:right;"
+                                                class="btn btn-info btn-lg" type="submit" name="submit" value="opslaan"
+                                                id="myBtn">
                                             Opslaan
                                         </button>
                                     </div>
@@ -68,6 +69,20 @@ if (isset($_POST['submit'])) {
                     </div>
                 </div>
                 <div class="vl"></div>
+                <?php
+                $host = 'localhost';
+                $user = 'root';
+                $pass = 'root';
+                $dbnaam = "flowerpower";
+
+                $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
+
+                if (!$dbh) {
+                    die("Connection failed: " . mysqli_connect_error());
+                }
+
+
+                ?>
                 <div class="column" style="width: 48%">
                     <div class="card-body">
                         <h2 class="card-title" style="float:left; margin-left: 22px;">Contact</h2>
@@ -81,14 +96,25 @@ if (isset($_POST['submit'])) {
                                 </div>
                                 <div class="column" style="width: 50%">
                                     <div class="card-body" style="text-align: left">
-                                        <h4 class="card-title">FlowerPower! Hoofdkandoor</h4>
-                                        <p class="card-text" style="margin-top: 50px;">Straat Huisnummer</p>
-                                        <p class="card-text">Postcode Plaats</p>
-                                        <p class="card-text">Email</p>
-                                        <p class="card-text">Telefoonnummer</p>
+                                        <?php
+                                        $sqlHoofd = "select * from winkel where naam = 'Hoofdkantoor'";
+                                        $sqlAms = "select * from winkel where naam = 'Stadionplein'";
+                                        $sqlDen = "select * from winkel where naam = 'Den Haag CS'";
 
-                                        <h4 class="card-title" style="margin-top: 50px;">Openingstijden</h4>
-                                        <p class="card-text">Dag - Tijd</p>
+                                        if ($result = $dbh -> query($sqlHoofd) or $result = $dbh -> query($sqlAms) or $result = $dbh -> query($sqlDen)) {
+                                            while ($row = $result -> fetch_assoc()) {
+                                                echo "<h4 class='card-title' style='font-size: 22px; font-weight: bold;'>FlowerPower! ".$row['naam']."</h4>";
+                                                echo "<p class='card-text' style='margin-top: 40px; font-size: 17px;'>".$row['adres']." ".$row['huisnummer']."</p>";
+                                                echo "<p class='card-text' style='font-size: 17px; margin-top: -8px;'>".$row['postcode']." ".$row['plaats']."</p>";
+                                                echo "<p class='card-text' style='font-size: 17px; margin-top: -8px;'>".$row['email']."</p>";
+                                                echo "<p class='card-text' style='font-size: 17px; margin-top: -8px;'>".$row['telefoon']."</p>";
+                                            }
+                                            $result -> free_result();
+                                        }
+                                        ?>
+                                        <span><h4 class="card-title" style="margin-top: 40px; font-size: 20px; font-weight: bold;">Openingstijden</h4></span>
+                                        <p class="card-text" style="margin-bottom: -6px; font-size: 17px;">Ma/za - 8:30 t/m 18:00</p>
+                                        <p class="card-text" style="font-size: 17px;">Zo - gesloten</p>
                                         </p>
                                     </div>
                                 </div>
