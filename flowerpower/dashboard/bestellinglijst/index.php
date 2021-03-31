@@ -13,11 +13,11 @@ include "header.html";
 <table class="table rounded" style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
     <thead style="background-color: #C3DF0E;">
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">Naam</th>
-        <th scope="col">Aantal artikelen</th>
-        <th scope="col">Adres</th>
-        <th scope="col">Datum</th>
+        <th scope="col" style='font-size: 17px;'>#</th>
+        <th scope="col" style='font-size: 17px; text-align: left; padding-left: 80px;'>Naam</th>
+        <th scope="col" style='font-size: 17px; text-align: left;'>Aantal artikelen</th>
+        <th scope="col" style='font-size: 17px; text-align: left;'>Adres</th>
+        <th scope="col" style='font-size: 17px; text-align: left;'>Datum</th>
         <th scope="col"></th>
     </tr>
     </thead>

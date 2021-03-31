@@ -31,11 +31,11 @@ if (isset($_POST['submit'])) {
 <table class="table rounded" style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
     <thead style="background-color: #C3DF0E;">
     <tr style="text-align: center;">
-        <th scope="col">Artikel nr</th>
-        <th scope="col">Naam</th>
-        <th scope="col">Beschrijving</th>
-        <th scope="col">Prijs</th>
-        <th scope="col">Categorie</th>
+        <th scope="col" style='font-size: 17px;'>Artikel nr</th>
+        <th scope="col" style='font-size: 17px; text-align: left; padding-left: 80px;'>Naam</th>
+        <th scope="col" style='font-size: 17px; text-align: left;'>Beschrijving</th>
+        <th scope="col" style='font-size: 17px; text-align: left;'>Prijs</th>
+        <th scope="col" style='font-size: 17px; text-align: left; padding-left: 25px;'>Categorie</th>
         <th scope="col"><button class="button button4" data-toggle="modal" data-target="#toevoegModal">Toevoegen</button></th>
     </tr>
     </thead>
@@ -56,8 +56,8 @@ if (isset($_POST['submit'])) {
         $result = $dbh -> query($sql);
         $row_count = $result->num_rows;
         while ($row = $result -> fetch_assoc()) {
-            echo "<tr><th>" . $row["idartikel"] . "</th><td>" . $row["naam"] . "</td><td>" . $row["omschrijving"] . "</td><td>" . $row["prijs"] . "</td><td>" . $row["categorie"] . "</td></td>";
-            echo "<td><span data-toggle='modal' data-target='#toevoegModal' style='font-size: 20px; text-align: center; margin-right: -300px;'>Bewerken</span><a data-toggle='modal' data-target='#myModal' data-id='".$row["idartikel"]."' href='javascript:void(0)' id='mybutton' style='cursor: pointer; float: right; margin-right: 20px;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
+            echo "<tr><th style='font-size: 17px;'>" . $row["idartikel"] . "</th><td style='font-size: 17px; text-align: left; padding-left: 80px;'>" . $row["naam"] . "</td><td style='font-size: 17px; text-align: left;'>" . $row["omschrijving"] . "</td><td style='font-size: 17px; text-align: left;'>" . $row["prijs"] . "</td><td style='font-size: 17px; text-align: left; padding-left: 25px;'>" . $row["categorie"] . "</td></td>";
+            echo "<td><span data-toggle='modal' data-target='#toevoegModal' style='font-size: 20px; text-align: center; margin-right: -250px;'>Bewerken</span><a data-toggle='modal' data-target='#myModal' data-id='".$row["idartikel"]."' href='javascript:void(0)' id='mybutton' style='cursor: pointer; float: right; margin-right: 20px; color: black;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
             <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></a></td></tr>";
         }
 

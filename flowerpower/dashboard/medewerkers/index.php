@@ -29,11 +29,11 @@ if (isset($_POST['submit'])) {
        style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 20rem;">
     <thead style="background-color: #C3DF0E; border-radius: 20rem;">
     <tr>
-        <th scope="col">#</th>
-        <th scope="col">Naam</th>
-        <th scope="col">E-mailadres</th>
-        <th scope="col">Telefoonnummer</th>
-        <th scope="col">Rol</th>
+        <th scope="col" style='font-size: 17px;'>#</th>
+        <th scope="col" style='font-size: 17px; text-align: left;'>Naam</th>
+        <th scope="col" style='font-size: 17px; text-align: left;'>E-mailadres</th>
+        <th scope="col" style='font-size: 17px; text-align: left;'>Telefoonnummer</th>
+        <th scope="col" style='font-size: 17px; padding-left: 90px;'>Rol</th>
         <th scope="col">
             <button class="button button4" data-toggle="modal" data-target="#toevoegModal">Toevoegen</button>
         </th>
@@ -55,8 +55,8 @@ if (isset($_POST['submit'])) {
     $result = $dbh->query($sql);
     $row_count = $result->num_rows;
     while ($row = $result->fetch_assoc()) {
-        echo "<tr><th>" . $row["idmedewerker"] . "</th><td>" . $row["naam"], $row["tussenvoegsel"], $row["achternaam"] . "</td><td>" . $row["email"] . "</td><td>" . $row["telefoonnummer"] . "</td><td><button class='button button4' style='background-color: white; border: 1px solid #FF6F83; width: 150px; color: #707070;'>" . $row["rol"] . "</button></td></td>";
-        echo "<td><span data-toggle='modal' data-target='#toevoegModal' style='font-size: 20px; text-align: center; margin-right: -100px;'>Bewerken</span><span data-toggle='modal' data-target='#myModal' style='cursor: pointer; float: right; margin-right: 20px;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
+        echo "<tr><th style='font-size: 17px;'>" . $row["idmedewerker"] . "</th><td style='font-size: 17px; text-align: left;'>" . $row["naam"] ." ". $row["tussenvoegsel"] ." ". $row["achternaam"] . "</td><td style='font-size: 17px; text-align: left;'>" . $row["email"] . "</td><td style='font-size: 17px; text-align: left; margin-left: -50px;'>" . $row["telefoonnummer"] . "</td><td style='font-size: 17px; text-align: left;'><button class='button button4' style='background-color: white; border: 1px solid #FF6F83; width: 150px; color: #707070; cursor: pointer;'>" . $row["rol"] . "</button></td></td>";
+        echo "<td><span data-toggle='modal' data-target='#toevoegModal' style='font-size: 20px; text-align: center; margin-right: -100px; cursor:pointer;'>Bewerken</span><span data-toggle='modal' data-target='#myModal' style='cursor: pointer; float: right; margin-right: 20px;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
             <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></span></td></tr>";
     }
     ?>
@@ -100,7 +100,7 @@ if (isset($_POST['submit'])) {
                 <form action="index.php" method="post" name="voegToe">
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-8">
-                            <input type="text" class="form-control form-rounded" name="naam" placeholder="Naam">
+                            <input type="text" class="form-control form-rounded" name="naam" placeholder="Naam" required>
                         </div>
                         <div class="col-4">
                             <input type="text" class="form-control form-rounded" name="tussenvoegsel"
@@ -110,7 +110,7 @@ if (isset($_POST['submit'])) {
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-12">
                             <input type="text" class="form-control form-rounded" name="achternaam"
-                                   placeholder="Achternaam">
+                                   placeholder="Achternaam" required>
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 20px;">
@@ -127,7 +127,7 @@ if (isset($_POST['submit'])) {
                     </div>
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-6">
-                            <input type="text" class="form-control form-rounded" name="rol" placeholder="Rol">
+                            <input type="text" class="form-control form-rounded" name="rol" placeholder="Rol" required>
                         </div>
                         <div class="col-6">
                             <input type="date" class="form-control form-rounded" name="geboortedatum">
