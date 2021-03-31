@@ -1,23 +1,14 @@
 <?php
-$host = 'localhost';
-$user = 'root';
-$pass = 'root';
-$dbnaam = "flowerpower";
+if (isset($_REQUEST['idartikel'])) {
 
-$dbh = mysqli_connect($host, $user, $pass, $dbnaam);
-if (!$dbh) {
-    die("Connection failed: " . mysqli_connect_error());
+// if the variable has been successfully received
+    $idartikel = $_REQUEST['idartikel'];
+
+    $query = $dbh->prepare("DELETE FROM artikel WHERE idartikel = :idartikel");
+
+    $query->execute(array('name' => $idartikel));
+
+    unset($db, $query);
 }
-
-//// sql to delete a record
-//$sql = "DELETE FROM artikel WHERE idartikel='".$_GET['id']."' ";
-//
-//if ($dbh->query($sql) === TRUE) {
-//    header("Location: index.php");
-//} else {
-//    echo "Error deleting record: " . $dbh->error;
-//}
-//
-//$dbh->close();
 
 ?>
