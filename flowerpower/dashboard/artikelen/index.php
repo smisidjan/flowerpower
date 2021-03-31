@@ -54,6 +54,7 @@ if (isset($_POST['submit'])) {
 
         $sql = "SELECT * FROM artikel";
         $result = $dbh -> query($sql);
+
         $row_count = $result->num_rows;
         while ($row = $result -> fetch_assoc()) {
             echo "<tr><th style='font-size: 17px;'>" . $row["idartikel"] . "</th><td style='font-size: 17px; text-align: left; padding-left: 80px;'>" . $row["naam"] . "</td><td style='font-size: 17px; text-align: left;'>" . $row["omschrijving"] . "</td><td style='font-size: 17px; text-align: left;'>" . $row["prijs"] . "</td><td style='font-size: 17px; text-align: left; padding-left: 25px;'>" . $row["categorie"] . "</td></td>";
