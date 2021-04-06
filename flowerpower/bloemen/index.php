@@ -53,10 +53,11 @@ require "../default/dbh.php";
     if ($result) {
         while ($row = $result -> fetch_assoc()) {
             echo "<div class='column1'>";
+            echo "<a href='bloem.php'>";
             echo "<div class='card1'>";
             echo "<img src='" . $row["afbeelding"] . "'>";
-            echo "<h3>" . $row["naam"] . "</h3>";
-            echo "</div></div>";
+            echo "<h3 class='h3'>" . $row["naam"] . "</h3>";
+            echo "</div></a></div>";
         }
     }
     ?>
