@@ -27,8 +27,6 @@ if (isset($_GET['delete'])) {
     $verwijder = new ArtikelController();
     $id = $_GET['delete'];
     $verwijder->verwijderArtikel($id);
-
-
 }
 
 if (isset($_GET['id'])) {
@@ -103,12 +101,6 @@ if (isset($_GET['id'])) {
 <!--        </div>-->
 <!--    </div>-->
 <!--</div>-->
-
-<?php
-
-
-?>
-
 <!-- Modal toevoegen -->
 <div class="modal fade" id="toevoegModal" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
