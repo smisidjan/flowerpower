@@ -31,50 +31,8 @@ if (isset($_POST['submit'])) {
     <div class="container1" style="float: right;">
         <div class="topnav" style="float: right; width: 600px; background-color: white;">
             <a href="../default/index.php">Home</a>
-            <div class="dropdown">
-                <a class="nav-link dropdown-toggle cool-link" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Bloemen
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <form class="dropdown-item" action="../bloemen/index.php" method="post" name="alle">
-                        <button name="alle" value="alle" class="dropdown-item" type="submit">Alle Bloemen</button>
-                    </form>
-                    <form class="dropdown-item" action="../bloemen/index.php" method="post" name="pluk">
-                        <button name="pluk" value="pluk" class="dropdown-item" type="submit">Plukboeketten</button>
-                    </form>
-                    <form class="dropdown-item" action="../bloemen/index.php" method="post" name="voorjaar">
-                        <button name="voorjaar" value="voorjaar" class="dropdown-item" type="submit">Voorjaars boeketten</button>
-                    </form>
-                </div>
-            </div>
-            <div class="dropdown">
-                <a class="nav-link dropdown-toggle cool-link" href="#" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    Gelegenheid
-                </a>
-
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <form class="dropdown-item" action="../gelegenheid/index.php" method="post" name="bedankt">
-                        <button name="bedankt" class="dropdown-item" type="submit">Bedankt</button>
-                    </form>
-                    <form class="dropdown-item" action="../gelegenheid/index.php" method="post" name="beterschap">
-                        <button name="beterschap" class="dropdown-item" type="submit">Beterschap</button>
-                    </form>
-                    <form class="dropdown-item" action="../gelegenheid/index.php" method="post" name="geboorte">
-                        <button name="geboorte" class="dropdown-item" type="submit">Geboorte</button>
-                    </form>
-                    <form class="dropdown-item" action="../gelegenheid/index.php" method="post" name="gefeliciteerd">
-                        <button name="gefeliciteerd" class="dropdown-item" type="submit">Gefeliciteerd</button>
-                    </form>
-                    <form class="dropdown-item" action="../gelegenheid/index.php" method="post" name="liefde">
-                        <button name="liefde" class="dropdown-item" type="submit">Liefde</button>
-                    </form>
-                    <form class="dropdown-item" action="../gelegenheid/index.php" method="post" name="uitvaart">
-                        <button name="uitvaart" class="dropdown-item" type="submit">Uitvaart</button>
-                    </form>
-                </div>
-            </div>
+            <a href="../bloemen/index.php">Bloemen</a>
+            <a href="../gelegenheid/index.php">Gelegenheid</a>
             <a href="../contact/index.php" style="margin-right: 50px;">Contact</a>
             <a class="active" href="../login/index.php">
                 <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
