@@ -10,7 +10,7 @@ if (isset($_POST['submit'])) {
     $naam = $_POST['naam'];
     $omschrijving = $_POST['omschrijving'];
     $prijs = $_POST['prijs'];
-    $categorie = 'pluk';
+    $categorie = $_POST['categorie'];
     if (isset($_POST['afbeelding'])) {
         $afbeelding = $_POST['afbeelding'];
     } else {
@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
 
         while ($row = $result -> fetch_assoc()) {
             echo "<tr><th style='font-size: 17px;'>" . $row["idartikel"] . "</th><td style='font-size: 17px; text-align: left; padding-left: 80px;'>" . $row["naam"] . "</td><td style='font-size: 17px; text-align: left;'>" . $row["omschrijving"] . "</td><td style='font-size: 17px; text-align: left;'>" . $row["prijs"] . "</td><td style='font-size: 17px; text-align: left; padding-left: 25px;'>" . $row["categorie"] . "</td></td>";
-            echo "<td><span data-toggle='modal' data-target='#toevoegModal' style='font-size: 20px; text-align: center; margin-right: -250px; cursor: pointer;'>Bewerken</span><a onclick=\"deleteTag(this)\" id='mybutton' style='cursor: pointer; float: right; margin-right: 20px; color: black;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
+            echo "<td><span data-toggle='modal' data-target='#toevoegModal' style='font-size: 20px; text-align: center; cursor: pointer;'>Bewerken</span><a onclick=\"deleteTag(this)\" id='mybutton' style='cursor: pointer; float: right; margin-right: 20px; color: black;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
             <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></a></td></tr>";
         }
 
@@ -89,25 +89,25 @@ if (isset($_POST['submit'])) {
                 <form action="index.php" method="post">
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-12">
-                            <input type="text" class="form-control form-rounded" name="naam" placeholder="Naam">
+                            <input type="text" class="form-control form-rounded" name="naam" id="naam" placeholder="Naam">
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-12">
-                            <textarea class="form-control form-rounded" name="omschrijving" rows="3" placeholder="Omschrijving"></textarea>
+                            <textarea class="form-control form-rounded" name="omschrijving" id="omschrijving" rows="3" placeholder="Omschrijving"></textarea>
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-6">
-                            <input type="text" class="form-control form-rounded" name="prijs" placeholder="Prijs">
+                            <input type="text" class="form-control form-rounded" name="prijs" id="prijs" placeholder="Prijs">
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control form-rounded" name="categorie" placeholder="categorie">
+                            <input type="text" class="form-control form-rounded" name="categorie" id="categorie" placeholder="Categorie">
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-12">
-                            <input style=" height: 35px;" type="file" class="form-control form-rounded" name="afbeelding">
+                            <input style=" height: 35px;" type="file" class="form-control form-rounded" name="afbeelding" id="afbeelding">
                         </div>
                     </div>
                     <input class="button button4"

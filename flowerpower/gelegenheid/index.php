@@ -82,23 +82,23 @@ require "../default/dbh.php";
     </div>
 
     <?php
-    $sql = "SELECT * FROM artikel";
+    $sql = "SELECT * FROM artikel where categorie = 'bedankt'";
 
     if (isset($_POST['beterschap'])) {
         $categorie = $_POST['beterschap'];
-        $sql = "SELECT * FROM artikel where categorie is $categorie";
+        $sql = "SELECT * FROM artikel where categorie = '$categorie'";
     } elseif (isset($_POST['geboorte'])) {
         $categorie = $_POST['geboorte'];
-        $sql = "SELECT * FROM artikel where categorie is $categorie";
+        $sql = "SELECT * FROM artikel where categorie = '$categorie'";
     } elseif (isset($_POST['gefeliciteerd'])) {
         $categorie = $_POST['gefeliciteerd'];
-        $sql = "SELECT * FROM artikel where categorie is $categorie";
+        $sql = "SELECT * FROM artikel where categorie = '$categorie'";
     } elseif (isset($_POST['liefde'])) {
         $categorie = $_POST['liefde'];
-        $sql = "SELECT * FROM artikel where categorie is $categorie";
+        $sql = "SELECT * FROM artikel where categorie = '$categorie'";
     } elseif (isset($_POST['uitvaart'])) {
         $categorie = $_POST['uitvaart'];
-        $sql = "SELECT * FROM artikel where categorie is $categorie";
+        $sql = "SELECT * FROM artikel where categorie = '$categorie'";
     }
 
     $result = $dbh->query($sql);
@@ -108,7 +108,7 @@ require "../default/dbh.php";
             echo "<div class='column1'>";
             echo "<a href='bloem.php'>";
             echo "<div class='card1'>";
-            echo "<img style='width: 200px; height: 200px; margin-left: -30px; margin-top: -20px; position: relative; float: left;' src='../default/images/" . $row["categorie"] . "'>";
+            echo "<img style='width: 200px; height: 200px; margin-left: -30px; margin-top: -20px; position: relative; float: left;' src='../default/images/" . $row["afbeelding"] . "'>";
             echo "<h3 class='h3'>" . $row["naam"] . "</h3>";
             echo "</div></a></div>";
         }
