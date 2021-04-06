@@ -3,14 +3,16 @@ include "../Controllers/LoginController.php";
 
 $inloggen = new LoginController();
 
-$naam = $_POST['naam'];
-$tussenvoegsel = $_POST['tussenvoegsel'];
-$achternaam = $_POST['achternaam'];
-$telefoonnummer = $_POST['telefoon'];
-$gebruikersnaam = $_POST['email'];
-$wachtwoord = $_POST['wachtwoord'];
+if (isset($_POST['submit'])) {
+    $naam = $_POST['naam'];
+    $tussenvoegsel = $_POST['tussenvoegsel'];
+    $achternaam = $_POST['achternaam'];
+    $telefoonnummer = $_POST['telefoon'];
+    $gebruikersnaam = $_POST['email'];
+    $wachtwoord = $_POST['wachtwoord'];
 
-$inloggen->getAanmelding($naam, $tussenvoegsel, $achternaam, $telefoonnummer, $gebruikersnaam, $wachtwoord);
+    $inloggen->getAanmelding($naam, $tussenvoegsel, $achternaam, $telefoonnummer, $gebruikersnaam, $wachtwoord);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/html">

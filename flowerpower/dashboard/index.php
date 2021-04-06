@@ -1,15 +1,18 @@
 <?php
 include "../Controllers/LoginController.php";
-include "header.html";
+
 
 $inloggen = new LoginController();
+if (isset($_POST['submit'])) {
+    $gebruikersnaam = $_POST['email'];
+    $wachtwoord = $_POST['wachtwoord'];
 
-$gebruikersnaam = $_POST['email'];
-$wachtwoord = $_POST['wachtwoord'];
+    $inloggen->getLogin($gebruikersnaam, $wachtwoord);
+}
 
-$inloggen->getLogin($gebruikersnaam, $wachtwoord);
+include "header.html";
 ?>
-<div class="row">
+<div class="row" style="margin-top: 100px;">
     <div class="column">
         <div class="card">
             <h4 style="text-align: left;">Bestellinglijst</h4>
@@ -71,14 +74,14 @@ $inloggen->getLogin($gebruikersnaam, $wachtwoord);
             <a href="berichten/index.php" style="text-align: left; text-decoration-line: underline; font-size: 11px;">Bekijk alle berichten</a>
         </div>
     </div>
-
-    <div class="column">
-        <div class="card">
-            <h4 style="text-align: left;">Mijn profiel</h4>
-            <hr class="solid" style="margin-top: -8px;">
-            <p>Some text</p>
-            <p>Some text</p>
-        </div>
-    </div>
+<!---->
+<!--    <div class="column">-->
+<!--        <div class="card">-->
+<!--            <h4 style="text-align: left;">Mijn profiel</h4>-->
+<!--            <hr class="solid" style="margin-top: -8px;">-->
+<!--            <p>Some text</p>-->
+<!--            <p>Some text</p>-->
+<!--        </div>-->
+<!--    </div>-->
 </div>
 

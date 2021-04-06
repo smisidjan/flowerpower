@@ -91,15 +91,18 @@
                                 <div class="col-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input type="text" class="form-control" name="email" placeholder="Email">
+                                        <input type="text" name="email" placeholder="Email" class="form-control
+                                        <?php echo (!empty($gebruikersnaam_err)) ? 'is-invalid' : ''; ?>">
+                                        <span class="invalid-feedback"><?php echo $gebruikersnaam_err; ?></span>
                                     </div>
                                 </div>
                                 <br>
                                 <div class="col-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input type="password" class="form-control" name="wachtwoord"
-                                               placeholder="Wachtwoord">
+                                        <input type="password" name="wachtwoord" placeholder="Wachtwoord"  class="form-control
+                                               <?php echo (!empty($wachtwoord_err)) ? 'is-invalid' : ''; ?>">
+                                        <span class="invalid-feedback"><?php echo $wachtwoord_err; ?></span>
                                     </div>
                                 </div>
                                 <br>

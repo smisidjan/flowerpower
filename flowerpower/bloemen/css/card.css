@@ -9,7 +9,15 @@ body {
 /* Float four columns side by side */
 .column {
     float: left;
-    width: 25%;
+    width: 33.33%;
+    padding: 0 10px;
+}
+
+/* Float four columns side by side */
+.column1 {
+    margin-top: 50px;
+    float: left;
+    width: 20%;
     padding: 0 10px;
 }
 
@@ -34,9 +42,47 @@ body {
 
 /* Style the counter cards */
 .card {
-    border: 1px solid #FF6F83;
+    border: 1px solid #C3DF0E;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     padding: 16px;
     text-align: center;
     background-color: white;
+}
+
+.card1 {
+    position: relative;
+    border-radius: 50px;
+    border: 1px solid #FF059B;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: white;
+    height: 200px;
+}
+
+.card .active1{
+    border: 5px solid #FF6F83;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding: 16px;
+    text-align: center;
+    background-color: white;
+}
+
+/* Centered text */
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 28px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+h3 {
+    position:absolute;
+    padding: 30px;
+    bottom:0;
+    right:0;
 }

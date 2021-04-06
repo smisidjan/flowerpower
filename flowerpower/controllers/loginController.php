@@ -3,12 +3,16 @@
 
 class LoginController
 {
-    public function getLogin($gebruikersnaam, $wachtwoord) {
+    public function getLogin($gebruikersnaam, $wachtwoord)
+    {
         $host = 'localhost';
         $user = 'root';
         $pass = 'root';
 
         $dbh = new PDO('mysql:host=localhost; dbname=flowerpower; port=3306', $user, $pass);
+
+        // Initialize the session
+        session_start();
 
         $inloggenMedewerker = $dbh->query("select * from medewerker where email = '$gebruikersnaam' and wachtwoord = '$wachtwoord'")
         or die("Error while searching");
@@ -16,15 +20,20 @@ class LoginController
         $inloggenKlant = $dbh->query("select * from klant where email = '$gebruikersnaam' and wachtwoord = '$wachtwoord'")
         or die("Error while searching");
 
+        // Store data in session variables
+        $_SESSION["loggedin"] = true;
+        $_SESSION["email"] = $gebruikersnaam;
 
         if ($inloggenMedewerker->fetch() or $inloggenKlant->fetch()) {
             echo "Welkom!";
         } else {
             echo "Sorry geen toegang!";
         }
+
     }
 
-    public function getAanmelding($naam, $tussenvoegsel, $achternaam, $telefoonnummer, $gebruikersnaam, $wachtwoord) {
+    public function getAanmelding($naam, $tussenvoegsel, $achternaam, $telefoonnummer, $gebruikersnaam, $wachtwoord)
+    {
         $host = 'localhost';
         $user = 'root';
         $pass = 'root';
