@@ -108,7 +108,7 @@ require "../default/dbh.php";
             echo "<div class='column1'>";
             echo "<a href='bloem.php'>";
             echo "<div class='card1'>";
-            echo "<img src='" . $row["afbeelding"] . "'>";
+            echo "<img style='width: 200px; height: 200px; margin-left: -30px; margin-top: -20px; position: relative; float: left;' src='../default/images/" . $row["categorie"] . "'>";
             echo "<h3 class='h3'>" . $row["naam"] . "</h3>";
             echo "</div></a></div>";
         }

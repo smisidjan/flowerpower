@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
         $afbeelding = null;
     }
 
-    $voegToe->voegArtikelToe($naam, $omschrijving, $prijs, $categorie, $afbeelding);
+    $voegToe->voegArtikelToe($naam, $omschrijving, $prijs, $afbeelding, $categorie);
 }
 ?>
 <h3 style="text-align: left; margin-bottom: 10px;">Overzicht artikelen</h3>

@@ -24,6 +24,7 @@ DROP TABLE IF EXISTS `flowerpower`.`winkel`;
 CREATE TABLE IF NOT EXISTS `flowerpower`.`winkel`
 (
     `idwinkel`   INT          NOT NULL AUTO_INCREMENT,
+    `naam`       VARCHAR(45)  NOT NULL,
     `adres`      VARCHAR(254) NULL,
     `huisnummer` VARCHAR(45)  NULL,
     `postcode`   VARCHAR(6)   NULL,
@@ -87,12 +88,12 @@ DROP TABLE IF EXISTS `flowerpower`.`artikel`;
 
 CREATE TABLE IF NOT EXISTS `flowerpower`.`artikel`
 (
-    `idartikel`    INT                       NOT NULL AUTO_INCREMENT,
-    `naam`         VARCHAR(45)               NULL,
-    `omschrijving` VARCHAR(45)               NULL,
-    `prijs`        VARCHAR(45)               NULL,
-    `afbeelding`   VARCHAR(45)               NULL,
-    `categorie`    ENUM ('pluk', 'voorjaar') NOT NULL,
+    `idartikel`    INT          NOT NULL AUTO_INCREMENT,
+    `naam`         VARCHAR(45)  NULL,
+    `omschrijving` VARCHAR(254) NULL,
+    `prijs`        VARCHAR(45)  NULL,
+    `afbeelding`   VARCHAR(45)  NULL,
+    `categorie`    VARCHAR(45)  NOT NULL,
     PRIMARY KEY (`idartikel`)
 )
     ENGINE = InnoDB;
