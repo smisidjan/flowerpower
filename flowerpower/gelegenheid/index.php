@@ -16,7 +16,6 @@ require "../default/dbh.php";
             </div>
         </form>
     </div>
-
     <div class="column">
         <form action="index.php" method="post">
             <div class="card">
@@ -28,7 +27,6 @@ require "../default/dbh.php";
             </div>
         </form>
     </div>
-
     <div class="column">
         <form action="index.php" method="post">
             <div class="card">
@@ -42,7 +40,6 @@ require "../default/dbh.php";
     </div>
 </div>
 <div class="row" style="margin-bottom: 400px;">
-
     <div class="collapse" id="bekijk" style="width: 100%;">
         <div class="column">
             <form action="index.php" method="post">
@@ -55,7 +52,6 @@ require "../default/dbh.php";
                 </div>
             </form>
         </div>
-
         <div class="column">
             <form action="index.php" method="post">
                 <div class="card">
@@ -67,7 +63,6 @@ require "../default/dbh.php";
                 </div>
             </form>
         </div>
-
         <div class="column">
             <form action="index.php" method="post">
                 <div class="card">
@@ -80,7 +75,6 @@ require "../default/dbh.php";
             </form>
         </div>
     </div>
-
     <?php
     $sql = "SELECT * FROM artikel where categorie = 'bedankt'";
 

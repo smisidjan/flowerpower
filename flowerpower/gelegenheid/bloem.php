@@ -2,6 +2,7 @@
 include 'header.html';
 ?>
 
+
 <div class="row">
     <div class="column2">
         <div class="card" style="height: 600px; border-radius: 50px; margin-bottom: 50px;">
@@ -42,3 +43,10 @@ include 'header.html';
         </div>
     </div>
 </div>
+<script>
+    // select the row that's concerned
+    var row = btn.parentNode.parentNode;
+
+    // select the id of this row
+       var idartikel = row.children[0].textContent;
+</script>

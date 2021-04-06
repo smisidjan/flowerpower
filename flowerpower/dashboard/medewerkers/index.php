@@ -1,10 +1,9 @@
 <?php
 include "header.html";
 include "../../Controllers/MedewerkerController.php";
-require "verwijderMedewerker.php";
 require "../../default/dbh.php";
 
-if (isset($_POST['submit'])) {
+if (isset($_POST['opslaan'])) {
     $voegToe = new MedewerkerController();
 
     $naam = $_POST['naam'];
@@ -16,6 +15,12 @@ if (isset($_POST['submit'])) {
     $geboortedatum = $_POST['geboortedatum'];
 
     $voegToe->voegMedewerkerToe($naam, $tussenvoegsel, $achternaam, $rol, $email, $telefoonnummer, $geboortedatum);
+}
+
+if (isset($_GET['delete'])) {
+    $verwijder = new MedewerkerController();
+    $id = $_GET['delete'];
+    $verwijder->verwijderMedewerker($id);
 }
 
 ?>
@@ -48,8 +53,8 @@ if (isset($_POST['submit'])) {
 
     while ($row = $result->fetch_assoc()) {
         echo "<tr><th style='font-size: 17px;'>" . $row["idmedewerker"] . "</th><td style='font-size: 17px; text-align: left;'>" . $row["naam"] ." ". $row["tussenvoegsel"] ." ". $row["achternaam"] . "</td><td style='font-size: 17px; text-align: left;'>" . $row["email"] . "</td><td style='font-size: 17px; text-align: left; margin-left: -50px;'>" . $row["telefoonnummer"] . "</td><td style='font-size: 17px; text-align: left;'><button class='button button4' style='background-color: white; border: 1px solid #FF6F83; width: 150px; color: #707070; cursor: pointer;'>" . $row["rol"] . "</button></td></td>";
-        echo "<td><span data-toggle='modal' data-target='#toevoegModal' style='font-size: 20px; text-align: center; margin-right: -100px; cursor:pointer;'>Bewerken</span><span onclick=\"deleteTag(this)\" style='cursor: pointer; float: right; margin-right: 20px;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
-            <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></span></td></tr>";
+        echo "<td><span data-toggle='modal' data-target='#toevoegModal' style='font-size: 20px; text-align: center; margin-right: -100px; cursor:pointer;'>Bewerken</span><a href='index.php?delete=" . $row["idmedewerker"] . "' style='cursor: pointer; color: black; float: right; margin-right: 20px;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
+            <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></a></td></tr>";
     }
     ?>
     </tbody>
@@ -133,28 +138,3 @@ if (isset($_POST['submit'])) {
         </div>
     </div>
 </div>
-<script>
-    function deleteTag(btn) {
-        // select the row that's concerned
-        var row = btn.parentNode.parentNode;
-
-        // select the name of this row
-        var idmedewerker = row.children[0].textContent;
-
-        // remove the row on client side
-        row.parentNode.removeChild(row);
-
-        // AJAX call to remove the row server side
-        $.ajax({
-            url: 'verwijderMedewerker.php', // this is the target PHP file
-            type: "GET",
-            data: ({
-                idmedewerker: idmedewerker
-            }),
-            success: function(data) {
-                // the following will be executed when the request has been completed
-                alert('De medewerker is verwijderd');
-            }
-        });
-    }
-</script>
