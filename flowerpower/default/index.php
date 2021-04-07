@@ -12,7 +12,7 @@ include 'header.html';
         <input type="radio" name="position" />
         <input type="radio" name="position" />
         <main id="carousel">
-            <div class="item"><img style="width: 200px; height: 200px;" src="images/rode-rozen-luxe.jpg"></div>
+            <div class="item"><a href="" <img style="width: 200px; height: 200px;" src="images/rode-rozen-luxe.jpg"></div>
             <div class="item"><img style="width: 200px; height: 200px;" src="images/jongen_boeket_.jpg"></div>
             <div class="item"><img style="width: 200px; height: 200px;" src="images/vrolijk-plukboeket.jpg"></div>
             <div class="item"><img style="width: 200px; height: 200px;" src="images/meisje_boeket.jpg"></div>

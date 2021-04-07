@@ -94,7 +94,7 @@ switch($_GET["action"]) {
         <td style="font-size: 15px;" align="right"><?php echo $total_quantity; ?></td>
         <td style="font-size: 15px;" align="right" colspan="2"><strong><?php echo "&euro; ".number_format($total_price, 2); ?></strong></td>
         <td></td>
-        <td><button style="height: 30px; text-align: center; float: right;" class="button button4">Afrekenen</button></td>
+        <td><a href="afrekenen.php" style="height: 30px; text-align: center; float: right;" class="button button4">Afrekenen</a></td>
     </tr>
     <?php
     } else {
