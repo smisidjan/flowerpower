@@ -99,7 +99,7 @@ require "../default/dbh.php";
         $result = $dbh->query($sql);
         if ($result) {
             while ($row = $result->fetch_assoc()) {
-                echo "<div class='column1'>";
+                echo "<div class='column1' id='cards'>";
                 echo "<a href='bloem.php?id=" . $row["idartikel"] . "'>";
                 echo "<div class='card1'>";
                 echo "<img style='width: 200px; height: 200px; margin-left: -30px; margin-top: -20px; position: relative; float: left;' src='../default/images/" . $row["afbeelding"] . "'>";
