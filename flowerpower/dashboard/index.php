@@ -1,7 +1,6 @@
 <?php
 include "../Controllers/LoginController.php";
 
-
 $inloggen = new LoginController();
 if (isset($_POST['submit'])) {
     $gebruikersnaam = $_POST['email'];
@@ -74,14 +73,13 @@ include "header.html";
             <a href="berichten/index.php" style="text-align: left; text-decoration-line: underline; font-size: 11px;">Bekijk alle berichten</a>
         </div>
     </div>
-<!---->
-<!--    <div class="column">-->
-<!--        <div class="card">-->
-<!--            <h4 style="text-align: left;">Mijn profiel</h4>-->
-<!--            <hr class="solid" style="margin-top: -8px;">-->
-<!--            <p>Some text</p>-->
-<!--            <p>Some text</p>-->
-<!--        </div>-->
-<!--    </div>-->
+    <!---->
+    <!--    <div class="column">-->
+    <!--        <div class="card">-->
+    <!--            <h4 style="text-align: left;">Mijn profiel</h4>-->
+    <!--            <hr class="solid" style="margin-top: -8px;">-->
+    <!--            <p>Some text</p>-->
+    <!--            <p>Some text</p>-->
+    <!--        </div>-->
+    <!--    </div>-->
 </div>
-

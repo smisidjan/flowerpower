@@ -112,7 +112,7 @@
                                 <div class="col-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i
-                                                class="glyphicon glyphicon-earphone"></i></span>
+                                                    class="glyphicon glyphicon-earphone"></i></span>
                                         <input id="telefoon" type="text" class="form-control" name="telefoon"
                                                placeholder="Telefoonnummer">
                                     </div>
