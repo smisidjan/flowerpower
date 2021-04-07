@@ -1,6 +1,6 @@
 <?php
 require '../Controllers/BloemenController.php';
-include 'header.php';
+include 'header.html';
 require "../default/dbh.php";
 ?>
 <div class="row" style="margin-top: 100px; margin-bottom: 400px;">

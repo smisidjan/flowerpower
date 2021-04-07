@@ -53,7 +53,7 @@ switch($_GET["action"]) {
     </ol>
 </nav>
 <table id="table" class="table rounded"
-       style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+       style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); margin-bottom: 200px;">
     <thead style="background-color: #C3DF0E;">
     <?php
     if(isset($_SESSION["cart_item"])){
@@ -94,7 +94,7 @@ switch($_GET["action"]) {
         <td style="font-size: 15px;" align="right"><?php echo $total_quantity; ?></td>
         <td style="font-size: 15px;" align="right" colspan="2"><strong><?php echo "&euro; ".number_format($total_price, 2); ?></strong></td>
         <td></td>
-        <td></td>
+        <td><button style="height: 30px; text-align: center; float: right;" class="button button4">Afrekenen</button></td>
     </tr>
     <?php
     } else {
