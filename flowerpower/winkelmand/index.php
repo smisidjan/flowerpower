@@ -76,7 +76,7 @@ switch($_GET["action"]) {
         foreach ($_SESSION["cart_item"] as $item){
         $item_price = $item["quantity"]*$item["prijs"];
         ?>
-        <td><img src=../default/images/"<?php echo $item["afbeelding"]; ?>" class="cart-item-image" /></td>
+        <td><img style="width: 50px; height: 50px;" src="../default/images/<?php echo $item["afbeelding"]; ?>" class="cart-item-image" /></td>
         <td style="text-align:left; font-size: 15px;"><?php echo $item["naam"]; ?></td>
         <td style="text-align:left; font-size: 15px;"><?php echo $item["omschrijving"]; ?></td>
         <td style="text-align:left; font-size: 15px;"><?php echo $item["quantity"]; ?></td>
