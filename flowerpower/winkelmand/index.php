@@ -1,145 +1,107 @@
 <?php
 session_start();
-include('../default/dbh.php');
-$status="";
-if (isset($_POST['code']) && $_POST['code']!=""){
-    $code = $_POST['code'];
-    $result = mysqli_query($dbh, "SELECT * FROM artikel WHERE idartikel='$code'");
-    $row = mysqli_fetch_assoc($result);
-    $name = $row['naam'];
-    $code = $row['idartikel'];
-    $price = $row['prijs'];
-    $image = $row['afbeelding'];
+include 'header.html';
+require_once("dbcontroller.php");
+$db_handle = new DBController();
+if(!empty($_GET["action"])) {
+switch($_GET["action"]) {
+	case "add":
+		if(!empty($_POST["quantity"])) {
+			$productByCode = $db_handle->runQuery("SELECT * FROM artikel WHERE idartikel='" . $_GET["code"] . "'");
+			$itemArray = array($productByCode[0]["idartikel"]=>array('naam'=>$productByCode[0]["naam"], 'idartikel'=>$productByCode[0]["idartikel"], 'omschrijving'=>$productByCode[0]["omschrijving"], 'quantity'=>$_POST["quantity"], 'prijs'=>$productByCode[0]["prijs"], 'afbeelding'=>$productByCode[0]["afbeelding"]));
 
-    $cartArray = array(
-        $code=>array(
-            'naam'=>$name,
-            'idartikel'=>$code,
-            'prijs'=>$price,
-            'quantity'=>1,
-            'afbeelding'=>$image)
-    );
-
-    if(empty($_SESSION["shopping_cart"])) {
-        $_SESSION["shopping_cart"] = $cartArray;
-        $status = "<div class='box'>Product is added to your cart!</div>";
-    }else{
-        $array_keys = array_keys($_SESSION["shopping_cart"]);
-        if(in_array($code,$array_keys)) {
-            $status = "<div class='box' style='color:red;'>Product is already added to your cart!</div>";
-        } else {
-            $_SESSION["shopping_cart"] = array_merge(
-                $_SESSION["shopping_cart"],
-                $cartArray
-            );
-            $status = "<div class='box'>Product is added to your cart!</div>";
-        }
-
-    }
+			if(!empty($_SESSION["cart_item"])) {
+				if(in_array($productByCode[0]["idartikel"],array_keys($_SESSION["cart_item"]))) {
+					foreach($_SESSION["cart_item"] as $k => $v) {
+							if($productByCode[0]["idartikel"] == $k) {
+								if(empty($_SESSION["cart_item"][$k]["quantity"])) {
+									$_SESSION["cart_item"][$k]["quantity"] = 0;
+								}
+								$_SESSION["cart_item"][$k]["quantity"] += $_POST["quantity"];
+							}
+					}
+				} else {
+					$_SESSION["cart_item"] = array_merge($_SESSION["cart_item"],$itemArray);
+				}
+			} else {
+				$_SESSION["cart_item"] = $itemArray;
+			}
+		}
+	break;
+	case "remove":
+		if(!empty($_SESSION["cart_item"])) {
+			foreach($_SESSION["cart_item"] as $k => $v) {
+					if($_GET["code"] == $k)
+						unset($_SESSION["cart_item"][$k]);				
+					if(empty($_SESSION["cart_item"]))
+						unset($_SESSION["cart_item"]);
+			}
+		}
+	break;
+	case "empty":
+		unset($_SESSION["cart_item"]);
+	break;	
+}
 }
 ?>
-<?php
-if(!empty($_SESSION["shopping_cart"])) {
-    $cart_count = count(array_keys($_SESSION["shopping_cart"]));
+
+<h3 style="text-align: left; margin-bottom: 10px;">Winkelmandje</h3>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb" style="float: left; background-color: white; margin-top: 50px;">
+        <li class="breadcrumb-item"><a href="../../default/index.php" style="color: #10AB43;">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Winkelmandje</li>
+    </ol>
+</nav>
+<table id="table" class="table rounded"
+       style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
+    <thead style="background-color: #C3DF0E;">
+    <?php
+    if(isset($_SESSION["cart_item"])){
+    $total_quantity = 0;
+    $total_price = 0;
     ?>
-    <div class="cart_div">
-        <a href="cart.php"><img src="cart-icon.png" /> Cart<span>
-<?php echo $cart_count; ?></span></a>
-    </div>
-    <?php
-}
-?>
-
-<?php
-$result = mysqli_query($dbh,"SELECT * FROM artikel");
-while($row = mysqli_fetch_assoc($result)){
-    echo "<div class='product_wrapper'>
-    <form method='post' action=''>
-    <input type='hidden' name='code' value=".$row['idartikel']." />
-    <div class='image'><img src=../default/images/'".$row['afbeelding']."' /></div>
-    <div class='name'>".$row['naam']."</div>
-    <div class='price'>$".$row['prijs']."</div>
-    <button type='submit' class='buy'>Buy Now</button>
-    </form>
-    </div>";
-}
-mysqli_close($dbh);
-?>
-
-<div style="clear:both;"></div>
-
-<div class="message_box" style="margin:10px 0px;">
-    <?php echo $status; ?>
-</div>
-<div class="cart">
-    <?php
-    if(isset($_SESSION["shopping_cart"])){
-        $total_price = 0;
-        ?>
-        <table class="table">
-            <tbody>
-            <tr>
-                <td></td>
-                <td>ITEM NAME</td>
-                <td>QUANTITY</td>
-                <td>UNIT PRICE</td>
-                <td>ITEMS TOTAL</td>
-            </tr>
-            <?php
-            foreach ($_SESSION["shopping_cart"] as $product){
-                ?>
-                <tr>
-                    <td>
-                        <img src='<?php echo $product["image"]; ?>' width="50" height="40" />
-                    </td>
-                    <td><?php echo $product["name"]; ?><br />
-                        <form method='post' action=''>
-                            <input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
-                            <input type='hidden' name='action' value="remove" />
-                            <button type='submit' class='remove'>Remove Item</button>
-                        </form>
-                    </td>
-                    <td>
-                        <form method='post' action=''>
-                            <input type='hidden' name='code' value="<?php echo $product["code"]; ?>" />
-                            <input type='hidden' name='action' value="change" />
-                            <select name='quantity' class='quantity' onChange="this.form.submit()">
-                                <option <?php if($product["quantity"]==1) echo "selected";?>
-                                        value="1">1</option>
-                                <option <?php if($product["quantity"]==2) echo "selected";?>
-                                        value="2">2</option>
-                                <option <?php if($product["quantity"]==3) echo "selected";?>
-                                        value="3">3</option>
-                                <option <?php if($product["quantity"]==4) echo "selected";?>
-                                        value="4">4</option>
-                                <option <?php if($product["quantity"]==5) echo "selected";?>
-                                        value="5">5</option>
-                            </select>
-                        </form>
-                    </td>
-                    <td><?php echo "$".$product["price"]; ?></td>
-                    <td><?php echo "$".$product["price"]*$product["quantity"]; ?></td>
-                </tr>
-                <?php
-                $total_price += ($product["price"]*$product["quantity"]);
-            }
-            ?>
-            <tr>
-                <td colspan="5" align="right">
-                    <strong>TOTAL: <?php echo "$".$total_price; ?></strong>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <tr style="text-align: center;">
+        <th scope="col" style='font-size: 17px;'>Afbeelding</th>
+        <th scope="col" style='font-size: 17px; text-align: left;'>Naam</th>
+        <th scope="col" style='font-size: 17px; text-align: left; margin-left: 50px;'>Beschrijving</th>
+        <th scope="col" style='font-size: 17px; text-align: left; margin-left: 50px;'>Aantal</th>
+        <th scope="col" style='font-size: 17px; text-align: left;'>Prijs</th>
+        <th scope="col" style='font-size: 17px; text-align: left; padding-left: 25px;'>Totaal</th>
+        <th><a class="button4 button" id="btnEmpty" href="index.php?action=empty">Leeg winkelmandje</a></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
         <?php
-    }else{
-        echo "<h3>Your cart is empty!</h3>";
+        foreach ($_SESSION["cart_item"] as $item){
+        $item_price = $item["quantity"]*$item["prijs"];
+        ?>
+        <td><img src=../default/images/"<?php echo $item["afbeelding"]; ?>" class="cart-item-image" /></td>
+        <td style="text-align:left; font-size: 15px;"><?php echo $item["naam"]; ?></td>
+        <td style="text-align:left; font-size: 15px;"><?php echo $item["omschrijving"]; ?></td>
+        <td style="text-align:left; font-size: 15px;"><?php echo $item["quantity"]; ?></td>
+        <td  style="text-align:left; font-size: 15px;"><?php echo "&euro; ".$item["prijs"]; ?></td>
+        <td  style="text-align:left; font-size: 15px;"><?php echo "&euro; ". number_format($item_price,2); ?></td>
+        <td style="text-align:center; font-size: 15px;"><a class="btnRemoveAction" href="index.php?action=remove&code=<?php echo $item["idartikel"] ?>"><img src="" /></a></td>
+    </tr>
+    <?php
+    $total_quantity += $item["quantity"];
+    $total_price += ($item["prijs"]*$item["quantity"]);
     }
     ?>
-</div>
-
-<div style="clear:both;"></div>
-
-<div class="message_box" style="margin:10px 0px;">
-    <?php echo $status; ?>
-</div>
+    <tr>
+        <td style="font-size: 20px" colspan="2" align="right">Totaal:</td>
+        <td style="font-size: 15px;" align="right"><?php echo $total_quantity; ?></td>
+        <td style="font-size: 15px;" align="right" colspan="2"><strong><?php echo "&euro; ".number_format($total_price, 2); ?></strong></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <?php
+    } else {
+        ?>
+        <div class="no-records">Uw winkelmandje is leeg.</div>
+        <?php
+    }
+    ?>
+    </tbody>
+</table>

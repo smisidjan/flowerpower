@@ -8,8 +8,7 @@ if (isset($_POST['action']) && $_POST['action']=="remove"){
         foreach($_SESSION["shopping_cart"] as $key => $value) {
             if($_POST["code"] == $key){
                 unset($_SESSION["shopping_cart"][$key]);
-                $status = "<div class='box' style='color:red;'>
-      Product is removed from your cart!</div>";
+                $status = "<div class='box' style='color:red;'>Product is removed from your cart!</div>";
             }
             if(empty($_SESSION["shopping_cart"]))
                 unset($_SESSION["shopping_cart"]);
@@ -40,7 +39,7 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
        style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
     <thead style="background-color: #C3DF0E;">
     <tr style="text-align: center;">
-        <th scope="col" style='font-size: 17px;'>Artikel nr</th>
+        <th scope="col" style='font-size: 17px;'></th>
         <th scope="col" style='font-size: 17px; text-align: left;'>Naam</th>
         <th scope="col" style='font-size: 17px; text-align: left;'>Naam</th>
         <th scope="col" style='font-size: 17px; text-align: left; margin-left: 50px;'>Beschrijving</th>
@@ -53,7 +52,7 @@ if (isset($_POST['action']) && $_POST['action']=="change"){
 
     ?>
    <tr>
-       <th><?php $product['afbeelding'];?></th>
+       <th><img style="width: 50px; height: 50px;" src="../default/images/<?php $product['afbeelding'];?>"></th>
        <td><?php echo $product["naam"]; ?><br />
            <form method='post' action=''>
                <input type='hidden' name='code' value="<?php echo $product["idartikel"]; ?>" />
