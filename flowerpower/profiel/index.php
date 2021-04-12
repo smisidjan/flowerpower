@@ -1,17 +1,12 @@
 <?php
 include "../Controllers/LoginController.php";
+session_start();
 
-$inloggen = new LoginController();
 
-if (isset($_POST['submit'])) {
-    $naam = $_POST['naam'];
-    $tussenvoegsel = $_POST['tussenvoegsel'];
-    $achternaam = $_POST['achternaam'];
-    $telefoonnummer = $_POST['telefoon'];
-    $gebruikersnaam = $_POST['email'];
-    $wachtwoord = $_POST['wachtwoord'];
-
-    $inloggen->getAanmelding($naam, $tussenvoegsel, $achternaam, $telefoonnummer, $gebruikersnaam, $wachtwoord);
+if (isset($_SESSION['gebruiker'])) {
+if (isset($_GET['loguit'])) {
+    $_SESSION = array();
+    session_destroy();
 }
 ?>
 <!DOCTYPE html>
@@ -54,9 +49,10 @@ if (isset($_POST['submit'])) {
             <div class="col-sm-2" style="margin-left: 120px">
                 <div class="card" style="border: 2px solid #FF6F83">
                     <div class="card-body">
-                        <p class="card-text"><a href="profiel.php">Mijn account</a></p>
-                        <p class="card-text"><a href="profiel.php">Mijn gegevens wijzigen</a></p>
-                        <p class="card-text"><a href="profiel.php">Mijn bestellingen</a></p>
+                        <p class="card-text"><a href="index.php">Mijn account</a></p>
+                        <p class="card-text"><a href="index.php">Mijn gegevens wijzigen</a></p>
+                        <p class="card-text"><a href="index.php">Mijn bestellingen</a></p>
+                        <p class="card-text"><a href="index.php?loguit">Loguit</a></p>
                     </div>
                 </div>
             </div>
@@ -73,8 +69,7 @@ if (isset($_POST['submit'])) {
                         <h5>Mijn gegevens wijzigen</h5>
                         <h6>Contact gegevens</h6>
                         <?php
-                        echo $naam . ' ' . $achternaam . '<br>';
-                        echo $gebruikersnaam . '<br>';
+                        echo $_SESSION['gebruiker'];
                         ?>
                         <br>
                         <p class="card-text" style="margin-bottom: -3px"><a href="profiel.php">Gegevens wijzigen</a></p>
@@ -87,3 +82,8 @@ if (isset($_POST['submit'])) {
     </body>
 </div>
 </html>
+    <?php
+} else {
+    header('location: ../default/index.php');
+}
+?>

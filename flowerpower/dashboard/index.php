@@ -1,15 +1,10 @@
 <?php
+session_start();
 include "../Controllers/LoginController.php";
-
-$inloggen = new LoginController();
-if (isset($_POST['submit'])) {
-    $gebruikersnaam = $_POST['email'];
-    $wachtwoord = $_POST['wachtwoord'];
-
-    $inloggen->getLogin($gebruikersnaam, $wachtwoord);
-}
-
 include "header.html";
+
+if (isset($_SESSION['medewerker'])) {
+
 ?>
 <div class="row" style="margin-top: 100px;">
     <div class="column">
@@ -98,3 +93,8 @@ include "header.html";
     <!--        </div>-->
     <!--    </div>-->
 </div>
+<?php
+} else {
+    header('location: ../login/index.php');
+}
+?>

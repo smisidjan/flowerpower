@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'header.html';
 require '../Controllers/DefaultController.php';
 

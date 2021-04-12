@@ -1,3 +1,30 @@
+<?php
+require "../Controllers/LoginController.php";
+session_start();
+
+if (isset($_POST['login'])) {
+    $inloggen = new LoginController();
+
+    $gebruikersnaam = $_POST['email'];
+    $wachtwoord = $_POST['wachtwoord'];
+
+    $inloggen->getLogin($gebruikersnaam, $wachtwoord);
+}
+
+if (isset($_POST['registreer'])) {
+    $registreer = new LoginController();
+
+    $naam = $_POST['naam'];
+    $tussenvoegsel = $_POST['tussenvoegsel'];
+    $achternaam = $_POST['achternaam'];
+    $telefoonnummer = $_POST['telefoon'];
+    $gebruikersnaam = $_POST['email'];
+    $wachtwoord = $_POST['wachtwoord'];
+
+    $registreer->getAanmelding($naam, $tussenvoegsel, $achternaam, $telefoonnummer, $gebruikersnaam, $wachtwoord);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -40,7 +67,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-6">
-                <form action="../dashboard/index.php" method="post" id="login">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title" style="text-align: center">Inloggen met je FlowerPower account</h4>
@@ -49,23 +76,19 @@
                                 <div class="col-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input type="text" name="email" placeholder="Email" class="form-control
-                                        <?php echo (!empty($gebruikersnaam_err)) ? 'is-invalid' : ''; ?>">
-                                        <span class="invalid-feedback"><?php echo $gebruikersnaam_err; ?></span>
+                                        <input type="text" name="email" placeholder="Email" class="form-control">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="col-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input type="password" name="wachtwoord" placeholder="Wachtwoord"  class="form-control
-                                               <?php echo (!empty($wachtwoord_err)) ? 'is-invalid' : ''; ?>">
-                                        <span class="invalid-feedback"><?php echo $wachtwoord_err; ?></span>
+                                        <input type="password" name="wachtwoord" placeholder="Wachtwoord"  class="form-control">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <input style="background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);" type="submit" name="knop" value="verstuur"
+                                    <input style="background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);" type="submit" name="login" value="verstuur"
                                            class="form-control">
                                 </div>
                             </div>
@@ -74,7 +97,7 @@
                 </form>
             </div>
             <div class="col-sm-6">
-                <form action="../profiel/index.php" method="post" id="registreren">
+                <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="registreren">
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title" style="text-align: center">Account aanmaken</h4><br>
@@ -140,7 +163,7 @@
                             </div>
                             <br>
                             <div class="form-group">
-                                <input style="background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);" type="submit" name="knop" value="verstuur"
+                                <input style="background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);" type="submit" name="registreer" value="verstuur"
                                        class="form-control">
                             </div>
                             </p>
