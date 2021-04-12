@@ -78,11 +78,6 @@ if (isset($_POST['submit'])) {
                                 <div class="column" style="width: 50%;">
                                     <div class="card rounded"
                                          style="height: 300px; border: 1px solid #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
-                                        <img src="../default/images/birth-flower.jpg" style="width: 100%; height: 100%;">
-                                    </div>
-                                </div>
-                                <div class="column" style="width: 50%">
-                                    <div class="card-body" style="text-align: left">
                                         <?php
                                         require "../default/dbh.php";
 
@@ -91,19 +86,34 @@ if (isset($_POST['submit'])) {
                                         $sqlDen = "select * from winkel where naam = 'Den Haag CS'";
 
                                         if ($result = $dbh -> query($sqlHoofd) or $result = $dbh -> query($sqlAms) or $result = $dbh -> query($sqlDen)) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                echo "<img src='data:image/jpeg;base64,/".base64_encode($row['afbeelding'])."' style='width: 100%; height: 100%;'>";
+                                            }
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                                <div class="column" style="width: 50%">
+                                    <div class="card-body" style="text-align: left">
+                                        <?php
+                                        $sqlHoofd = "select * from winkel where naam = 'Hoofdkantoor'";
+                                        $sqlAms = "select * from winkel where naam = 'Stadionplein'";
+                                        $sqlDen = "select * from winkel where naam = 'Den Haag CS'";
+
+                                        if ($result = $dbh -> query($sqlHoofd) or $result = $dbh -> query($sqlAms) or $result = $dbh -> query($sqlDen)) {
                                             while ($row = $result -> fetch_assoc()) {
-                                                echo "<h4 class='card-title' style='font-size: 19px; font-weight: bold;'>FlowerPower! ".$row['naam']."</h4>";
-                                                echo "<p class='card-text' style='margin-top: 40px; font-size: 16px;'>".$row['adres']." ".$row['huisnummer']."</p>";
-                                                echo "<p class='card-text' style='font-size: 16px; margin-top: -8px;'>".$row['postcode']." ".$row['plaats']."</p>";
-                                                echo "<p class='card-text' style='font-size: 16px; margin-top: -8px;'>".$row['email']."</p>";
-                                                echo "<p class='card-text' style='font-size: 16px; margin-top: -8px;'>".$row['telefoon']."</p>";
+                                                echo "<h4 class='card-title' style='font-size: 17px; font-weight: bold;'>FlowerPower! ".$row['naam']."</h4>";
+                                                echo "<p class='card-text' style='margin-top: 40px; font-size: 15px;'>".$row['adres']." ".$row['huisnummer']."</p>";
+                                                echo "<p class='card-text' style='font-size: 15px; margin-top: -8px;'>".$row['postcode']." ".$row['plaats']."</p>";
+                                                echo "<p class='card-text' style='font-size: 15px; margin-top: -8px;'>".$row['email']."</p>";
+                                                echo "<p class='card-text' style='font-size: 15px; margin-top: -8px;'>".$row['telefoon']."</p>";
                                             }
                                             $result -> free_result();
                                         }
                                         ?>
-                                        <span><h4 class="card-title" style="margin-top: 40px; font-size: 18px; font-weight: bold;">Openingstijden</h4></span>
-                                        <p class="card-text" style="margin-bottom: -6px; font-size: 17px;">Ma/za -<span> 8:30 t/m 18:00</span></p>
-                                        <p class="card-text" style="font-size: 17px;">Zo - <span>gesloten</span></p>
+                                        <span><h4 class="card-title" style="margin-top: 40px; font-size: 17px; font-weight: bold;">Openingstijden</h4></span>
+                                        <p class="card-text" style="margin-bottom: -6px; font-size: 15px;">Ma/za -<span> 8:30 t/m 18:00</span></p>
+                                        <p class="card-text" style="font-size: 15px;">Zo - <span>gesloten</span></p>
                                         </p>
                                     </div>
                                 </div>
