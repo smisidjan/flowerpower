@@ -73,6 +73,21 @@ include "header.html";
             <a href="berichten/index.php" style="text-align: left; text-decoration-line: underline; font-size: 11px;">Bekijk alle berichten</a>
         </div>
     </div>
+
+    <div class="column">
+        <div class="card">
+            <h4 style="text-align: left;">De vestigingen</h4>
+            <hr class="solid" style="margin-top: -8px;">
+            <?php
+            $sql = "SELECT * FROM winkel";
+            $result = $dbh -> query($sql);
+            $row_count = $result->num_rows;
+
+            echo "<div class='total-rows' style='font-size: 55px; text-align: left; margin-left: 150px; margin-bottom: -20px;'>" . $row_count . "</div><p>winkels </p>";
+            ?>
+            <a href="winkels/index.php" style="text-align: left; text-decoration-line: underline; font-size: 11px;">Bekijk alle winkels</a>
+        </div>
+    </div>
     <!---->
     <!--    <div class="column">-->
     <!--        <div class="card">-->

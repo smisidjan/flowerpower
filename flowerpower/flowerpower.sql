@@ -31,6 +31,7 @@ CREATE TABLE IF NOT EXISTS `flowerpower`.`winkel`
     `plaats`     VARCHAR(45)  NULL,
     `telefoon`   VARCHAR(10)  NULL,
     `email`      VARCHAR(254) NULL,
+    `afbeelding` VARCHAR(45)  NULL,
     PRIMARY KEY (`idwinkel`)
 )
     ENGINE = InnoDB;
