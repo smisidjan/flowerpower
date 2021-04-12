@@ -19,11 +19,13 @@ class ArtikelController
         $sql = "insert into artikel (idartikel, naam, omschrijving, prijs, afbeelding, categorie) VALUES (idartikel, '$naam', '$omschrijving', '$prijs', '$afbeelding', '$categorie')";
 
         if (mysqli_query($dbh, $sql)) {
-            echo "<div style='margin-top: 5px;' class='alert alert-success'><strong>Gelukt!</strong> Uw artikel is toegevoegd!</div>";
+            echo "<div style='margin-top: 5px;' class='alert alert-success'><strong>Gelukt!</strong> Artikel <strong>$naam</strong> is toegevoegd!</div>";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($dbh);
         }
     }
+
+
 
     public function verwijderArtikel($id)
     {
@@ -41,7 +43,7 @@ class ArtikelController
         $sql = "DELETE FROM artikel WHERE idartikel=$id";
 
         if (mysqli_query($dbh, $sql)) {
-            echo "<div style='margin-top: 5px;' class='alert alert-danger'><strong>Letop!</strong> Dit artikel is verwijderd!</div>";
+            echo "<div style='margin-top: 5px;' class='alert alert-danger'><strong>Letop!</strong> Artikel $id is verwijderd!</div>";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($dbh);
         }

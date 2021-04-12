@@ -90,7 +90,7 @@ while ($row = $result->fetch_assoc()) { ?>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <h4 class="modal-title" style="margin-bottom: 30px;">Weet u zeker dat u deze medewerker wilt
+                    <h4 class="modal-title" style="margin-bottom: 30px;">Weet u zeker dat u <?php echo $row["naam"] ?> wilt
                         verwijderen?</h4>
                     <a href="index.php?delete=<?php echo $row["idmedewerker"] ?>">
                         <input class="button button4"
