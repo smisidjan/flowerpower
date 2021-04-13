@@ -35,6 +35,11 @@
         <link rel="stylesheet" href="../default/css/menu.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <?php }?>
+    <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/profiel/index.php') { ?>
+        <link rel="stylesheet" href="css/card.css">
+        <link rel="stylesheet" href="../default/css/menu.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <?php }?>
     <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/winkelmand/index.php' || '/flowerpower/winkelmand/afrekenen.php') { ?>
         <link rel="stylesheet" href="../default/css/menu.css">
         <link rel="stylesheet" href="css/card.css">
@@ -47,7 +52,8 @@
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/index.php') {echo "class='active'";} ?> href="../bloemen/index.php">Bloemen</a>
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/gelegenheid/index.php') {echo "class='active'";} ?> href="../gelegenheid/index.php">Gelegenheid</a>
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/contact/index.php') {echo "class='active'";} ?> href="../contact/index.php" style="margin-right: 50px;">Contact</a>
-        <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/login/index.php') {echo "class='active'";} ?> href="../login/index.php">
+        <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/login/index.php') {echo "class='active'";}
+        if (!empty($_SESSION['gebruiker'])) { echo "href='../profiel/index.php'";} elseif (!empty($_SESSION['medewerker'])){ echo "href='../dashboard/index.php'";} else { echo "href='../login/index.php'";}?>>
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                  class="bi bi-person-fill" viewBox="0 0 16 16">
                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>

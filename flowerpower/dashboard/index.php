@@ -1,7 +1,7 @@
 <?php
 session_start();
 include "../Controllers/LoginController.php";
-include "header.html";
+include "header.php";
 
 if (isset($_SESSION['medewerker'])) {
 
