@@ -63,3 +63,18 @@ p, h3, h5, h6, label{
     margin-top: 5px;
     text-align: left;
 }
+
+.cardNav a.active {
+    font-weight: bold;
+    font-size: 16px;
+    text-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cardNav p a.hover {
+    text-decoration: unset underline;
+}
+
+a, p{
+    text-decoration: unset underline;
+}
+

@@ -43,9 +43,12 @@ class LoginController
         }
 
         $sql = "insert into klant (idklant, naam, tussenvoegsel, achternaam, adres, huisnummer, postcode, plaats, telefoon, email, geboortedatum, wachtwoord) VALUES (idklant, '$naam', '$tussenvoegsel', '$achternaam', '', 0, '', '', $telefoonnummer, '$gebruikersnaam', '', '$wachtwoord')";
+        $result = $dbh->query($sql);
+        $idklant = $result;
+
 
         if (mysqli_query($dbh, $sql)) {
-            $_SESSION['gebruiker'] = $gebruikersnaam;
+            $_SESSION['gebruiker'] = array("idklant" => $idklant, "naam" => $naam, "tussenvoegsel" => $tussenvoegsel, "achternaam" => $achternaam, "gebruikersnaam" => $gebruikersnaam, "wachtwoord" => $wachtwoord);
             header('location: ../profiel/index.php');
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($dbh);

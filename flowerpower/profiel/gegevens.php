@@ -24,14 +24,9 @@ if (isset($_SESSION['gebruiker'])) {
     <div class="container" style="margin-top: 100px">
         <div class="row">
             <div class="col-sm-4">
-                <div class="card" style="border: 2px solid #FF6F83">
-                    <div class="card-body">
-                        <p class="card-text"><a href="index.php">Mijn account</a></p>
-                        <p class="card-text"><a href="gegevens.php">Mijn gegevens wijzigen</a></p>
-                        <p class="card-text"><a href="index.php">Mijn bestellingen</a></p>
-                        <p class="card-text"><a href="index.php?loguit">Loguit</a></p>
-                    </div>
-                </div>
+                <?php
+                require "header.php";
+                ?>
             </div>
             <div class="col-sm-8">
                 <div class="card">
