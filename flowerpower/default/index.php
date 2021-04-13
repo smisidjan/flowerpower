@@ -1,6 +1,6 @@
 <?php
 require '../Controllers/BloemenController.php';
-include 'header.html';
+include 'header.php';
 //include 'card.php';
 ?>
 <div class="row" style="text-align: center; margin-top: 50px;">

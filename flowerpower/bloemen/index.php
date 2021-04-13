@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '../Controllers/BloemenController.php';
-include 'header.html';
+include '../default/header.php';
 require "../default/dbh.php";
 ?>
 <div class="row" style="margin-top: 100px; margin-bottom: 400px;">

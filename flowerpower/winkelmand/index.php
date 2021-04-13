@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'header.html';
+include '../default/header.php';
 require_once("dbcontroller.php");
 $db_handle = new DBController();
 if(!empty($_GET["action"])) {

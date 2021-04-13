@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'header.html';
+include '../default/header.php';
 require '../Controllers/DefaultController.php';
 
 if (isset($_POST['submit'])) {

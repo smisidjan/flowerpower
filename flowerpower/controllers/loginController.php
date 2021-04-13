@@ -11,21 +11,18 @@ class LoginController
 
         $dbh = new PDO('mysql:host=localhost; dbname=flowerpower; port=3306', $user, $pass);
 
-        // Initialize the session
-        session_start();
-
         $inloggenMedewerker = $dbh->query("select * from medewerker where email = '$gebruikersnaam' and wachtwoord = '$wachtwoord'")
         or die("Error while searching");
 
         $inloggenKlant = $dbh->query("select * from klant where email = '$gebruikersnaam' and wachtwoord = '$wachtwoord'")
         or die("Error while searching");
 
-        // Store data in session variables
-        $_SESSION["loggedin"] = true;
-        $_SESSION["email"] = $gebruikersnaam;
-
-        if ($inloggenMedewerker->fetch() or $inloggenKlant->fetch()) {
-            echo "Welkom!";
+        if ($inloggenMedewerker->fetch()) {
+            $_SESSION['medewerker'] = $gebruikersnaam;
+            header('location: ../dashboard/index.php');
+        } elseif ($inloggenKlant->fetch()) {
+            $_SESSION['gebruiker'] = $gebruikersnaam;
+            header('location: ../profiel/index.php');
         } else {
             echo "Sorry geen toegang!";
         }
@@ -48,7 +45,8 @@ class LoginController
         $sql = "insert into klant (idklant, naam, tussenvoegsel, achternaam, adres, huisnummer, postcode, plaats, telefoon, email, geboortedatum, wachtwoord) VALUES (idklant, '$naam', '$tussenvoegsel', '$achternaam', '', 0, '', '', $telefoonnummer, '$gebruikersnaam', '', '$wachtwoord')";
 
         if (mysqli_query($dbh, $sql)) {
-            echo "New record created successfully";
+            $_SESSION['gebruiker'] = $gebruikersnaam;
+            header('location: ../profiel/index.php');
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($dbh);
         }
