@@ -1,6 +1,5 @@
 <?php
 session_start();
-include '../default/header.php';
 require_once("dbcontroller.php");
 $db_handle = new DBController();
 if(!empty($_GET["action"])) {
@@ -40,9 +39,11 @@ switch($_GET["action"]) {
 	break;
 	case "empty":
 		unset($_SESSION["cart_item"]);
+        unset($_SESSION["totaal"]);
 	break;	
 }
 }
+include '../default/header.php';
 ?>
 
 <h3 style="text-align: left; margin-bottom: 10px;">Winkelmandje</h3>
@@ -88,10 +89,11 @@ switch($_GET["action"]) {
     $total_quantity += $item["quantity"];
     $total_price += ($item["prijs"]*$item["quantity"]);
     }
+    $_SESSION["totaal"] = $total_quantity;
     ?>
     <tr>
         <td style="font-size: 20px" colspan="2" align="right">Totaal:</td>
-        <td style="font-size: 15px;" align="right"><?php echo $total_quantity; ?></td>
+        <td style="font-size: 15px;" align="right"><?php echo $_SESSION["totaal"]; ?></td>
         <td style="font-size: 15px;" align="right" colspan="2"><strong><?php echo "&euro; ".number_format($total_price, 2); ?></strong></td>
         <td></td>
         <td><a href="afrekenen.php" style="height: 30px; text-align: center; float: right;" class="button button4">Afrekenen</a></td>

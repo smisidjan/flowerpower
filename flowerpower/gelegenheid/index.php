@@ -1,4 +1,5 @@
 <?php
+session_start();
 require '../Controllers/BloemenController.php';
 include '../default/header.php';
 require "../default/dbh.php";
