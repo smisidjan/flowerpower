@@ -24,7 +24,7 @@
 <div class="card" style="border: 1px solid #FF6F83; width: 100%; height: 150%; margin-bottom: 100px;">
     <div class="container1" style="float: right;">
         <div class="topnav" style="float: right; width: 250px; background-color: white;">
-            <a href="../default/index.php">Home</a>
+            <a href="../../default/index.php">Home</a>
             <a class="active" href="../dashboard/index.php" style="margin-right: 50px;">FlowerPower</a>
         </div>
     </div>

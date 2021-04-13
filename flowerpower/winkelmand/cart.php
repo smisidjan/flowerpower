@@ -1,6 +1,6 @@
 <?php
 session_start();
-include "../default/header.html";
+include "../default/header.php";
 require "../default/dbh.php";
 $status="";
 if (isset($_POST['action']) && $_POST['action']=="remove"){

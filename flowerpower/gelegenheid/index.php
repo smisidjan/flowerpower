@@ -1,9 +1,9 @@
 <?php
 require '../Controllers/BloemenController.php';
-include 'header.html';
+include '../default/header.php';
 require "../default/dbh.php";
 ?>
-<p style="margin-left: 20px; margin-top: 20px; cursor: pointer; text-align: left; font-size: 20px; text-decoration: underline;" data-toggle="collapse" data-target="#bekijk">Bekijk meer</p>
+<p style="margin-left: 20px; margin-top: 20px; cursor: pointer; margin-top: 100px; text-align: left; font-size: 20px; text-decoration: underline;" data-toggle="collapse" data-target="#bekijk">Bekijk meer</p>
 <div class="row">
     <div class="column">
         <form action="index.php" method="post">

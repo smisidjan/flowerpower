@@ -22,11 +22,10 @@
         <link rel="stylesheet" href="../default/css/menu.css">
         <link rel="stylesheet" href="../bloemen/css/card.css">
     <?php }?>
-<!--    --><?php //if ($_SERVER['PHP_SELF'] == '/flowerpower/gelegenheid/index.php') { ?>
-<!--        <link rel="stylesheet" href="../default/css/menu.css">-->
-<!--        <link rel="stylesheet" href="../gelegenheid/css/card.css">-->
-<!--        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
-<!--    --><?php //}?>
+    <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/gelegenheid/index.php') { ?>
+        <link rel="stylesheet" href="../default/css/menu.css">
+        <link rel="stylesheet" href="../gelegenheid/css/card.css">
+    <?php }?>
     <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/contact/index.php') { ?>
         <link rel="stylesheet" href="../default/css/menu.css">
         <link rel="stylesheet" href="css/card.css">
@@ -36,7 +35,7 @@
         <link rel="stylesheet" href="../default/css/menu.css">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
     <?php }?>
-    <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/winkelmand/index.php') { ?>
+    <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/winkelmand/index.php' || '/flowerpower/winkelmand/afrekenen.php') { ?>
         <link rel="stylesheet" href="../default/css/menu.css">
         <link rel="stylesheet" href="css/card.css">
         <link rel="stylesheet" href="css/cardAfrekenen.css">
