@@ -1,45 +1,83 @@
-<section class="pt-5 pb-5" style="margin-top: 100px">
-    <div class="container">
-        <div class="row">
-            <div class="col-6">
-                <h3 class="mb-3">Carousel cards title </h3>
-            </div>
-            <div class="row mx-auto my-auto">
-                <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel">
-                    <div class="carousel-inner w-100" role="listbox">
-                        <?php
-                        require "../default/dbh.php";
-
-                        $sql = "select * from artikel";
-
-                        if ($result = $dbh -> query($sql)) {
-                            while ($row = $result -> fetch_assoc()) {
-                                if ($row == 0) {
-                                    echo "<div class='carousel-item active'>";
-                                    echo "<p>". $row['naam']. "</p>";
-                                    echo "<img class='d-block col-3 img-fluid'
-                                src='https://cdn.shopify.com/s/files/1/2304/9095/files/DBE-ACDBE-logo.png?10873'>";
-                                    echo " </div>";
-                                } else {
-                                    echo "<div class='carousel-item'>";
-                                    echo "hallo <img class='d-block col-3 img-fluid'
-                                src='https://cdn.shopify.com/s/files/1/2304/9095/files/DBE-ACDBE-logo.png?10873'>";
-                                    echo " </div>";
-                                }
-                            }
-                            $result -> free_result();
-                        }
-                        ?>
+<div class="container text-center my-3" style="margin-top: 100px;">
+    <h2 class="font-weight-light">Bootstrap 4 - Multi Item Carousel</h2>
+    <div class="row mx-auto my-auto" style="margin-top: 100px;">
+        <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel" style="margin-top: 100px;">
+            <div class="carousel-inner w-100" role="listbox">
+                <div class="carousel-item active">
+                    <div class="col-md-4">
+                        <div class="card card-body">
+                            <img class="img-fluid" src="http://placehold.it/380?text=1">
+                        </div>
                     </div>
-                    <a class="carousel-control-prev" href="#recipeCarousel" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true" style="color: #FF6F83;"></span>
-                        <span class="sr-only" style="background-color: #FF6F83;">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#recipeCarousel" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only" style="background-color: #FF6F83;">Next</span>
-                    </a>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-md-4">
+                        <div class="card card-body">
+                            <img class="img-fluid" src="http://placehold.it/380?text=2">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-md-4">
+                        <div class="card card-body">
+                            <img class="img-fluid" src="http://placehold.it/380?text=3">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-md-4">
+                        <div class="card card-body">
+                            <img class="img-fluid" src="http://placehold.it/380?text=4">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-md-4">
+                        <div class="card card-body">
+                            <img class="img-fluid" src="http://placehold.it/380?text=5">
+                        </div>
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="col-md-4">
+                        <div class="card card-body">
+                            <img class="img-fluid" src="http://placehold.it/380?text=6">
+                        </div>
+                    </div>
                 </div>
             </div>
+            <a class="carousel-control-prev w-auto" href="#recipeCarousel" role="button" data-slide="prev">
+                <span class="carousel-control-prev-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next w-auto" href="#recipeCarousel" role="button" data-slide="next">
+                <span class="carousel-control-next-icon bg-dark border border-dark rounded-circle" aria-hidden="true"></span>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
-</section>
+    </div>
+</div>
+<script>
+    $('#recipeCarousel').carousel({
+        interval: 10000
+    })
+
+    $('.carousel .carousel-item').each(function(){
+        var minPerSlide = 3;
+        var next = $(this).next();
+        if (!next.length) {
+            next = $(this).siblings(':first');
+        }
+        next.children(':first-child').clone().appendTo($(this));
+
+        for (var i=0;i<minPerSlide;i++) {
+            next=next.next();
+            if (!next.length) {
+                next = $(this).siblings(':first');
+            }
+
+            next.children(':first-child').clone().appendTo($(this));
+        }
+    });
+
+</script>
