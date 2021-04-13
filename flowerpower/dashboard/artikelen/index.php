@@ -6,7 +6,7 @@ $categorie = '';
 $afbeelding = '';
 
 session_start();
-include "header.html";
+include "../header.php";
 include "../../Controllers/ArtikelController.php";
 require "../../default/dbh.php";
 

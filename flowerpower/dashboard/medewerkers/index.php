@@ -1,5 +1,5 @@
 <?php
-include "header.html";
+include "../header.php";
 include "../../Controllers/MedewerkerController.php";
 require "../../default/dbh.php";
 

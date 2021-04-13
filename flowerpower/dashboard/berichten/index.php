@@ -1,5 +1,5 @@
 <?php
-include "header.html";
+include "../header.php";
 
 ?>
 <h3 style="text-align: left; margin-bottom: 10px;">Berichten</h3>

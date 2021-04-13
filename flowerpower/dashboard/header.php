@@ -12,15 +12,20 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/dashboard/index.php') { ?>
+        <link rel="stylesheet" href="../default/css/menu.css">
+        <link rel="stylesheet" href="css/card.css">
+    <?php } else {?>
     <link rel="stylesheet" href="../../default/css/menu.css">
     <link rel="stylesheet" href="../css/card.css">
     <link rel="stylesheet" href="css/tabel.css">
+    <?php } ?>
 </head>
 <div class="card" style="border: 1px solid #FF6F83; width: 100%; height: 150%; margin-bottom: 100px;">
     <div class="container1" style="float: right;">
         <div class="topnav" style="float: right; width: 250px; background-color: white;">
-            <a href="../../default/index.php">Home</a>
-            <a class="active" href="../../dashboard/index.php" style="margin-right: 50px;">FlowerPower</a>
+            <a href="../default/index.php">Home</a>
+            <a class="active" href="../dashboard/index.php" style="margin-right: 50px;">FlowerPower</a>
         </div>
     </div>
     <body>
