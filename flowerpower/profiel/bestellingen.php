@@ -15,7 +15,7 @@ if (isset($_SESSION['gebruiker'])) {
         <div class="row">
             <div class="col-sm-4">
                 <?php
-                require "header.php";
+                include "header.php";
                 ?>
             </div>
             <div class="col-sm-8">

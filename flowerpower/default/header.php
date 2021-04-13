@@ -52,7 +52,7 @@
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/index.php') {echo "class='active'";} ?> href="../bloemen/index.php">Bloemen</a>
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/gelegenheid/index.php') {echo "class='active'";} ?> href="../gelegenheid/index.php">Gelegenheid</a>
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/contact/index.php') {echo "class='active'";} ?> href="../contact/index.php" style="margin-right: 50px;">Contact</a>
-        <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/login/index.php') {echo "class='active'";}
+        <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/login/index.php' || '/flowerpower/profiel/index.php' || '/flowerpower/profiel/gegevens.php' || '/flowerpower/profiel/bestellingen.php') {echo "class='active'";}
         if (!empty($_SESSION['gebruiker'])) { echo "href='../profiel/index.php'";} elseif (!empty($_SESSION['medewerker'])){ echo "href='../dashboard/index.php'";} else { echo "href='../login/index.php'";}?>>
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                  class="bi bi-person-fill" viewBox="0 0 16 16">
