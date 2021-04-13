@@ -18,7 +18,7 @@
         <link rel="stylesheet" href="css/menu.css">
         <link rel="stylesheet" href="css/cards.css">
     <?php }?>
-    <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/index.php') { ?>
+    <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/index.php' || '/flowerpower/bloemen/boem.php?id=?'. !empty($_SESSION["idartikel"])) { ?>
         <link rel="stylesheet" href="../default/css/menu.css">
         <link rel="stylesheet" href="../bloemen/css/card.css">
     <?php }?>
@@ -52,13 +52,46 @@
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/index.php') {echo "class='active'";} ?> href="../bloemen/index.php">Bloemen</a>
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/gelegenheid/index.php') {echo "class='active'";} ?> href="../gelegenheid/index.php">Gelegenheid</a>
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/contact/index.php') {echo "class='active'";} ?> href="../contact/index.php" style="margin-right: 50px;">Contact</a>
-        <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/login/index.php' || '/flowerpower/profiel/index.php' || '/flowerpower/profiel/gegevens.php' || '/flowerpower/profiel/bestellingen.php') {echo "class='active'";}
-        if (!empty($_SESSION['gebruiker'])) { echo "href='../profiel/index.php'";} elseif (!empty($_SESSION['medewerker'])){ echo "href='../dashboard/index.php'";} else { echo "href='../login/index.php'";}?>>
+        <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/login/index.php') {?>
+            <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/login/index.php') {echo "class='active'";}
+            if (!empty($_SESSION['gebruiker'])) { echo "href='../profiel/index.php'";} elseif (!empty($_SESSION['medewerker'])){ echo "href='../dashboard/index.php'";} else { echo "href='../login/index.php'";}?>>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                     class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>
+            </a>
+        <?php } elseif ($_SERVER['PHP_SELF'] == '/flowerpower/profiel/index.php') { ?>
+            <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/profiel/index.php') {echo "class='active'";}
+            if (!empty($_SESSION['gebruiker'])) { echo "href='../profiel/index.php'";} elseif (!empty($_SESSION['medewerker'])){ echo "href='../dashboard/index.php'";} else { echo "href='../login/index.php'";}?>>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                     class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>
+            </a>
+        <?php } elseif ($_SERVER['PHP_SELF'] == '/flowerpower/profiel/gegevens.php') {?>
+            <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/profiel/gegevens.php') {echo "class='active'";}
+            if (!empty($_SESSION['gebruiker'])) { echo "href='../profiel/index.php'";} elseif (!empty($_SESSION['medewerker'])){ echo "href='../dashboard/index.php'";} else { echo "href='../login/index.php'";}?>>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                     class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>
+            </a>
+        <?php } elseif ($_SERVER['PHP_SELF'] == '/flowerpower/profiel/bestellingen.php') {?>
+            <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/profiel/bestellingen.php') {echo "class='active'";}
+            if (!empty($_SESSION['gebruiker'])) { echo "href='../profiel/index.php'";} elseif (!empty($_SESSION['medewerker'])){ echo "href='../dashboard/index.php'";} else { echo "href='../login/index.php'";}?>>
+                <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                     class="bi bi-person-fill" viewBox="0 0 16 16">
+                    <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
+                </svg>
+            </a>
+        <?php } else { ?>
+        <a <?php if (!empty($_SESSION['gebruiker'])) { echo "href='../profiel/index.php'";} elseif (!empty($_SESSION['medewerker'])){ echo "href='../dashboard/index.php'";} else { echo "href='../login/index.php'";}?>>
             <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
                  class="bi bi-person-fill" viewBox="0 0 16 16">
                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
             </svg>
         </a>
+        <?php } ?>
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/winkelmand/index.php') {echo "class='active'";} ?> href="../winkelmand/index.php">
             <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                  class="bi bi-basket-fill" viewBox="0 0 16 16">
