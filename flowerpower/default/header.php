@@ -21,7 +21,7 @@
     <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/index.php') { ?>
         <link rel="stylesheet" href="../default/css/menu.css">
         <link rel="stylesheet" href="../bloemen/css/card.css">
-    <?php } elseif ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/boem.php?id=?'.$_SESSION["idartikel"]){ ?>
+    <?php } elseif ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/boem.php?id=?'.isset($_SESSION["idartikel"])){ ?>
         <link rel="stylesheet" href="../default/css/menu.css">
         <link rel="stylesheet" href="../bloemen/css/card.css">
     <?php }?>

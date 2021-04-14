@@ -51,4 +51,30 @@ class WinkelmandController
         return $result;
     }
 
+    public function gebruiker($adres, $huisnummer ,$postcode, $plaats) {
+        $host = 'localhost';
+        $user = 'root';
+        $pass = 'root';
+        $dbnaam = "flowerpower";
+
+        $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
+
+//        $sql = "insert into klant (idklant, naam, tussenvoegsel, achternaam, adres, huisnummer, postcode, plaats, telefoon, email, geboortedatum, wachtwoord) VALUES (idklant, '$naam', '$tussenvoegsel', '$achternaam', '$adres', '$huisnummer', '$postcode', '$plaats', '$telefoonnummer', '$gebruikersnaam', '$geboortedatum', '$wachtwoord')";
+//        $result = $dbh->query($sql);
+//        $idklant = $dbh->insert_id;
+        $datum = date('Y-m-d');
+        $idklant = $_SESSION['gebruiker']['idklant'];
+
+        $factuur = "insert into factuur (idfactuur, idklant, datum, afgehaald, idmedewerker, idwinkel) VALUES (idfactuur, '$idklant', '$datum', 'NEE', null, null)";
+        $resultFactuur = $dbh->query($factuur);
+
+        if (mysqli_query($dbh, $factuur)) {
+            header('location: ../profiel/bestellingen.php');
+        } else {
+            echo "Error: " . $factuur . "<br>" . mysqli_error($dbh);
+        }
+
+        return $factuur;
+    }
+
 }

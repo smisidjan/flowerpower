@@ -21,6 +21,17 @@ if (isset($_POST['nieuw'])) {
 
     $nieuw->afrekenenNieuw($naam, $tussenvoegsel, $achternaam, $adres, $huisnummer, $postcode, $plaats, $telefoonnummer, $geboortedatum, $gebruikersnaam, $wachtwoord);
 }
+
+if (isset($_POST['gebruiker'])) {
+    $gebruiker = new WinkelmandController();
+
+    $adres = $_POST['adres'];
+    $huisnummer = intval($_POST['huisnummer']) ;
+    $postcode = $_POST['postcode'];
+    $plaats = $_POST['plaats'];
+
+    $gebruiker->gebruiker($adres, $huisnummer, $postcode, $plaats);
+}
 ?>
 <div class="row" style="margin-top: 100px; margin-bottom: 200px; margin-left: 20px; margin-right: 20px;">
     <div class="column">

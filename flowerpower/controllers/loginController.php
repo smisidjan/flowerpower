@@ -49,7 +49,7 @@ class LoginController
 
         $sql = "insert into klant (idklant, naam, tussenvoegsel, achternaam, adres, huisnummer, postcode, plaats, telefoon, email, geboortedatum, wachtwoord) VALUES (idklant, '$naam', '$tussenvoegsel', '$achternaam', '', 0, '', '', $telefoonnummer, '$gebruikersnaam', '', '$wachtwoord')";
         $result = $dbh->query($sql);
-        $idklant = $result;
+        $idklant = $dbh->insert_id;
 
 
         if (mysqli_query($dbh, $sql)) {

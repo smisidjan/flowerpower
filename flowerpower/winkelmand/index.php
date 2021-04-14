@@ -84,8 +84,7 @@ include '../default/header.php';
             <td style="text-align:left; font-size: 15px;"><?php echo $item["quantity"]; ?></td>
             <td style="text-align:left; font-size: 15px;"><?php echo "&euro; " . $item["prijs"]; ?></td>
             <td style="text-align:left; font-size: 15px;"><?php echo "&euro; " . number_format($item_price, 2); ?></td>
-            <td style="text-align:center; font-size: 15px;"><a class="btnRemoveAction"
-                                                               href="index.php?action=remove&code=<?php echo $item["idartikel"] ?>"></a>
+            <td style="text-align:center; font-size: 15px;"><a class="btnRemoveAction" href="index.php?action=remove&code=<?php echo $item["idartikel"] ?>"></a>
             </td>
         </tr>
         <?php
@@ -93,6 +92,7 @@ include '../default/header.php';
         $total_price += ($item["prijs"] * $item["quantity"]);
         }
         $_SESSION["totaal"] = $total_quantity;
+        $_SESSION["totaalPrijs"] = $total_price;
         ?>
         <tr>
             <td style="font-size: 20px" colspan="2" align="right">Totaal:</td>

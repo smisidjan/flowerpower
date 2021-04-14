@@ -27,9 +27,9 @@ if (isset($_SESSION['gebruiker'])) {
                             <thead style="background-color: #C3DF0E; border-radius: 20rem;">
                             <tr>
                                 <th scope="col" style='font-size: 17px;'>#</th>
-                                <th scope="col" style='font-size: 17px; text-align: left;'>Naam</th>
-                                <th scope="col" style='font-size: 17px; text-align: left;'>datum</th>
-                                <th scope="col" style='font-size: 17px; text-align: left;'>Prijs</th>
+                                <th scope="col" style='font-size: 17px; text-align: left;'>Datum</th>
+                                <th scope="col" style='font-size: 17px; text-align: left;'>Adres</th>
+                                <th scope="col" style='font-size: 17px; text-align: left;'></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -41,13 +41,14 @@ if (isset($_SESSION['gebruiker'])) {
                                 echo "<tr><th style='font-size: 17px;'>" . $row["idfactuur"] . "</th>";
                                 echo "<td style='font-size: 17px; text-align: left;'>" . $row["datum"] . "</td>";
 
-                                $sql = 'SELECT * FROM klant WHERE idklant = ' . $row["idklant"] . '.';
-                                $result = $dbh->query($sql);
+                                $sql1 = 'SELECT * FROM klant WHERE idklant = ' . $row["idklant"] . '.';
+                                $result1 = $dbh->query($sql1);
 
-                                while ($row = $result->fetch_assoc()) {
-                                    echo "<td style='font-size: 17px;'>" . $row["adres"] . $row["huisnummer"] . $row["postcode"] . $row["plaats"] ."</td>";
-                                    echo "<td style='font-size: 17px; text-align: left;'>" . $row["naam"] . "</td></tr>";
+                                while ($row1 = $result1->fetch_assoc()) {
+                                    echo "<td style='font-size: 17px; text-align: left;'>" . $row1["adres"] ." ". $row1["huisnummer"] ." ". $row1["postcode"] ." ". $row1["plaats"] ."</td>";
                                 }
+                                echo "<td style='font-size: 17px; text-align: left;'><a href='factuur.php?id=" . $row["idfactuur"] . "' style='cursor: pointer' class='button button4'>Bekijken</a></td></tr>";
+
                             }
 
                             ?>
