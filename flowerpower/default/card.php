@@ -1,5 +1,4 @@
 <div class="container text-center my-3" style="margin-top: 100px;">
-    <h2 class="font-weight-light">Bootstrap 4 - Multi Item Carousel</h2>
     <div class="row mx-auto my-auto" style="margin-top: 100px;">
         <div id="recipeCarousel" class="carousel slide w-100" data-ride="carousel" style="margin-top: 100px;">
             <div class="carousel-inner w-100" role="listbox">
