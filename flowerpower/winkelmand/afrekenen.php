@@ -44,7 +44,7 @@ if (isset($_POST['gebruiker'])) {
                         <hr class="solid" style="margin-top: 60px;">
                         <div class="card-text" style="margin-top: 50px;">
                             <br>
-                            <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
+                            <form action="afrekenen.php" method="post">
                                 <?php if (isset($_SESSION['gebruiker'])) { ?>
                                     <h3 style="text-align: left; margin-top: 20px">Hallo <?php echo $_SESSION['gebruiker']['naam'] . " " . $_SESSION['gebruiker']['achternaam']; ?></h3>
                                     <p style="text-align: left;">Naar welk adres moet het bezorgd worden?</p>

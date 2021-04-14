@@ -51,7 +51,7 @@ class WinkelmandController
         return $result;
     }
 
-    public function gebruiker($adres, $huisnummer ,$postcode, $plaats) {
+    public function gebruiker($adres, $huisnummer, $postcode, $plaats) {
         $host = 'localhost';
         $user = 'root';
         $pass = 'root';
@@ -59,16 +59,22 @@ class WinkelmandController
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
-//        $sql = "insert into klant (idklant, naam, tussenvoegsel, achternaam, adres, huisnummer, postcode, plaats, telefoon, email, geboortedatum, wachtwoord) VALUES (idklant, '$naam', '$tussenvoegsel', '$achternaam', '$adres', '$huisnummer', '$postcode', '$plaats', '$telefoonnummer', '$gebruikersnaam', '$geboortedatum', '$wachtwoord')";
-//        $result = $dbh->query($sql);
-//        $idklant = $dbh->insert_id;
         $datum = date('Y-m-d');
         $idklant = $_SESSION['gebruiker']['idklant'];
+        var_dump($_SESSION['gebruiker']['idklant']);
 
         $factuur = "insert into factuur (idfactuur, idklant, datum, afgehaald, idmedewerker, idwinkel) VALUES (idfactuur, '$idklant', '$datum', 'NEE', null, null)";
         $resultFactuur = $dbh->query($factuur);
 
-        if (mysqli_query($dbh, $factuur)) {
+        foreach ($_SESSION['cart_item'] as $item){
+            $idartikel = $item['idartikel'];
+            $idfactuur = $dbh->insert_id;
+            $aantal = $_SESSION['totaal'];
+
+            $artikel = "insert into artikel_has_factuur(artikel_idartikel, factuur_idfactuur, aantal) VALUES ('$idartikel', '$idfactuur', '$aantal')";
+        }
+
+        if (mysqli_query($dbh, $factuur) && mysqli_query($dbh, $artikel)) {
             header('location: ../profiel/bestellingen.php');
         } else {
             echo "Error: " . $factuur . "<br>" . mysqli_error($dbh);
