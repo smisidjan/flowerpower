@@ -16,7 +16,7 @@ if (isset($_POST['opslaan'])) {
     $naam = $_POST['naam'];
     $omschrijving = $_POST['omschrijving'];
     $prijs = $_POST['prijs'];
-    $categorie = 'pluk';
+    $categorie = $_POST['categorie'];
     $afbeelding = $_POST['afbeelding'];
 
     $voegToe->voegArtikelToe($naam, $omschrijving, $prijs, $afbeelding, $categorie);

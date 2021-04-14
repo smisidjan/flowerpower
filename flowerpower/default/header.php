@@ -18,7 +18,10 @@
         <link rel="stylesheet" href="css/menu.css">
         <link rel="stylesheet" href="css/cards.css">
     <?php }?>
-    <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/index.php' || '/flowerpower/bloemen/boem.php?id=?'. !empty($_SESSION["idartikel"])) { ?>
+    <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/index.php') { ?>
+        <link rel="stylesheet" href="../default/css/menu.css">
+        <link rel="stylesheet" href="../bloemen/css/card.css">
+    <?php } elseif ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/boem.php?id=?'.$_SESSION["idartikel"]){ ?>
         <link rel="stylesheet" href="../default/css/menu.css">
         <link rel="stylesheet" href="../bloemen/css/card.css">
     <?php }?>
@@ -49,7 +52,7 @@
 <div class="container1" style="float: right;">
     <div class="topnav" style="float: right; width: 600px; background-color: white;">
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/default/index.php') {echo "class='active'";} ?> href="../default/index.php">Home</a>
-        <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/index.php') {echo "class='active'";} ?> href="../bloemen/index.php">Bloemen</a>
+        <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/index.php') {echo "class='active'";} elseif ($_SERVER['PHP_SELF'] == '/flowerpower/bloemen/bloem.php') {echo "class='active'";}?> href="../bloemen/index.php">Bloemen</a>
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/gelegenheid/index.php') {echo "class='active'";} ?> href="../gelegenheid/index.php">Gelegenheid</a>
         <a <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/contact/index.php') {echo "class='active'";} ?> href="../contact/index.php" style="margin-right: 50px;">Contact</a>
         <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/login/index.php') {?>

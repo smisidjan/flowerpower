@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'header.html';
+include '../default/header.php';
 require_once("../winkelmand/dbcontroller.php");
 $db_handle = new DBController();
 
@@ -10,15 +10,16 @@ if (isset($_GET['id'])) {
     $result = $db_handle->runQuery("SELECT * FROM artikel WHERE idartikel=$id");
 
     ?>
-    <div class="row">
+    <div style="margin-right: 40px; margin-left: 40px;">
         <div class="column2">
-            <div class="card" style="height: 600px; border-radius: 50px; margin-bottom: 50px;">
+            <div class="card" style="border-radius: 50px; margin-bottom: 50px; margin-top: 200px; margin-right-200px; text-align: center;">
                 <nav aria-label="breadcrumb">
                     <ol class="breadcrumb" style="background-color: white;">
                         <li class="breadcrumb-item"><a href="index.php" style="color: #10AB43; font-size: 12px;">Home</a>
                         </li>
                         <li class="breadcrumb-item active" aria-current="page"
-                            style="font-size: 12px;"><?php echo $result[0]['naam'] ?></li>
+                            style="font-size: 12px;"><?php echo $result[0]['naam'];
+                            ?></li>
                     </ol>
                 </nav>
                 <div class="row">

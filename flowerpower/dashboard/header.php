@@ -34,7 +34,7 @@
                     FlowerPower
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="../default/index.php">Home</a>
+                    <a class="dropdown-item" href="../../default/index.php">Home</a>
                     <a class="dropdown-item" href="index.php?loguit">Loguit</a>
                 </div>
             </div>
