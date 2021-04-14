@@ -34,7 +34,11 @@
                     FlowerPower
                 </a>
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                    <a class="dropdown-item" href="../../default/index.php">Home</a>
+                    <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/dashboard/index.php') { ?>
+                    <a class="dropdown-item" href="../default/index.php">Home</a>
+                    <?php } else {?>
+                        <a class="dropdown-item" href="../../default/index.php">Home</a>
+                    <?php } ?>
                     <a class="dropdown-item" href="index.php?loguit">Loguit</a>
                 </div>
             </div>
