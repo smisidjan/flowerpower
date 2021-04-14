@@ -123,6 +123,7 @@ hr.solid {
 }
 
 .button {
+    width: 200px;
     margin-top: 20px;
     margin-left: -20px;
     background-color: #FF6F83;
