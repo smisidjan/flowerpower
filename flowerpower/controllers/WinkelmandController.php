@@ -62,15 +62,16 @@ class WinkelmandController
         $datum = date('Y-m-d');
         $idklant = $_SESSION['gebruiker']['idklant'];
 
-        $factuur = "insert into factuur (idfactuur, idklant, datum, afgehaald, idmedewerker, idwinkel) VALUES (idfactuur, '$idklant', '$datum', 'NEE', null, null)";
+        $factuur = "insert into factuur (idfactuur, idklant, datum, afgehaald, idmedewerker) VALUES (idfactuur, '$idklant', '$datum', 'NEE', null)";
         $resultFactuur = $dbh->query($factuur);
 
         foreach ($_SESSION['cart_item'] as $item){
             $idartikel = $item['idartikel'];
             $idfactuur = $dbh->insert_id;
             $aantal = $_SESSION['totaal'];
+            $totaalPrijs = $_SESSION['totaalPrijs'];
 
-            $artikel = "insert into artikel_has_factuur(artikel_idartikel, factuur_idfactuur, aantal) VALUES ('$idartikel', '$idfactuur', '$aantal')";
+            $artikel = "insert into artikel_has_factuur(artikel_idartikel, factuur_idfactuur, aantal, totaalPrijs) VALUES ('$idartikel', '$idfactuur', '$aantal', '$totaalPrijs')";
         }
 
         if (mysqli_query($dbh, $factuur) && mysqli_query($dbh, $artikel)) {
