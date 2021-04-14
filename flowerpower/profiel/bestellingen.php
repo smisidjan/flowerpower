@@ -28,9 +28,8 @@ if (isset($_SESSION['gebruiker'])) {
                             <tr>
                                 <th scope="col" style='font-size: 17px;'>#</th>
                                 <th scope="col" style='font-size: 17px; text-align: left;'>Naam</th>
-                                <th scope="col" style='font-size: 17px; text-align: left;'>Aantal</th>
+                                <th scope="col" style='font-size: 17px; text-align: left;'>datum</th>
                                 <th scope="col" style='font-size: 17px; text-align: left;'>Prijs</th>
-                                <th scope="col" style='font-size: 17px; padding-left: 90px;'>Datum</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -40,11 +39,17 @@ if (isset($_SESSION['gebruiker'])) {
 
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr><th style='font-size: 17px;'>" . $row["idfactuur"] . "</th>";
-                                echo "<td style='font-size: 17px; text-align: left;'>" . $row["naam"] . "</td>";
-                                echo "<td style='font-size: 17px; text-align: left;'>" . $row["aantal"] . "</td>";
-                                echo "<td style='font-size: 17px; text-align: left; margin-left: -50px;'>" . $row["prijs"] . "</td>";
-                                echo "<td style='font-size: 17px; text-align: left; margin-left: -50px;'>" . $row["datum"] . "</td>";
+                                echo "<td style='font-size: 17px; text-align: left;'>" . $row["datum"] . "</td>";
+
+                                $sql = 'SELECT * FROM klant WHERE idklant = ' . $row["idklant"] . '.';
+                                $result = $dbh->query($sql);
+
+                                while ($row = $result->fetch_assoc()) {
+                                    echo "<td style='font-size: 17px;'>" . $row["adres"] . $row["huisnummer"] . $row["postcode"] . $row["plaats"] ."</td>";
+                                    echo "<td style='font-size: 17px; text-align: left;'>" . $row["naam"] . "</td></tr>";
+                                }
                             }
+
                             ?>
                             </tbody>
                         </table>

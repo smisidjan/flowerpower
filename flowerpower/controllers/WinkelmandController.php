@@ -25,4 +25,30 @@ class WinkelmandController
         return $result;
     }
 
+    public function afrekenenNieuw($naam, $tussenvoegsel, $achternaam, $adres, $huisnummer ,$postcode, $plaats ,$telefoonnummer, $geboortedatum, $gebruikersnaam, $wachtwoord) {
+        $host = 'localhost';
+        $user = 'root';
+        $pass = 'root';
+        $dbnaam = "flowerpower";
+
+        $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
+
+        $sql = "insert into klant (idklant, naam, tussenvoegsel, achternaam, adres, huisnummer, postcode, plaats, telefoon, email, geboortedatum, wachtwoord) VALUES (idklant, '$naam', '$tussenvoegsel', '$achternaam', '$adres', '$huisnummer', '$postcode', '$plaats', '$telefoonnummer', '$gebruikersnaam', '$geboortedatum', '$wachtwoord')";
+        $result = $dbh->query($sql);
+        $idklant = $dbh->insert_id;
+        $datum = date('Y-m-d');
+
+        $factuur = "insert into factuur (idfactuur, idklant, datum, afgehaald, idmedewerker, idwinkel) VALUES (idfactuur, '$idklant', '$datum', 'NEE', null, null)";
+        $resultFactuur = $dbh->query($factuur);
+
+        if (mysqli_query($dbh, $sql) && mysqli_query($dbh, $factuur)) {
+            $_SESSION['gebruiker'] = array("idklant" => "$idklant", "naam" => $naam, "tussenvoegsel" => $tussenvoegsel, "achternaam" => $achternaam, "gebruikersnaam" => $gebruikersnaam, "wachtwoord" => $wachtwoord);
+            header('location: ../profiel/bestellingen.php');
+        } else {
+            echo "Error: " . $sql . "<br>" . mysqli_error($dbh);
+        }
+
+        return $result;
+    }
+
 }
