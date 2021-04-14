@@ -6,7 +6,7 @@ include "header.php";
 if (isset($_SESSION['medewerker'])) {
 
 ?>
-<div class="row" style="margin-top: 100px;">
+<div class="row" style="margin-top: 100px; margin-bottom: 400px;">
     <div class="column">
         <div class="card">
             <h4 style="text-align: left;">Bestellinglijst</h4>

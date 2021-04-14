@@ -50,7 +50,7 @@ if (isset($_GET['delete'])) {
     </ol>
 </nav>
 <table class="table rounded"
-       style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 20rem;">
+       style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 20rem; margin-bottom: 400px;">
     <thead style="background-color: #C3DF0E; border-radius: 20rem;">
     <tr>
         <th scope="col" style='font-size: 17px;'>#</th>
