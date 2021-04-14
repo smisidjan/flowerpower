@@ -19,9 +19,14 @@ class LoginController
 
         if ($inloggenMedewerker->fetch()) {
             $_SESSION['medewerker'] = $gebruikersnaam;
+//            while ($rowMedewerker = $inloggenMedewerker->fetch()) {
+//                $_SESSION['medewerker'] = array("idmedewerker" => $rowMedewerker['idmedewerker'], "naam" => $rowMedewerker['naam'], "tussenvoegsel" => $rowMedewerker['tussenvoegsel'], "achternaam" => $rowMedewerker['achternaam'], "rol" => $rowMedewerker['rol'], "gebruikersnaam" => $rowMedewerker['email'], "telefoonnummer" => $rowMedewerker['telefoonnummer'], "geboortedatum" => $rowMedewerker['geboortedatum']);
+//            }
             header('location: ../dashboard/index.php');
         } elseif ($inloggenKlant->fetch()) {
-            $_SESSION['gebruiker'] = $gebruikersnaam;
+            while ($row = $inloggenKlant->fetch()) {
+                $_SESSION['gebruiker'] = array("idklant" => $row['idklant'], "naam" => $row['naam'], "tussenvoegsel" => $row['tussenvoegsel'], "achternaam" => $row['achternaam'], "adres" => $row['adres'], "huisnummer" => $row['huisnummer'], "postcode" => $row['postcode'], "plaats" => $row['plaats'], "geboortedatum" => $row['geboortedatum'], "gebruikersnaam" => $gebruikersnaam, "wachtwoord" => $wachtwoord);
+            }
             header('location: ../profiel/index.php');
         } else {
             echo "Sorry geen toegang!";

@@ -15,7 +15,6 @@ if (isset($_GET['loguit'])) {
             <div class="col-sm-4">
                 <?php
                 require "header.php";
-                var_dump($_SESSION['gebruiker']);
                 ?>
             </div>
             <div class="col-sm-8">

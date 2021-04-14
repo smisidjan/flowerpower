@@ -21,11 +21,25 @@
     <link rel="stylesheet" href="css/tabel.css">
     <?php } ?>
 </head>
-<div class="card" style="border: 1px solid #FF6F83; width: 100%; height: 150%; margin-bottom: 100px;">
+<?php if (isset($_GET['loguit'])) {
+    $_SESSION = array();
+    session_destroy();
+    header('location: ../login/index.php');
+}?>
+<div class="card" style="border: 1px solid #FF6F83; width: 100%; height: 150%;">
     <div class="container1" style="float: right;">
         <div class="topnav" style="float: right; width: 250px; background-color: white;">
             <a href="../default/index.php">Home</a>
-            <a class="active" href="../dashboard/index.php" style="margin-right: 50px;">FlowerPower</a>
+            <div class="dropdown show" style="height: 150px;">
+                <a class="active" href="../dashboard/index.php" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    FlowerPower
+                </a>
+
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="index.php?loguit">Loguit</a>
+                </div>
+            </div>
+
         </div>
     </div>
     <body>
