@@ -36,51 +36,15 @@ class MedewerkerController
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        if (!empty($naam)) {
-            $naam = $_POST['naam'];
-        } else {
-            $naam = " ";
-        }
-        if (!empty($tussenvoegsel)) {
-            $tussenvoegsel = $_POST['tussenvoegsel'];
-        } else {
-            $tussenvoegsel = " ";
-        }
-        if (!empty($achternaam)) {
-            $achternaam = $_POST['achternaam'];
-        } else {
-            $achternaam = " ";
-        }
-        if (!empty($rol)) {
-            $rol = $_POST['rol'];
-        } else {
-            $rol = " ";
-        }
-        if (!empty($email)) {
-            $email = $_POST['email'];
-        } else {
-            $email = " ";
-        }
-        if (!empty($telefoonnummer)) {
-            $telefoonnummer = $_POST['telefoonnummer'];
-        } else {
-            $telefoonnummer = " ";
-        }
-        if (!empty($geboortedatum)) {
-            $geboortedatum = $_POST['geboortedatum'];
-        } else {
-            $geboortedatum = " ";
-        }
-
         $sql = "UPDATE medewerker
          SET  
-             naam = $naam,
-             tussenvoegsel = $tussenvoegsel, 
-             achternaam = $achternaam, 
-             rol= $rol, 
-             email = $email,
-             telefoonnummer = $telefoonnummer, 
-             geboortedatum = $geboortedatum
+             naam = '$naam',
+             tussenvoegsel = '$tussenvoegsel', 
+             achternaam = '$achternaam', 
+             rol = '$rol', 
+             email = '$email',
+             telefoonnummer = '$telefoonnummer', 
+             geboortedatum = '$geboortedatum'
              WHERE idmedewerker = $idmedewerker";
 
 
