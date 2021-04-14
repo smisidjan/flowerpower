@@ -24,15 +24,29 @@
 
 <body>
 <?php
-session_start();
 include '../default/dbh.php';
 
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM factuur where idfactuur = $id";
+$sql = "SELECT * FROM factuur where idfactuur = '$id'";
 $result = $dbh->query($sql);
-
 $row = $result->fetch_assoc();
+
+$idfactuur = $row['idfactuur'];
+$idklant = $row['idklant'];
+
+$sqlKlant = "SELECT * FROM klant where idklant = '$idklant'";
+$resultKlant = $dbh->query($sqlKlant);
+$rowKlant = $resultKlant->fetch_assoc();
+
+$sqlArtikelnr = "SELECT * FROM artikel_has_factuur where factuur_idfactuur = '$idfactuur'";
+$resultArtikelnr = $dbh->query($sqlArtikelnr);
+$rowArtikelnr = $resultArtikelnr->fetch_assoc();
+
+$idartikel = $rowArtikelnr['artikel_idartikel'];
+$sqlArtikel = "SELECT * FROM artikel where idartikel = '$idartikel'";
+$resultArtikel = $dbh->query($sqlArtikel);
+while ($rowArtikel = $resultArtikel->fetch_assoc()) {
 ?>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb" style="background-color: white; margin-top: 50px;">
@@ -70,10 +84,10 @@ $row = $result->fetch_assoc();
                         </td>
 
                         <td>
-                            <?php echo $_SESSION['gebruiker']['naam'] . " " . $_SESSION['gebruiker']['tussenvoegsel'] . " " . $_SESSION['gebruiker']['achternaam']; ?><br />
-                            <?php echo $_SESSION['gebruiker']['adres'] . " " . $_SESSION['gebruiker']['huisnummer']; ?><br />
-                            <?php echo $_SESSION['gebruiker']['postcode'] . " " . $_SESSION['gebruiker']['plaats'] ?><br />
-                            <?php echo $_SESSION['gebruiker']['gebruikersnaam']; ?>
+                            <?php echo $rowKlant['naam'] . " " . $rowKlant['tussenvoegsel'] . " " . $rowKlant['achternaam']; ?><br />
+                            <?php echo $rowKlant['adres'] . " " . $rowKlant['huisnummer']; ?><br />
+                            <?php echo $rowKlant['postcode'] . " " . $rowKlant['plaats'] ?><br />
+                            <?php echo $rowKlant['email']; ?>
                         </td>
                     </tr>
                 </table>
@@ -86,26 +100,19 @@ $row = $result->fetch_assoc();
             <td>Price</td>
         </tr>
 
-        <?php
-        foreach ($_SESSION["cart_item"] as $item){
-        $item_price = $item["quantity"] * $item["prijs"];
-        ?>
         <tr class="item">
-            <td><?php echo $item['naam']; ?></td>
+            <td><?php echo $rowArtikel['naam']; ?></td>
 
-            <td><?php echo "&euro; " . $item['prijs']; ?></td>
+            <td><?php echo "&euro; " . $rowArtikel['prijs']; ?></td>
         </tr>
-        <?php
-        }
-        ?>
 
         <tr class="total">
             <td></td>
 
-            <td>Total: <?php echo "&euro; " . $_SESSION['totaalPrijs']; ?></td>
+            <td>Total: <?php echo "&euro; " . $rowArtikelnr['totaalPrijs'];?></td>
         </tr>
     </table>
 </div>
-<?php  ?>
+<?php } ?>
 </body>
 </html>

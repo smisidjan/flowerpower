@@ -112,11 +112,9 @@ CREATE TABLE IF NOT EXISTS `flowerpower`.`factuur`
     `datum`        DATE               NULL,
     `afgehaald`    ENUM ('JA', 'NEE') NOT NULL,
     `idmedewerker` INT                NULL,
-    `idwinkel`     INT                NULL,
     PRIMARY KEY (`idfactuur`),
     INDEX `fk_factuur_klant_idx` (`idklant` ASC),
     INDEX `fk_factuur_medewerker1_idx` (`idmedewerker` ASC),
-    INDEX `fk_factuur_winkel1_idx` (`idwinkel` ASC),
     CONSTRAINT `fk_factuur_klant`
         FOREIGN KEY (`idklant`)
             REFERENCES `flowerpower`.`klant` (`idklant`)
@@ -125,11 +123,6 @@ CREATE TABLE IF NOT EXISTS `flowerpower`.`factuur`
     CONSTRAINT `fk_factuur_medewerker1`
         FOREIGN KEY (`idmedewerker`)
             REFERENCES `flowerpower`.`medewerker` (`idmedewerker`)
-            ON DELETE NO ACTION
-            ON UPDATE NO ACTION,
-    CONSTRAINT `fk_factuur_winkel1`
-        FOREIGN KEY (`idwinkel`)
-            REFERENCES `flowerpower`.`winkel` (`idwinkel`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION
 )
@@ -143,9 +136,10 @@ DROP TABLE IF EXISTS `flowerpower`.`artikel_has_factuur`;
 
 CREATE TABLE IF NOT EXISTS `flowerpower`.`artikel_has_factuur`
 (
-    `artikel_idartikel` INT NOT NULL,
-    `factuur_idfactuur` INT NOT NULL,
-    `aantal`            INT NULL,
+    `artikel_idartikel` INT         NOT NULL,
+    `factuur_idfactuur` INT         NOT NULL,
+    `aantal`            INT         NULL,
+    `totaalPrijs`       VARCHAR(45) NOT NULL,
     PRIMARY KEY (`artikel_idartikel`, `factuur_idfactuur`),
     INDEX `fk_artikel_has_factuur_factuur1_idx` (`factuur_idfactuur` ASC),
     INDEX `fk_artikel_has_factuur_artikel1_idx` (`artikel_idartikel` ASC),
