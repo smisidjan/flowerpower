@@ -21,13 +21,27 @@ if (isset($_POST['wijzig'])) {
     $wijzig = new MedewerkerController();
 
     $idmedewerker = $_POST['idmedewerker'];
-    $naam = $_POST['naam'];
-    $tussenvoegsel = $_POST['tussenvoegsel'];
-    $achternaam = $_POST['achternaam'];
-    $rol = $_POST['rol'];
-    $email = $_POST['email'];
-    $telefoonnummer = $_POST['telefoonnummer'];
-    $geboortedatum = $_POST['geboortedatum'];
+    if (isset($_POST['naam'])) {
+        $naam = $_POST['naam'];
+    }
+    if (isset($_POST['tussenvoegsel'])) {
+        $tussenvoegsel = $_POST['tussenvoegsel'];
+    } else { $tussenvoegsel = null;}
+    if (isset($_POST['achternaam'])) {
+        $achternaam = $_POST['achternaam'];
+    }
+    if (isset($_POST['rol'])) {
+        $rol = $_POST['rol'];
+    }
+    if (isset($_POST['email'])) {
+        $email = $_POST['email'];
+    }
+    if (isset($_POST['telefoonnummer'])) {
+        $telefoonnummer = $_POST['telefoonnummer'];
+    } else { $telefoonnummer = null;}
+    if (isset($_POST['geboortedatum'])) {
+        $geboortedatum = $_POST['geboortedatum'];
+    } else { $geboortedatum = null;}
 
     $wijzig->wijzigMedewerker($idmedewerker, $naam, $tussenvoegsel, $achternaam, $rol, $email, $telefoonnummer, $geboortedatum);
 }
@@ -90,7 +104,8 @@ while ($row = $result->fetch_assoc()) { ?>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <h4 class="modal-title" style="margin-bottom: 30px;">Weet u zeker dat u <?php echo $row["naam"] ?> wilt
+                    <h4 class="modal-title" style="margin-bottom: 30px;">Weet u zeker dat u <?php echo $row["naam"] ?>
+                        wilt
                         verwijderen?</h4>
                     <a href="index.php?delete=<?php echo $row["idmedewerker"] ?>">
                         <input class="button button4"
@@ -120,48 +135,48 @@ while ($row = $result->fetch_assoc()) { ?>
                 </div>
                 <div class="modal-body">
                     <form method="post" action="index.php">
-                    <input type="hidden" value="<?php echo $row["idmedewerker"] ?>" name="idmedewerker">
-                    <div class="row" style="margin-bottom: 20px;">
-                        <div class="col-8">
-                            <input type="text" class="form-control form-rounded" name="naam"
-                                   value="<?php echo $row["naam"] ?>" required>
+                        <input type="hidden" value="<?php echo $row["idmedewerker"] ?>" name="idmedewerker">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-8">
+                                <input type="text" class="form-control form-rounded" name="naam"
+                                       value="<?php echo $row["naam"] ?>" required>
+                            </div>
+                            <div class="col-4">
+                                <input type="text" class="form-control form-rounded" name="tussenvoegsel"
+                                       value="<?php echo $row["tussenvoegsel"] ?>">
+                            </div>
                         </div>
-                        <div class="col-4">
-                            <input type="text" class="form-control form-rounded" name="tussenvoegsel"
-                                   value="<?php echo $row["tussenvoegsel"] ?>">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-12">
+                                <input type="text" class="form-control form-rounded" name="achternaam"
+                                       value="<?php echo $row["achternaam"] ?>" required>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 20px;">
-                        <div class="col-12">
-                            <input type="text" class="form-control form-rounded" name="achternaam"
-                                   value="<?php echo $row["achternaam"] ?>" required>
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-12">
+                                <input type="text" class="form-control form-rounded" name="email"
+                                       value="<?php echo $row["email"] ?>">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 20px;">
-                        <div class="col-12">
-                            <input type="text" class="form-control form-rounded" name="email"
-                                   value="<?php echo $row["email"] ?>">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-12">
+                                <input type="text" class="form-control form-rounded" name="telefoonnummer"
+                                       value="<?php echo $row["telefoonnummer"] ?>">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 20px;">
-                        <div class="col-12">
-                            <input type="text" class="form-control form-rounded" name="telefoonnummer"
-                                   value="<?php echo $row["telefoonnummer"] ?>">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-6">
+                                <input type="text" class="form-control form-rounded" name="rol"
+                                       value="<?php echo $row["rol"] ?>" required>
+                            </div>
+                            <div class="col-6">
+                                <input type="date" class="form-control form-rounded" name="geboortedatum"
+                                       value="<?php echo $row["geboortedatum"] ?>">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 20px;">
-                        <div class="col-6">
-                            <input type="text" class="form-control form-rounded" name="rol"
-                                   value="<?php echo $row["rol"] ?>" required>
-                        </div>
-                        <div class="col-6">
-                            <input type="date" class="form-control form-rounded" name="geboortedatum"
-                                   value="<?php echo $row["geboortedatum"] ?>">
-                        </div>
-                    </div>
-                    <input class="button button4"
-                           style="width: 100px; background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);"
-                           type="submit" name="wijzig" value="opslaan">
+                        <input class="button button4"
+                               style="width: 100px; background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);"
+                               type="submit" name="wijzig" value="opslaan">
                     </form>
                 </div>
             </div>

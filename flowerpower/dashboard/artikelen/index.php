@@ -1,10 +1,4 @@
 <?php
-$naam = '';
-$omschrijving = '';
-$prijs = '';
-$categorie = '';
-$afbeelding = '';
-
 session_start();
 include "../header.php";
 include "../../Controllers/ArtikelController.php";
@@ -23,18 +17,26 @@ if (isset($_POST['opslaan'])) {
 }
 
 if (isset($_POST['wijzig'])) {
-    $wijzig = new MedewerkerController();
+    $wijzig = new ArtikelController();
 
-    $idmedewerker = $_POST['idmedewerker'];
-    $naam = $_POST['naam'];
-    $tussenvoegsel = $_POST['tussenvoegsel'];
-    $achternaam = $_POST['achternaam'];
-    $rol = $_POST['rol'];
-    $email = $_POST['email'];
-    $telefoonnummer = $_POST['telefoonnummer'];
-    $geboortedatum = $_POST['geboortedatum'];
+    $idartikel = $_POST['idartikel'];
+    if (isset($_POST['naam'])) {
+        $naam = $_POST['naam'];
+    }
+    if (isset($_POST['omschrijving'])) {
+        $omschrijving = $_POST['omschrijving'];
+    } else { $omschrijving = null;}
+    if (isset($_POST['prijs'])) {
+        $prijs = $_POST['prijs'];
+    }
+    if (isset($_POST['afbeelding'])) {
+        $afbeelding = $_POST['afbeelding'];
+    } else { $afbeelding = null;}
+    if (isset($_POST['categorie'])) {
+        $categorie = $_POST['categorie'];
+    }
 
-    $wijzig->wijzigMedewerker($idmedewerker, $naam, $tussenvoegsel, $achternaam, $rol, $email, $telefoonnummer, $geboortedatum);
+    $wijzig->wijzigArtikel($idartikel, $naam, $omschrijving, $prijs, $afbeelding, $categorie);
 }
 
 if (isset($_GET['delete'])) {
@@ -112,7 +114,7 @@ while ($row = $result->fetch_assoc()) { ?>
         </div>
     </div>
 <?php } ?>
-<?php $sql = "SELECT * FROM medewerker";
+<?php $sql = "SELECT * FROM artikel";
 $result = $dbh->query($sql);
 while ($row = $result->fetch_assoc()) { ?>
 <!-- Modal bewerken -->
