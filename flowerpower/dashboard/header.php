@@ -28,18 +28,16 @@
 }?>
 <div class="card" style="border: 1px solid #FF6F83; width: 100%; height: 150%;">
     <div class="container1" style="float: right;">
-        <div class="topnav" style="float: right; width: 250px; background-color: white;">
-            <a href="../default/index.php">Home</a>
-            <div class="dropdown show" style="height: 150px;">
+        <div class="topnav" style="float: right; width: 200px; background-color: white;">
+            <div class="dropdown " style="height: 170px;">
                 <a class="active" href="../dashboard/index.php" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     FlowerPower
                 </a>
-
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                    <a class="dropdown-item" href="../default/index.php">Home</a>
                     <a class="dropdown-item" href="index.php?loguit">Loguit</a>
                 </div>
             </div>
-
         </div>
     </div>
     <body>

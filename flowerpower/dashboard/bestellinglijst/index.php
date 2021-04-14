@@ -39,7 +39,12 @@ include "../header.php";
         while ($row1 = $klant -> fetch_assoc()) {
 
             while ($row = $result -> fetch_assoc()) {
-                echo "<tr><td style='font-size: 17px;'>" . $row["idfactuur"] . "</td>"."<td style='font-size: 17px; text-align: left; padding-left: 80px;'>" . $row1["naam"] . "</td>"."<td style='font-size: 17px; text-align: left;'> aantal artikelen </td>"."<td style='font-size: 17px; text-align: left;'> adres </td>"."<td style='font-size: 17px; text-align: left;'>" . $row["datum"]. "</td>"."<td style='font-size: 17px; text-align: left;'>" . $row["afgehaald"]. "</td>";
+                echo "<tr><td style='font-size: 17px;'>" . $row["idfactuur"] . "</td>";
+                echo "<td style='font-size: 17px; text-align: left; padding-left: 80px;'>" . $row1["naam"] . "</td>";
+                echo "<td style='font-size: 17px; text-align: left;'> aantal artikelen </td>";
+                echo "<td style='font-size: 17px; text-align: left;'>" . $row1["adres"] ." ". $row1["huisnummer"] ." ". $row1["postcode"] ." ". $row1["plaats"] ."</td>";
+                echo "<td style='font-size: 17px; text-align: left;'>" . $row["datum"]. "</td>";
+                echo "<td style='font-size: 17px; text-align: left;'>" . $row["afgehaald"]. "</td>";
                 echo "<td><button style='cursor: pointer' data-toggle='modal' data-target='#myModal' class='button button4'>Bekijken</button></td></tr>";
             }
         }
