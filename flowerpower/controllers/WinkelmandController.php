@@ -61,7 +61,6 @@ class WinkelmandController
 
         $datum = date('Y-m-d');
         $idklant = $_SESSION['gebruiker']['idklant'];
-        var_dump($_SESSION['gebruiker']['idklant']);
 
         $factuur = "insert into factuur (idfactuur, idklant, datum, afgehaald, idmedewerker, idwinkel) VALUES (idfactuur, '$idklant', '$datum', 'NEE', null, null)";
         $resultFactuur = $dbh->query($factuur);
