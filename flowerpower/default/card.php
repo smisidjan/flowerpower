@@ -4,43 +4,43 @@
             <div class="carousel-inner w-100" role="listbox">
                 <div class="carousel-item active">
                     <div class="col-md-4">
-                        <div class="card card-body">
-                            <img class="img-fluid" src="http://placehold.it/380?text=1">
+                        <div class="card card-body" style="border: 2px solid #FF059B;">
+                            <img class="img-fluid" src="images/losse-roze-rozen.jpg">
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="col-md-4">
-                        <div class="card card-body">
-                            <img class="img-fluid" src="http://placehold.it/380?text=2">
+                        <div class="card card-body" style="border: 2px solid #FF059B;">
+                            <img class="img-fluid" src="images/vrolijk-plukboeket.jpg">
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="col-md-4">
-                        <div class="card card-body">
-                            <img class="img-fluid" src="http://placehold.it/380?text=3">
+                        <div class="card card-body" style="border: 2px solid #FF059B;">
+                            <img class="img-fluid" src="images/bont-geplukt.jpg">
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="col-md-4">
-                        <div class="card card-body">
-                            <img class="img-fluid" src="http://placehold.it/380?text=4">
+                        <div class="card card-body" style="border: 2px solid #FF059B;">
+                            <img class="img-fluid" src="images/meisje_boeket.jpg">
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="col-md-4">
-                        <div class="card card-body">
-                            <img class="img-fluid" src="http://placehold.it/380?text=5">
+                        <div class="card card-body" style="border: 2px solid #FF059B;">
+                            <img class="img-fluid" src="images/zachte_tulp.jpg">
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <div class="col-md-4">
-                        <div class="card card-body">
-                            <img class="img-fluid" src="http://placehold.it/380?text=6">
+                        <div class="card card-body" style="border: 2px solid #FF059B;">
+                            <img class="img-fluid" src="images/zachte_lente.jpg">
                         </div>
                     </div>
                 </div>
