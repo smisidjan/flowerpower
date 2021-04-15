@@ -18,7 +18,7 @@ class DefaultController
         $sql = "insert into contact (idcontact, naam, telefoon, email, notitie) VALUES (idcontact, '$naam', '$telefoonnummer', '$email', '$notitie')";
 
         if (mysqli_query($dbh, $sql)) {
-           echo "<div class='alert alert-success'><strong>Bedankt!</strong> Uw email is verzonden!</div>";
+           echo "<div class='alert alert-success' style='text-align: center; margin-top: 70px'><strong>Bedankt!</strong> Uw email is verzonden!</div>";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($dbh);
         }
