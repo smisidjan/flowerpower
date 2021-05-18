@@ -1,0 +1,187 @@
+#
+# There is insufficient memory for the Java Runtime Environment to continue.
+# Native memory allocation (malloc) failed to allocate 1048576 bytes for AllocateHeap
+# Possible reasons:
+#   The system is out of physical RAM or swap space
+#   The process is running with CompressedOops enabled, and the Java Heap may be blocking the growth of the native heap
+# Possible solutions:
+#   Reduce memory load on the system
+#   Increase physical memory or swap space
+#   Check if swap backing store is full
+#   Decrease Java heap size (-Xmx/-Xms)
+#   Decrease number of Java threads
+#   Decrease Java thread stack sizes (-Xss)
+#   Set larger code cache with -XX:ReservedCodeCacheSize=
+#   JVM is running with Unscaled Compressed Oops mode in which the Java heap is
+#     placed in the first 4GB address space. The Java Heap base address is the
+#     maximum limit for the native heap growth. Please use -XX:HeapBaseMinAddress
+#     to set the Java Heap base and to place the Java Heap above 4GB virtual address.
+# This output file may be truncated or incomplete.
+#
+#  Out of Memory Error (./src/hotspot/share/memory/allocation.cpp:46), pid=28596, tid=4056
+#
+# JRE version:  (11.0.9.1+11) (build )
+# Java VM: OpenJDK 64-Bit Server VM (11.0.9.1+11-b1145.77, mixed mode, sharing, tiered, compressed oops, g1 gc, windows-amd64)
+# No core dump will be written. Minidumps are not enabled by default on client versions of Windows
+#
+
+---------------  S U M M A R Y ------------
+
+Command Line: org.jetbrains.git4idea.http.GitAskPassApp Username for 'https://github.com': 
+
+Host: Intel(R) Core(TM) i7-6700HQ CPU @ 2.60GHz, 8 cores, 11G,  Windows 10 , 64 bit Build 19041 (10.0.19041.804)
+Time: Wed Apr 14 06:43:02 2021 W. Europe Summer Time elapsed time: 0.061514 seconds (0d 0h 0m 0s)
+
+---------------  T H R E A D  ---------------
+
+Current thread (0x0000020264f9e000):  JavaThread "Unknown thread" [_thread_in_vm, id=4056, stack(0x00000073aae00000,0x00000073aaf00000)]
+
+Stack: [0x00000073aae00000,0x00000073aaf00000]
+Native frames: (J=compiled Java code, j=interpreted, Vv=VM code, C=native code)
+V  [jvm.dll+0x5edd9a]
+V  [jvm.dll+0x7229c5]
+V  [jvm.dll+0x723f1d]
+V  [jvm.dll+0x7245d3]
+V  [jvm.dll+0x2431b8]
+V  [jvm.dll+0xb3834]
+V  [jvm.dll+0x2d53c8]
+V  [jvm.dll+0x701a57]
+V  [jvm.dll+0x70325c]
+V  [jvm.dll+0x359049]
+V  [jvm.dll+0x6e552e]
+V  [jvm.dll+0x3c1353]
+V  [jvm.dll+0x3c3571]
+C  [jli.dll+0x5373]
+C  [ucrtbase.dll+0x21bb2]
+C  [KERNEL32.DLL+0x17034]
+C  [ntdll.dll+0x52651]
+
+
+---------------  P R O C E S S  ---------------
+
+Threads class SMR info:
+_java_thread_list=0x0000020262e94b90, length=0, elements={
+}
+
+Java Threads: ( => current thread )
+
+Other Threads:
+
+[error occurred during error reporting (printing all threads), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffc50eea1de]
+
+VM state:not at safepoint (not fully initialized)
+
+VM Mutex/Monitor currently owned by a thread: None
+
+
+[error occurred during error reporting (printing compressed oops mode), id 0xc0000005, EXCEPTION_ACCESS_VIOLATION (0xc0000005) at pc=0x00007ffc50f028a7]
+
+GC Heap History (0 events):
+No events
+
+Deoptimization events (0 events):
+No events
+
+Classes redefined (0 events):
+No events
+
+Internal exceptions (0 events):
+No events
+
+Events (1 events):
+Event: 0.048 Loaded shared library C:\Program Files\JetBrains\PhpStorm 2020.3.2\jbr\bin\zip.dll
+
+
+Dynamic libraries:
+0x00007ff7af5d0000 - 0x00007ff7af5da000 	C:\Program Files\JetBrains\PhpStorm 2020.3.2\jbr\bin\java.exe
+0x00007ffce57f0000 - 0x00007ffce59e5000 	C:\WINDOWS\SYSTEM32\ntdll.dll
+0x00007ffce3850000 - 0x00007ffce390d000 	C:\WINDOWS\System32\KERNEL32.DLL
+0x00007ffce3260000 - 0x00007ffce3529000 	C:\WINDOWS\System32\KERNELBASE.dll
+0x00007ffce3110000 - 0x00007ffce3210000 	C:\WINDOWS\System32\ucrtbase.dll
+0x00007ffcd8b90000 - 0x00007ffcd8ba7000 	C:\Program Files\JetBrains\PhpStorm 2020.3.2\jbr\bin\VCRUNTIME140.dll
+0x00007ffcd7210000 - 0x00007ffcd7229000 	C:\Program Files\JetBrains\PhpStorm 2020.3.2\jbr\bin\jli.dll
+0x00007ffce3e10000 - 0x00007ffce3fb0000 	C:\WINDOWS\System32\USER32.dll
+0x00007ffce35b0000 - 0x00007ffce35d2000 	C:\WINDOWS\System32\win32u.dll
+0x00007ffccff70000 - 0x00007ffcd020a000 	C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.844_none_ca00b6081b84eb1d\COMCTL32.dll
+0x00007ffce4a20000 - 0x00007ffce4a4a000 	C:\WINDOWS\System32\GDI32.dll
+0x00007ffce2f60000 - 0x00007ffce306b000 	C:\WINDOWS\System32\gdi32full.dll
+0x00007ffce4060000 - 0x00007ffce40fe000 	C:\WINDOWS\System32\msvcrt.dll
+0x00007ffce3070000 - 0x00007ffce310d000 	C:\WINDOWS\System32\msvcp_win.dll
+0x00007ffce52c0000 - 0x00007ffce52f0000 	C:\WINDOWS\System32\IMM32.DLL
+0x00007ffcbdd80000 - 0x00007ffcbde1d000 	C:\Program Files\JetBrains\PhpStorm 2020.3.2\jbr\bin\msvcp140.dll
+0x00007ffc50800000 - 0x00007ffc512ce000 	C:\Program Files\JetBrains\PhpStorm 2020.3.2\jbr\bin\server\jvm.dll
+0x00007ffce3b40000 - 0x00007ffce3bec000 	C:\WINDOWS\System32\ADVAPI32.dll
+0x00007ffce4980000 - 0x00007ffce4a1c000 	C:\WINDOWS\System32\sechost.dll
+0x00007ffce3c50000 - 0x00007ffce3d7b000 	C:\WINDOWS\System32\RPCRT4.dll
+0x00007ffce5600000 - 0x00007ffce5608000 	C:\WINDOWS\System32\PSAPI.DLL
+0x00007ffcd68f0000 - 0x00007ffcd6917000 	C:\WINDOWS\SYSTEM32\WINMM.dll
+0x00007ffcdfde0000 - 0x00007ffcdfdea000 	C:\WINDOWS\SYSTEM32\VERSION.dll
+0x00007ffce16b0000 - 0x00007ffce16b9000 	C:\WINDOWS\SYSTEM32\WSOCK32.dll
+0x00007ffce5610000 - 0x00007ffce567b000 	C:\WINDOWS\System32\WS2_32.dll
+0x00007ffce17d0000 - 0x00007ffce17e2000 	C:\WINDOWS\SYSTEM32\kernel.appcore.dll
+0x00007ffcccb60000 - 0x00007ffcccb71000 	C:\Program Files\JetBrains\PhpStorm 2020.3.2\jbr\bin\verify.dll
+0x00007ffce0d10000 - 0x00007ffce0ef4000 	C:\WINDOWS\SYSTEM32\DBGHELP.DLL
+0x00007ffccbc10000 - 0x00007ffccbc3c000 	C:\WINDOWS\SYSTEM32\dbgcore.DLL
+0x00007ffce3530000 - 0x00007ffce35b0000 	C:\WINDOWS\System32\bcryptPrimitives.dll
+0x00007ffcccb30000 - 0x00007ffcccb59000 	C:\Program Files\JetBrains\PhpStorm 2020.3.2\jbr\bin\java.dll
+0x00007ffcde5e0000 - 0x00007ffcde5eb000 	C:\Program Files\JetBrains\PhpStorm 2020.3.2\jbr\bin\jimage.dll
+0x00007ffcccb10000 - 0x00007ffcccb28000 	C:\Program Files\JetBrains\PhpStorm 2020.3.2\jbr\bin\zip.dll
+
+dbghelp: loaded successfully - version: 4.0.5 - missing functions: none
+symbol engine: initialized successfully - sym options: 0x614 - pdb path: .;C:\Program Files\JetBrains\PhpStorm 2020.3.2\jbr\bin;C:\WINDOWS\SYSTEM32;C:\WINDOWS\WinSxS\amd64_microsoft.windows.common-controls_6595b64144ccf1df_6.0.19041.844_none_ca00b6081b84eb1d;C:\Program Files\JetBrains\PhpStorm 2020.3.2\jbr\bin\server
+
+VM Arguments:
+java_command: org.jetbrains.git4idea.http.GitAskPassApp Username for 'https://github.com': 
+java_class_path (initial): C:/Program Files/JetBrains/PhpStorm 2020.3.2/plugins/git4idea/lib/git4idea-rt.jar;C:/Program Files/JetBrains/PhpStorm 2020.3.2/lib/xmlrpc-2.0.1.jar;C:/Program Files/JetBrains/PhpStorm 2020.3.2/lib/commons-codec-1.14.jar
+Launcher Type: SUN_STANDARD
+
+[Global flags]
+     intx CICompilerCount                          = 4                                         {product} {ergonomic}
+     uint G1ConcRefinementThreads                  = 8                                         {product} {ergonomic}
+   size_t G1HeapRegionSize                         = 1048576                                   {product} {ergonomic}
+    uintx GCDrainStackTargetSize                   = 64                                        {product} {ergonomic}
+   size_t InitialHeapSize                          = 199229440                                 {product} {ergonomic}
+   size_t MaxHeapSize                              = 3185573888                                {product} {ergonomic}
+   size_t MinHeapDeltaBytes                        = 1048576                                   {product} {ergonomic}
+    uintx NonNMethodCodeHeapSize                   = 5836300                                {pd product} {ergonomic}
+    uintx NonProfiledCodeHeapSize                  = 122910970                              {pd product} {ergonomic}
+    uintx ProfiledCodeHeapSize                     = 122910970                              {pd product} {ergonomic}
+    uintx ReservedCodeCacheSize                    = 251658240                              {pd product} {ergonomic}
+     bool SegmentedCodeCache                       = true                                      {product} {ergonomic}
+     bool UseCompressedClassPointers               = true                                 {lp64_product} {ergonomic}
+     bool UseCompressedOops                        = true                                 {lp64_product} {ergonomic}
+     bool UseG1GC                                  = true                                      {product} {ergonomic}
+     bool UseLargePagesIndividualAllocation        = false                                  {pd product} {ergonomic}
+
+Logging:
+Log output configuration:
+ #0: stdout all=warning uptime,level,tags
+ #1: stderr all=off uptime,level,tags
+
+Environment Variables:
+JAVA_HOME=C:\Program Files\Java\jdk1.8.0_221\jdk-8u221-windows-x64.exe
+PATH=C:/Program Files/Git/mingw64/libexec/git-core;C:/Program Files/Git/mingw64/libexec/git-core;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\Eigenaar\bin;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk1.8.0_221\bin;C:\Program Files\nodejs\;C:\Program Files\Symfony;C:\wamp64\bin\php\php5.6.40;C:\composer;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;"C:\Users\Eigenaar\AppData\Local\Microsoft\WindowsApps;";"C:\Users\Eigenaar\AppData\Roaming\Dashlane\6.1839.0.13410\bin\Firefox_Extension\{442718d9-475e-452a-b3e1-fb1ee16b8e9f}\components;C:\Users\Eigenaar\AppData\Roaming\Dashlane\6.1839.0.13410\ucrt;C:\Users\Eigenaar\AppData\Roaming\Dashlane\6.1839.0.13410\bin\Qt;C:\Users\Eigenaar\AppData\Roaming\Dashlane\6.1839.0.13410\ucrt;C:\Users\Eigenaar\AppData\Roaming\Dashlane\6.1839.0.13410\bin\Ssl;";C:\Users\Eigenaar\AppData\Local\Google\Cloud SDK\google-cloud-sdk\bin;C:\wamp64\bin\mysql\mysql5.7.28\bin;C:\Program Files\JetBrains\PhpStorm 2019.3.2\bin;C:\Users\Eigenaar\AppData\Roaming\npm;C:\Users\Eigenaar\AppData\Local\Microsoft\WindowsApps;C:\Users\Eigenaar\AppData\Local\gitkraken\bin;C:\wamp64\bin\mysql\mysql5.7.31\bin;C:\Users\Eigenaar\AppData\Roaming\Composer\vendor\bin;C:\Users\Eigenaar\composer
+USERNAME=Sarai
+DISPLAY=:0.0
+LC_ALL=en_US.UTF-8
+OS=Windows_NT
+PROCESSOR_IDENTIFIER=Intel64 Family 6 Model 94 Stepping 3, GenuineIntel
+
+
+
+---------------  S Y S T E M  ---------------
+
+OS: Windows 10 , 64 bit Build 19041 (10.0.19041.804)
+OS uptime: 1 days 19:09 hours
+HyperV virtualization detected
+
+CPU:total 8 (initial active 8) (4 cores per cpu, 2 threads per core) family 6 model 94 stepping 3, cmov, cx8, fxsr, mmx, sse, sse2, sse3, ssse3, sse4.1, sse4.2, popcnt, avx, avx2, aes, clmul, erms, rtm, 3dnowpref, lzcnt, ht, tsc, tscinvbit, bmi1, bmi2, adx, fma
+
+Memory: 4k page, system-wide physical 12151M (78M free)
+TotalPageFile size 49015M (AvailPageFile size 5M)
+current process WorkingSet (physical memory assigned to process): 9M, peak: 9M
+current process commit charge ("private bytes"): 13M, peak: 14M
+
+vm_info: OpenJDK 64-Bit Server VM (11.0.9.1+11-b1145.77) for windows-amd64 JRE (11.0.9.1+11-b1145.77), built on Jan 16 2021 05:14:13 by "" with MS VC++ 14.0 (VS2015)
+
+END.

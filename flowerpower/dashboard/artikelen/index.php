@@ -25,13 +25,17 @@ if (isset($_POST['wijzig'])) {
     }
     if (isset($_POST['omschrijving'])) {
         $omschrijving = $_POST['omschrijving'];
-    } else { $omschrijving = null;}
+    } else {
+        $omschrijving = null;
+    }
     if (isset($_POST['prijs'])) {
         $prijs = $_POST['prijs'];
     }
     if (isset($_POST['afbeelding'])) {
         $afbeelding = $_POST['afbeelding'];
-    } else { $afbeelding = null;}
+    } else {
+        $afbeelding = null;
+    }
     if (isset($_POST['categorie'])) {
         $categorie = $_POST['categorie'];
     }
@@ -79,7 +83,11 @@ if (isset($_GET['delete'])) {
         echo "<td style='font-size: 17px; text-align: left;'>" . $row["naam"] . "</td>";
         echo "<td style='font-size: 17px; text-align: left; margin-left: 50px;'>" . $row["omschrijving"] . "</td>";
         echo "<td style='font-size: 17px; text-align: left;'>" . $row["prijs"] . "</td>";
-        echo "<td style='font-size: 17px; text-align: left; padding-left: 25px;'>" . $row["categorie"] . "</td></td>";
+        $sql = "SELECT * FROM categorie";
+        $result = $dbh->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            echo "<td style='font-size: 17px; text-align: left; padding-left: 25px;'>" . $row["naam"] . "</td></td>";
+        }
         echo "<td><span data-toggle='modal' data-target='#toevoegModal" . $row["idartikel"] . "' style='font-size: 20px; margin-right: -140px; text-align: center; cursor: pointer;'>Bewerken</span><span data-toggle='modal' data-target='#myModal" . $row["idartikel"] . "' style='cursor: pointer; float: right; margin-right: 20px; color: black;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
             <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></span></td></tr>";
     }
@@ -99,7 +107,8 @@ while ($row = $result->fetch_assoc()) { ?>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <h4 class="modal-title" style="margin-bottom: 30px;">Weet u zeker dat u <?php echo $row["naam"] ?> wilt
+                    <h4 class="modal-title" style="margin-bottom: 30px;">Weet u zeker dat u <?php echo $row["naam"] ?>
+                        wilt
                         verwijderen?</h4>
                     <a href="index.php?delete=<?php echo $row["idartikel"] ?>">
                         <input class="button button4"
@@ -117,54 +126,54 @@ while ($row = $result->fetch_assoc()) { ?>
 <?php $sql = "SELECT * FROM artikel";
 $result = $dbh->query($sql);
 while ($row = $result->fetch_assoc()) { ?>
-<!-- Modal bewerken -->
-<div class="modal fade" id="toevoegModal<?php echo $row["idartikel"] ?>" role="dialog">
-    <div class="modal-dialog modal-dialog-centered">
-        <!-- Modal content-->
-        <div class="modal-content" style="border: 2px solid black;">
-            <div class="modal-header" style="text-align: center;">
-                <h4 style="margin-left: 100px; font-style: normal;">Artikel <?php echo $row["naam"] ?> bewerken</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-            </div>
-            <div class="modal-body">
-                <form action="index.php" method="post">
-                    <input type="hidden" value="<?php echo $row["idartikel"] ?>" name="idartikel">
-                    <div class="row" style="margin-bottom: 20px;">
-                        <div class="col-12">
-                            <input type="text" class="form-control form-rounded" name="naam" id="naam"
-                                   value="<?php echo $row["naam"] ?>">
+    <!-- Modal bewerken -->
+    <div class="modal fade" id="toevoegModal<?php echo $row["idartikel"] ?>" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <!-- Modal content-->
+            <div class="modal-content" style="border: 2px solid black;">
+                <div class="modal-header" style="text-align: center;">
+                    <h4 style="margin-left: 100px; font-style: normal;">Artikel <?php echo $row["naam"] ?> bewerken</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                </div>
+                <div class="modal-body">
+                    <form action="index.php" method="post">
+                        <input type="hidden" value="<?php echo $row["idartikel"] ?>" name="idartikel">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-12">
+                                <input type="text" class="form-control form-rounded" name="naam" id="naam"
+                                       value="<?php echo $row["naam"] ?>">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 20px;">
-                        <div class="col-12">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-12">
                             <textarea class="form-control form-rounded" name="omschrijving" id="omschrijving" rows="3"
                                       value="<?php echo $row["omschrijving"] ?>"></textarea>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 20px;">
-                        <div class="col-6">
-                            <input type="text" class="form-control form-rounded" name="prijs" id="prijs"
-                                   value="<?php echo $row["prijs"] ?>">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-6">
+                                <input type="text" class="form-control form-rounded" name="prijs" id="prijs"
+                                       value="<?php echo $row["prijs"] ?>">
+                            </div>
+                            <div class="col-6">
+                                <input type="text" class="form-control form-rounded" name="categorie" id="categorie"
+                                       value="<?php echo $row["categorie"] ?>">
+                            </div>
                         </div>
-                        <div class="col-6">
-                            <input type="text" class="form-control form-rounded" name="categorie" id="categorie"
-                                   value="<?php echo $row["categorie"] ?>">
+                        <div class="row" style="margin-bottom: 20px;">
+                            <div class="col-12">
+                                <input style=" height: 35px;" type="file" class="form-control form-rounded"
+                                       name="afbeelding" id="afbeelding" value="<?php echo $row["afbeelding"] ?>">
+                            </div>
                         </div>
-                    </div>
-                    <div class="row" style="margin-bottom: 20px;">
-                        <div class="col-12">
-                            <input style=" height: 35px;" type="file" class="form-control form-rounded"
-                                   name="afbeelding" id="afbeelding" value="<?php echo $row["afbeelding"] ?>">
-                        </div>
-                    </div>
-                    <input class="button button4"
-                           style="width: 100px; background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);"
-                           type="submit" name="wijzig" value="opslaan">
-                </form>
+                        <input class="button button4"
+                               style="width: 100px; background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);"
+                               type="submit" name="wijzig" value="opslaan">
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-</div>
 <?php } ?>
 <!-- Modal toevoegen -->
 <div class="modal fade" id="toevoegModal" role="dialog">
@@ -195,8 +204,19 @@ while ($row = $result->fetch_assoc()) { ?>
                                    placeholder="Prijs">
                         </div>
                         <div class="col-6">
-                            <input type="text" class="form-control form-rounded" name="categorie" id="categorie"
-                                   placeholder="Categorie">
+                            <select class="form-control form-rounded" name="categorie">
+                                <option>Selecteer een categorie</option>
+                                <?php $sql = "SELECT * FROM categorie";
+                                $result = $dbh->query($sql);
+                                while ($row = $result->fetch_assoc()) { ?>
+                                    <option id="categorie" name="categorie"
+                                            value="<?php echo $row["idcategorie"] ?>"><?php echo $row["naam"] ?></option>
+                                    <?php
+                                }
+                                ?>
+                            </select>
+                            <!--                            <input type="text" class="form-control form-rounded" name="categorie" id="categorie"-->
+                            <!--                                   placeholder="Categorie">-->
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 20px;">
