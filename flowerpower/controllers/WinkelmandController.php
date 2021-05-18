@@ -38,7 +38,7 @@ class WinkelmandController
         $idklant = $dbh->insert_id;
         $datum = date('Y-m-d');
 
-        $factuur = "insert into factuur (idfactuur, idklant, datum, afgehaald, idmedewerker, idwinkel) VALUES (idfactuur, '$idklant', '$datum', 'NEE', null, null)";
+        $factuur = "insert into factuur (idfactuur, idklant, datum, afgehaald, idmedewerker) VALUES (idfactuur, '$idklant', '$datum', 'NEE', null)";
         $resultFactuur = $dbh->query($factuur);
 
         if (mysqli_query($dbh, $sql) && mysqli_query($dbh, $factuur)) {

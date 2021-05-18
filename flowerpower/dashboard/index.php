@@ -56,6 +56,21 @@ if (isset($_SESSION['medewerker'])) {
 
     <div class="column">
         <div class="card">
+            <h4 style="text-align: left;">Categorieën</h4>
+            <hr class="solid" style="margin-top: -8px;">
+            <?php
+            $sql = "SELECT * FROM categorie";
+            $result = $dbh -> query($sql);
+            $row_count = $result->num_rows;
+
+            echo "<div class='total-rows' style='font-size: 55px; text-align: left; margin-left: 150px; margin-bottom: -20px;'>" . $row_count . "</div><p style=''>medewerkers </p>";
+            ?>
+            <a href="categorie/index.php" style="text-align: left; text-decoration-line: underline; font-size: 11px;">Bekijk alle categorieën</a>
+        </div>
+    </div>
+
+    <div class="column">
+        <div class="card">
             <h4 style="text-align: left;">Berichten</h4>
             <hr class="solid" style="margin-top: -8px;">
             <?php
