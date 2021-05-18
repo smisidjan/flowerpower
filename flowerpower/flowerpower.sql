@@ -89,9 +89,10 @@ DROP TABLE IF EXISTS `flowerpower`.`categorie`;
 
 CREATE TABLE IF NOT EXISTS `flowerpower`.`categorie`
 (
-    `idcategorie` INT         NOT NULL,
-    `naam`        VARCHAR(45) NOT NULL,
-    `afbeelding`  VARCHAR(45) NOT NULL,
+    `idcategorie` INT                             NOT NULL AUTO_INCREMENT,
+    `naam`        VARCHAR(45)                     NOT NULL,
+    `afbeelding`  VARCHAR(45)                     NOT NULL,
+    `bg`          ENUM ('BLOEMEN', 'GELEGENHEID') NOT NULL,
     PRIMARY KEY (`idcategorie`)
 )
     ENGINE = InnoDB;
@@ -104,16 +105,17 @@ DROP TABLE IF EXISTS `flowerpower`.`artikel`;
 
 CREATE TABLE IF NOT EXISTS `flowerpower`.`artikel`
 (
-    `idartikel`             INT          NOT NULL AUTO_INCREMENT,
-    `naam`                  VARCHAR(45)  NULL,
-    `omschrijving`          VARCHAR(254) NULL,
-    `prijs`                 VARCHAR(45)  NULL,
-    `afbeelding`            VARCHAR(45)  NULL,
-    `categorie_idcategorie` INT          NOT NULL,
+    `idartikel`    INT                             NOT NULL AUTO_INCREMENT,
+    `naam`         VARCHAR(45)                     NULL,
+    `omschrijving` VARCHAR(254)                    NULL,
+    `prijs`        VARCHAR(45)                     NULL,
+    `afbeelding`   VARCHAR(45)                     NULL,
+    `idcategorie`  INT                             NOT NULL,
+    `bg`           ENUM ('BLOEMEN', 'GELEGENHEID') NOT NULL,
     PRIMARY KEY (`idartikel`),
-    INDEX `fk_artikel_categorieën1_idx` (`categorie_idcategorie` ASC),
+    INDEX `fk_artikel_categorieën1_idx` (`idcategorie` ASC),
     CONSTRAINT `fk_artikel_categorieën1`
-        FOREIGN KEY (`categorie_idcategorie`)
+        FOREIGN KEY (`idcategorie`)
             REFERENCES `flowerpower`.`categorie` (`idcategorie`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION

@@ -10,10 +10,10 @@ if (isset($_POST['opslaan'])) {
     $naam = $_POST['naam'];
     $omschrijving = $_POST['omschrijving'];
     $prijs = $_POST['prijs'];
-    $categorie = $_POST['categorie'];
+    $idcategorie = $_POST['idcategorie'];
     $afbeelding = $_POST['afbeelding'];
 
-    $voegToe->voegArtikelToe($naam, $omschrijving, $prijs, $afbeelding, $categorie);
+    $voegToe->voegArtikelToe($naam, $omschrijving, $prijs, $afbeelding, $idcategorie);
 }
 
 if (isset($_POST['wijzig'])) {
@@ -68,6 +68,7 @@ if (isset($_GET['delete'])) {
         <th scope="col" style='font-size: 17px; text-align: left; margin-left: 50px;'>Beschrijving</th>
         <th scope="col" style='font-size: 17px; text-align: left;'>Prijs</th>
         <th scope="col" style='font-size: 17px; text-align: left; padding-left: 25px;'>Categorie</th>
+        <th scope="col" style='font-size: 17px; text-align: left; padding-left: 25px;'>Bloemen of Gelegenheid</th>
         <th scope="col">
             <button class="button button4" data-toggle="modal" data-target="#toevoegModal">Toevoegen</button>
         </th>
@@ -79,14 +80,16 @@ if (isset($_GET['delete'])) {
     $result = $dbh->query($sql);
 
     while ($row = $result->fetch_assoc()) {
+        $idcategorie = $row["idcategorie"];
         echo "<tr><th style='font-size: 17px;'>" . $row["idartikel"] . "</th>";
         echo "<td style='font-size: 17px; text-align: left;'>" . $row["naam"] . "</td>";
         echo "<td style='font-size: 17px; text-align: left; margin-left: 50px;'>" . $row["omschrijving"] . "</td>";
         echo "<td style='font-size: 17px; text-align: left;'>" . $row["prijs"] . "</td>";
-        $sql = "SELECT * FROM categorie";
-        $result = $dbh->query($sql);
-        while ($row = $result->fetch_assoc()) {
-            echo "<td style='font-size: 17px; text-align: left; padding-left: 25px;'>" . $row["naam"] . "</td></td>";
+        $sqlCategorie = "SELECT * FROM categorie where idcategorie=$idcategorie";
+        $resultCategorie = $dbh->query($sqlCategorie);
+        while ($rowCategorie = $resultCategorie->fetch_assoc()) {
+            echo "<td style='font-size: 17px; text-align: left; padding-left: 25px;'>" . $rowCategorie["naam"] . "</td></td>";
+            echo "<td style='font-size: 17px; text-align: left; padding-left: 25px;'>" . $rowCategorie["bg"] . "</td></td>";
         }
         echo "<td><span data-toggle='modal' data-target='#toevoegModal" . $row["idartikel"] . "' style='font-size: 20px; margin-right: -140px; text-align: center; cursor: pointer;'>Bewerken</span><span data-toggle='modal' data-target='#myModal" . $row["idartikel"] . "' style='cursor: pointer; float: right; margin-right: 20px; color: black;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
             <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></span></td></tr>";
@@ -156,8 +159,8 @@ while ($row = $result->fetch_assoc()) { ?>
                                        value="<?php echo $row["prijs"] ?>">
                             </div>
                             <div class="col-6">
-                                <input type="text" class="form-control form-rounded" name="categorie" id="categorie"
-                                       value="<?php echo $row["categorie"] ?>">
+                                <input type="text" class="form-control form-rounded" name="idcategorie" id="idcategorie"
+                                       value="<?php echo $row["idcategorie"] ?>">
                             </div>
                         </div>
                         <div class="row" style="margin-bottom: 20px;">
@@ -204,19 +207,17 @@ while ($row = $result->fetch_assoc()) { ?>
                                    placeholder="Prijs">
                         </div>
                         <div class="col-6">
-                            <select class="form-control form-rounded" name="categorie">
+                            <select class="form-control form-rounded" name="idcategorie">
                                 <option>Selecteer een categorie</option>
                                 <?php $sql = "SELECT * FROM categorie";
                                 $result = $dbh->query($sql);
                                 while ($row = $result->fetch_assoc()) { ?>
-                                    <option id="categorie" name="categorie"
+                                    <option id="idcategorie" name="idcategorie"
                                             value="<?php echo $row["idcategorie"] ?>"><?php echo $row["naam"] ?></option>
                                     <?php
                                 }
                                 ?>
                             </select>
-                            <!--                            <input type="text" class="form-control form-rounded" name="categorie" id="categorie"-->
-                            <!--                                   placeholder="Categorie">-->
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 20px;">

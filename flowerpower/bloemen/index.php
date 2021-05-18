@@ -13,51 +13,36 @@ require "../default/dbh.php";
                 } ?>">
                     <button style="border: none; background-color: white;" type="submit" value="alle" name="alle"
                             id="alle">
-                        <img src="images/alle-boeketten.jpg" style="height: 200px; width: 100%;">
-                        <div class="centered">Alle boeketten</div>
-                    </button>
-                </div>
-            </form>
-        </div>
-
-        <div class="column">
-            <form action="index.php" method="post">
-                <div class="card <?php if (isset($_POST['pluk'])) {
-                    echo "active1";
-                } ?>">
-                    <button style="border: none; background-color: white;" type="submit" value="pluk" name="pluk"
-                            id="pluk">
                         <img src="images/plukboeket.jpg" style="height: 200px; width: 100%;">
-                        <div class="centered">Plukboeketten</div>
+                        <div class="centered">Alle bloemen</div>
                     </button>
                 </div>
             </form>
         </div>
-
+        <?php $sql = "SELECT * FROM categorie WHERE bg='BLOEMEN'";
+        $result = $dbh->query($sql);
+        while ($row = $result->fetch_assoc()) { ?>
         <div class="column">
             <form action="index.php" method="post">
-                <div class="card <?php if (isset($_POST['voorjaars'])) {
+                <div class="card <?php if (isset($_POST['categorie'])) {
                     echo "active1";
                 } ?>">
-                    <button style="border: none; background-color: white;" type="submit" value="voorjaars"
-                            name="voorjaars"
-                            id="voorjaars">
-                        <img src="images/voorjaars.jpg" style="height: 200px; width: 100%;">
-                        <div class="centered">Voorjaars boeketten</div>
+                    <button style="border: none; background-color: white;" type="submit" value="<?php echo $row["idcategorie"] ?>" name="categorie"
+                            id="categorie">
+                        <img src="images/<?php echo $row["idcategorie"] ?>" style="height: 200px; width: 100%;">
+                        <div class="centered"><?php echo $row["naam"] ?></div>
                     </button>
                 </div>
             </form>
         </div>
+        <?php } ?>
     </a>
     <?php
-    if (isset($_POST['pluk'])) {
-        $categorie = $_POST['pluk'];
+    if (isset($_POST['categorie'])) {
+        $categorie = $_POST['categorie'];
         $sql = "SELECT * FROM artikel where categorie = '$categorie'";
-    } elseif (isset($_POST['voorjaars'])) {
-        $categorie = $_POST['voorjaars'];
-        $sql = "SELECT * FROM artikel where categorie = '$categorie'";
-    } elseif (isset($_POST['alle'])) {
-        $sql = "SELECT * FROM artikel";
+    } else {
+        $sql = "SELECT * FROM artikel where bg='BLOEMEN'";
     }
     if (!empty($sql)) {
         $result = $dbh->query($sql);

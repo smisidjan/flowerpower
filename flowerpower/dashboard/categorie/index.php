@@ -8,41 +8,33 @@ if (isset($_POST['opslaan'])) {
     $voegToe = new CategorieController();
 
     $naam = $_POST['naam'];
-    $omschrijving = $_POST['omschrijving'];
-    $prijs = $_POST['prijs'];
-    $categorie = $_POST['categorie'];
+    $bg = $_POST['bg'];
     $afbeelding = $_POST['afbeelding'];
 
-    $voegToe->voegArtikelToe($naam, $omschrijving, $prijs, $afbeelding, $categorie);
+    $voegToe->voegCategorieToe($naam, $bg, $afbeelding);
 }
 
 if (isset($_POST['wijzig'])) {
     $wijzig = new CategorieController();
 
-    $idartikel = $_POST['idartikel'];
+    $idcategorie = $_POST['idcategorie'];
     if (isset($_POST['naam'])) {
         $naam = $_POST['naam'];
     }
-    if (isset($_POST['omschrijving'])) {
-        $omschrijving = $_POST['omschrijving'];
-    } else { $omschrijving = null;}
-    if (isset($_POST['prijs'])) {
-        $prijs = $_POST['prijs'];
+    if (isset($_POST['bg'])) {
+        $bg = $_POST['bg'];
     }
     if (isset($_POST['afbeelding'])) {
         $afbeelding = $_POST['afbeelding'];
-    } else { $afbeelding = null;}
-    if (isset($_POST['categorie'])) {
-        $categorie = $_POST['categorie'];
     }
 
-    $wijzig->wijzigArtikel($idartikel, $naam, $omschrijving, $prijs, $afbeelding, $categorie);
+    $wijzig->wijzigCategorie($idcategorie, $naam, $bg, $afbeelding);
 }
 
 if (isset($_GET['delete'])) {
     $verwijder = new CategorieController();
     $id = $_GET['delete'];
-    $verwijder->verwijderArtikel($id);
+    $verwijder->verwijderCategorie($id);
 }
 
 
@@ -61,6 +53,7 @@ if (isset($_GET['delete'])) {
     <tr style="text-align: center;">
         <th scope="col" style='font-size: 17px;'>Categorie nr</th>
         <th scope="col" style='font-size: 17px; text-align: left;'>Naam</th>
+        <th scope="col" style='font-size: 17px; text-align: left;'>Bloemen/Gelegenheid</th>
         <th scope="col" style='font-size: 17px; text-align: left; margin-left: 50px;'>Afbeelding</th>
         <th scope="col">
             <button class="button button4" data-toggle="modal" data-target="#toevoegModal">Toevoegen</button>
@@ -75,6 +68,7 @@ if (isset($_GET['delete'])) {
     while ($row = $result->fetch_assoc()) {
         echo "<tr><th style='font-size: 17px; text-align: left;'>" . $row["idcategorie"] . "</th>";
         echo "<td style='font-size: 17px; text-align: left;'>" . $row["naam"] . "</td>";
+        echo "<td style='font-size: 17px; text-align: left; margin-left: 50px;'>" . $row["bg"] . "</td>";
         echo "<td style='font-size: 17px; text-align: left; margin-left: 50px;'>" . $row["afbeelding"] . "</td>";
         echo "<td><span data-toggle='modal' data-target='#toevoegModal" . $row["idcategorie"] . "' style='font-size: 20px; margin-right: -140px; text-align: center; cursor: pointer;'>Bewerken</span><span data-toggle='modal' data-target='#myModal" . $row["idcategorie"] . "' style='cursor: pointer; float: right; margin-right: 20px; color: black;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
             <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></span></td></tr>";
@@ -124,11 +118,20 @@ while ($row = $result->fetch_assoc()) { ?>
             </div>
             <div class="modal-body">
                 <form action="index.php" method="post">
-                    <input type="hidden" value="<?php echo $row["idcategorie"] ?>" name="idartikel">
+                    <input type="hidden" value="<?php echo $row["idcategorie"] ?>" name="idcategorie">
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-12">
                             <input type="text" class="form-control form-rounded" name="naam" id="naam"
                                    value="<?php echo $row["naam"] ?>">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-12">
+                            <select class="form-control form-rounded" name="bg">
+                                <option><?php echo $row["naam"] ?></option>
+                                <option value="bloemen">Bloemen</option>
+                                <option value="gelegenheid">Gelegenheid</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 20px;">
@@ -161,6 +164,15 @@ while ($row = $result->fetch_assoc()) { ?>
                         <div class="col-12">
                             <input type="text" class="form-control form-rounded" name="naam" id="naam"
                                    placeholder="Naam">
+                        </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 20px;">
+                        <div class="col-12">
+                            <select class="form-control form-rounded" name="bg">
+                                <option>Bloemen of Gelegenheid</option>
+                                <option value="bloemen">Bloemen</option>
+                                <option value="gelegenheid">Gelegenheid</option>
+                            </select>
                         </div>
                     </div>
                     <div class="row" style="margin-bottom: 20px;">

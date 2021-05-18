@@ -4,96 +4,55 @@ require '../Controllers/BloemenController.php';
 include '../default/header.php';
 require "../default/dbh.php";
 ?>
+<?php
+$sql = "SELECT * FROM categorie WHERE bg='GELEGENHEID'";
+$result = $dbh -> query($sql);
+$row_count = $result->num_rows;
+if ($row_count > 3) { ?>
 <p style="margin-left: 20px; margin-top: 20px; cursor: pointer; margin-top: 100px; text-align: left; font-size: 20px; text-decoration: underline;" data-toggle="collapse" data-target="#bekijk">Bekijk meer</p>
 <div class="row">
-    <div class="column">
-        <form action="index.php" method="post">
-            <div class="card <?php if (isset($_POST['bedankt'])) { echo "active1";} ?>">
-                <button style="border: none; background-color: white;" type="submit" value="bedankt" name="bedankt"
-                        id="bedankt">
-                    <img src="images/bedankt.jpg" style="height: 200px; width: 100%;">
-                    <div class="centered">Bedankt</div>
-                </button>
-            </div>
-        </form>
-    </div>
-    <div class="column">
-        <form action="index.php" method="post">
-            <div class="card <?php if (isset($_POST['beterschap'])) { echo "active1";} ?>">
-                <button style="border: none; background-color: white;" type="submit" value="beterschap"
-                        name="beterschap" id="beterschap">
-                    <img src="images/beterschap.jpg" style="height: 200px; width: 100%;">
-                    <div class="centered">Beterschap</div>
-                </button>
-            </div>
-        </form>
-    </div>
-    <div class="column">
-        <form action="index.php" method="post">
-            <div class="card <?php if (isset($_POST['geboorte'])) { echo "active1";} ?>">
-                <button style="border: none; background-color: white;" type="submit" value="geboorte" name="geboorte"
-                        id="geboorte">
-                    <img src="images/geboorte.jpg" style="height: 200px; width: 100%;">
-                    <div class="centered">Geboorte</div>
-                </button>
-            </div>
-        </form>
-    </div>
-</div>
-<div class="row" style="margin-bottom: 400px;">
-    <div class="collapse" id="bekijk" style="width: 100%;">
+<?php } else {?>
+<div class="row" style="margin-top: 100px; margin-bottom: 400px;"><?php } ?>
+    <a href="#cards" style="width: 100%;">
         <div class="column">
             <form action="index.php" method="post">
-                <div class="card <?php if (isset($_POST['gefeliciteerd'])) { echo "active1";} ?>">
-                    <button style="border: none; background-color: white;" type="submit" value="gefeliciteerd"
-                            name="gefeliciteerd" id="gefeliciteerd">
-                        <img src="images/gefeliciteerd.jpg" style="height: 200px; width: 100%;">
-                        <div class="centered">Gefeliciteerd</div>
+                <div class="card <?php if (isset($_POST['alle'])) {
+                    echo "active1";
+                } ?>">
+                    <button style="border: none; background-color: white;" type="submit" value="alle" name="alle"
+                            id="alle">
+                        <img src="images/beterschap.jpg" style="height: 200px; width: 100%;">
+                        <div class="centered">Alle gelegenheid boeketten</div>
                     </button>
                 </div>
             </form>
         </div>
-        <div class="column">
-            <form action="index.php" method="post">
-                <div class="card <?php if (isset($_POST['liefde'])) { echo "active1";} ?>">
-                    <button style="border: none; background-color: white;" type="submit" value="liefde" name="liefde"
-                            id="liefde">
-                        <img src="images/liefde.jpg" style="height: 200px; width: 100%;">
-                        <div class="centered">Liefde</div>
-                    </button>
-                </div>
-            </form>
-        </div>
-        <div class="column">
-            <form action="index.php" method="post">
-                <div class="card <?php if (isset($_POST['uitvaart'])) { echo "active1";} ?>">
-                    <button style="border: none; background-color: white;" type="submit" value="uitvaart"
-                            name="uitvaart" id="uitvaart">
-                        <img src="images/uitvaart.jpg" style="height: 200px; width: 100%;">
-                        <div class="centered">Uitvaart</div>
-                    </button>
-                </div>
-            </form>
-        </div>
+        <?php
+        $sql = "SELECT * FROM categorie WHERE bg='GELEGENHEID'";
+        $result = $dbh->query($sql);
+        while ($row = $result->fetch_assoc()) { ?>
+            <div class="column">
+                <form action="index.php" method="post">
+                    <div class="card <?php if (isset($_POST['categorie'])) {
+                        echo "active1";
+                    } ?>">
+                        <button style="border: none; background-color: white;" type="submit" value="<?php echo $row["idcategorie"] ?>" name="categorie"
+                                id="categorie">
+                            <img src="images/<?php echo $row["idcategorie"] ?>" style="height: 200px; width: 100%;">
+                            <div class="centered"><?php echo $row["naam"] ?></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        <?php } ?>
+    </a>
     </div>
     <?php
-    if (isset($_POST['beterschap'])) {
-        $categorie = $_POST['beterschap'];
+    if (isset($_POST['categorie'])) {
+        $categorie = $_POST['categorie'];
         $sql = "SELECT * FROM artikel where categorie = '$categorie'";
-    } elseif (isset($_POST['geboorte'])) {
-        $categorie = $_POST['geboorte'];
-        $sql = "SELECT * FROM artikel where categorie = '$categorie'";
-    } elseif (isset($_POST['gefeliciteerd'])) {
-        $categorie = $_POST['gefeliciteerd'];
-        $sql = "SELECT * FROM artikel where categorie = '$categorie'";
-    } elseif (isset($_POST['liefde'])) {
-        $categorie = $_POST['liefde'];
-        $sql = "SELECT * FROM artikel where categorie = '$categorie'";
-    } elseif (isset($_POST['uitvaart'])) {
-        $categorie = $_POST['uitvaart'];
-        $sql = "SELECT * FROM artikel where categorie = '$categorie'";
-    } elseif (isset($_POST['bedankt'])) {
-        $sql = "SELECT * FROM artikel where categorie = 'bedankt'";
+    } else {
+        $sql = "SELECT * FROM artikel where bg='GELEGENHEID'";
     }
 
     if (!empty($sql)) {

@@ -3,7 +3,7 @@
 class ArtikelController
 {
 
-    public function voegArtikelToe($naam, $omschrijving, $prijs, $afbeelding, $categorie)
+    public function voegArtikelToe($naam, $omschrijving, $prijs, $afbeelding, $idcategorie)
     {
         $host = 'localhost';
         $user = 'root';
@@ -16,7 +16,9 @@ class ArtikelController
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql = "insert into artikel (idartikel, naam, omschrijving, prijs, afbeelding, categorie) VALUES (idartikel, '$naam', '$omschrijving', '$prijs', '$afbeelding', '$categorie')";
+        $sql = "SELECT FROM categorie WHERE idcategorie=$idcategorie";
+
+        $sql = "insert into artikel (idartikel, naam, omschrijving, prijs, afbeelding, idcategorie) VALUES (idartikel, '$naam', '$omschrijving', '$prijs', '$afbeelding', '$idcategorie')";
 
         if (mysqli_query($dbh, $sql)) {
             echo "<div style='margin-top: 5px;' class='alert alert-success'><strong>Gelukt!</strong> Artikel <strong>$naam</strong> is toegevoegd!</div>";
