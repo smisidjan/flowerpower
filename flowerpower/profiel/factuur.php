@@ -72,7 +72,6 @@ while ($rowArtikel = $resultArtikel->fetch_assoc()) {
                 </table>
             </td>
         </tr>
-
         <tr class="information">
             <td colspan="3">
                 <table>
