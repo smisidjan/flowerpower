@@ -4,11 +4,10 @@
 class WinkelmandController
 {
     public function voegArtikelToe($id) {
-
         $host = 'localhost';
-        $user = 'root';
-        $pass = 'root';
-        $dbnaam = "flowerpower";
+        $user = 'flowerpower_roc_dev_nl_flowerpower';
+        $pass = '9GrVD4w2948H';
+        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
@@ -27,9 +26,9 @@ class WinkelmandController
 
     public function afrekenenNieuw($naam, $tussenvoegsel, $achternaam, $adres, $huisnummer ,$postcode, $plaats ,$telefoonnummer, $geboortedatum, $gebruikersnaam, $wachtwoord) {
         $host = 'localhost';
-        $user = 'root';
-        $pass = 'root';
-        $dbnaam = "flowerpower";
+        $user = 'flowerpower_roc_dev_nl_flowerpower';
+        $pass = '9GrVD4w2948H';
+        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
@@ -62,9 +61,9 @@ class WinkelmandController
 
     public function gebruiker($adres, $huisnummer, $postcode, $plaats) {
         $host = 'localhost';
-        $user = 'root';
-        $pass = 'root';
-        $dbnaam = "flowerpower";
+        $user = 'flowerpower_roc_dev_nl_flowerpower';
+        $pass = '9GrVD4w2948H';
+        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
@@ -83,6 +82,9 @@ class WinkelmandController
                 $artikel = "insert into artikel_has_factuur(artikel_idartikel, factuur_idfactuur, aantal, totaalPrijs) VALUES ('$idartikel', '$idfactuur', '$aantal', '$totaalPrijs')";
                 $result = $dbh->query($artikel);
             }
+            unset($_SESSION["cart_item"]);
+            unset($_SESSION["totaal"]);
+
             header('location: ../profiel/bestellingen.php');
         } else {
             echo "Error: " . $factuur . "<br>" . mysqli_error($dbh);
