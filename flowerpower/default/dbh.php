@@ -1,5 +1,5 @@
 <?php
-$host = 'localhost';
+$host = 'mysql0.transip.nl';
 $user = 'flowerpower_roc_dev_nl_flowerpower';
 $pass = '9GrVD4w2948H';
 $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
