@@ -85,7 +85,7 @@ if (isset($_GET['delete'])) {
         echo "<td style='font-size: 17px; text-align: left;'>" . $row["naam"] . " " . $row["tussenvoegsel"] . " " . $row["achternaam"] . "</td>";
         echo "<td style='font-size: 17px; text-align: left;'>" . $row["email"] . "</td>";
         echo "<td style='font-size: 17px; text-align: left; margin-left: -50px;'>" . $row["telefoonnummer"] . "</td>";
-        echo "<td style='font-size: 17px; text-align: left;'><span class='button button4' style='background-color: white; border: 1px solid #FF6F83; width: 150px; color: #707070;'>" . $row["rol"] . "</span></td></td>";
+        echo "<td style='font-size: 17px; padding-left:-50px;'><span class='button button4' style='background-color: white; border: 1px solid #FF6F83; width: 150px; color: #707070;'>" . $row["rol"] . "</span></td></td>";
         echo "<td><span data-toggle='modal' data-target='#toevoegModal" . $row["idmedewerker"] . "' style='font-size: 20px; text-align: center; margin-right: -100px; cursor:pointer;'>Bewerken</span><span data-toggle='modal' data-target='#myModal" . $row["idmedewerker"] . "' style='cursor: pointer; color: black; float: right; margin-right: 20px;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
             <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></span></td></tr>";
     }
@@ -166,8 +166,11 @@ while ($row = $result->fetch_assoc()) { ?>
                         </div>
                         <div class="row" style="margin-bottom: 20px;">
                             <div class="col-6">
-                                <input type="text" class="form-control form-rounded" name="rol"
-                                       value="<?php echo $row["rol"] ?>" required>
+                                <select class="form-control form-rounded" name="rol" required>
+                                    <option><?php echo $row["rol"] ?></option>
+                                    <option value="MEDEWERKER" id="rol">Medewerker</option>
+                                    <option value="ADMIN" id="rol">Admin</option>
+                                </select>
                             </div>
                             <div class="col-6">
                                 <input type="date" class="form-control form-rounded" name="geboortedatum"
@@ -224,8 +227,11 @@ while ($row = $result->fetch_assoc()) { ?>
                     </div>
                     <div class="row" style="margin-bottom: 20px;">
                         <div class="col-6">
-                            <input type="text" class="form-control form-rounded" name="rol" placeholder="Rol" required>
-                        </div>
+                            <select class="form-control form-rounded" name="rol" required>
+                                <option>Selecteer een rol</option>
+                                <option value="MEDEWERKER" id="rol">Medewerker</option>
+                                <option value="ADMIN" id="rol">Admin</option>
+                            </select>                        </div>
                         <div class="col-6">
                             <input type="date" class="form-control form-rounded" name="geboortedatum">
                         </div>

@@ -68,15 +68,15 @@ DROP TABLE IF EXISTS `flowerpower`.`medewerker`;
 
 CREATE TABLE IF NOT EXISTS `flowerpower`.`medewerker`
 (
-    `idmedewerker`   INT         NOT NULL AUTO_INCREMENT,
-    `naam`           VARCHAR(45) NULL,
-    `tussenvoegsel`  VARCHAR(45) NULL,
-    `achternaam`     VARCHAR(45) NULL,
-    `rol`            VARCHAR(45) NULL,
-    `wachtwoord`     VARCHAR(45) NOT NULL,
-    `email`          VARCHAR(45) NULL,
-    `telefoonnummer` VARCHAR(10) NULL,
-    `geboortedatum`  VARCHAR(45) NULL,
+    `idmedewerker`   INT                          NOT NULL AUTO_INCREMENT,
+    `naam`           VARCHAR(45)                  NULL,
+    `tussenvoegsel`  VARCHAR(45)                  NULL,
+    `achternaam`     VARCHAR(45)                  NULL,
+    `rol`            ENUM ('ADMIN', 'MEDEWERKER') NULL,
+    `wachtwoord`     VARCHAR(45)                  NOT NULL,
+    `email`          VARCHAR(45)                  NULL,
+    `telefoonnummer` VARCHAR(10)                  NULL,
+    `geboortedatum`  VARCHAR(45)                  NULL,
     PRIMARY KEY (`idmedewerker`)
 )
     ENGINE = InnoDB;
