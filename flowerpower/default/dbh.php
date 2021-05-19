@@ -1,7 +1,7 @@
 <?php
-$host = 'sftp://flowerpower-roc-dev.nl.transurl.nl';
-$user = 'flowerpower-roc-dev.nl';
-$pass = 'SaraiM16!';
+$host = 'localhost';
+$user = 'flowerpower_roc_dev_nl_flowerpower';
+$pass = '9GrVD4w2948H';
 $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
 $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
