@@ -29,7 +29,7 @@
         <link rel="stylesheet" href="../default/css/menu.css">
         <link rel="stylesheet" href="../gelegenheid/css/card.css">
     <?php }?>
-    <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/contact/index.php') { ?>
+    <?php if ($_SERVER['PHP_SELF'] == '/flowerpower/contact/index.php') { var_dump($_SERVER['PHP_SELF']); ?>
         <link rel="stylesheet" href="../default/css/menu.css">
         <link rel="stylesheet" href="css/card.css">
     <?php }?>
