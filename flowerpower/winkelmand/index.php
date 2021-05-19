@@ -29,11 +29,13 @@ if (!empty($_GET["action"])) {
             break;
         case "remove":
             if (!empty($_SESSION["cart_item"])) {
-                foreach ($_SESSION["cart_item"] as $k => $v) {
-                    if ($_GET["code"] == $k)
-                        unset($_SESSION["cart_item"][$k]);
-                    if (empty($_SESSION["cart_item"]))
+                foreach ($_SESSION["cart_item"] as $item => $value) {
+                    if ($_GET['code'] == $value['idartikel']) {
+                        unset($_SESSION["cart_item"][$item]);
+                    }
+                    if (empty($_SESSION["cart_item"])) {
                         unset($_SESSION["cart_item"]);
+                    }
                 }
             }
             break;
@@ -68,7 +70,7 @@ include '../default/header.php';
             <th scope="col" style='font-size: 17px; text-align: left; margin-left: 50px;'>Aantal</th>
             <th scope="col" style='font-size: 17px; text-align: left;'>Prijs</th>
             <th scope="col" style='font-size: 17px; text-align: left; padding-left: 25px;'>Totaal</th>
-            <th><a class="button4 button" id="btnEmpty" href="index.php?action=empty">Leeg winkelmandje</a></th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -81,10 +83,21 @@ include '../default/header.php';
                      class="cart-item-image"/></td>
             <td style="text-align:left; font-size: 15px;"><?php echo $item["naam"]; ?></td>
             <td style="text-align:left; font-size: 15px;"><?php echo $item["omschrijving"]; ?></td>
-            <td style="text-align:left; font-size: 15px;"><?php echo $item["quantity"]; ?></td>
+            <td style="text-align:left; font-size: 15px;">
+                <form action="index.php?action=edit&code=<?php echo $item['idartikel'] ?>"
+                      method="POST" name="aantal" id="aantal">
+                    <div class="quantity">
+                        <input type='hidden' name='code' value="<?php echo $item['quantity'] ?>"/>
+                        <div class="cart-action">Aantal:
+                            <input style="margin-left: 20px;" type="text" class="product-quantity" name="quantity"
+                                   value="<?php echo $item['quantity'] ?>" size="2"/></div>
+                    </div>
+                </form>
+            </td>
             <td style="text-align:left; font-size: 15px;"><?php echo "&euro; " . $item["prijs"]; ?></td>
             <td style="text-align:left; font-size: 15px;"><?php echo "&euro; " . number_format($item_price, 2); ?></td>
-            <td style="text-align:center; font-size: 15px;"><a class="btnRemoveAction" href="index.php?action=remove&code=<?php echo $item["idartikel"] ?>"></a>
+            <td style="text-align:left; font-size: 15px; margin-right: 30px;"><a href="index.php?action=remove&code=<?php echo $item['idartikel']; ?>" style='cursor: pointer; float: right; margin-right: 20px; color: black;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
+            <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></a>
             </td>
         </tr>
         <?php
@@ -125,7 +138,8 @@ include '../default/header.php';
             <div class="modal-body">
                 <form action="index.php" method="post">
                     <?php if (isset($_SESSION['gebruiker'])) { ?>
-                        <h4>Hallo <?php echo $_SESSION['gebruiker']['naam'] . " " . $_SESSION['gebruiker']['achternaam']; ?></h4>
+                        <h4>
+                            Hallo <?php echo $_SESSION['gebruiker']['naam'] . " " . $_SESSION['gebruiker']['achternaam']; ?></h4>
                         <div class="row">
                             <div class="col-8">
                                 <input type="text" class="form-control" name="adres" placeholder="Adres"

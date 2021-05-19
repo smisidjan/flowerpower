@@ -88,7 +88,7 @@ if (isset($_POST['gebruiker'])) {
                                         </div>
                                         <div class="col-4">
                                             <input type="text" class="form-control" name="tussenvoegsel"
-                                                   placeholder="Tussenvoegsel" required>
+                                                   placeholder="Tussenvoegsel">
                                         </div>
                                     </div>
                                     <br>
