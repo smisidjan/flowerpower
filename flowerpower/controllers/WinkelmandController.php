@@ -39,9 +39,18 @@ class WinkelmandController
         $datum = date('Y-m-d');
 
         $factuur = "insert into factuur (idfactuur, idklant, datum, afgehaald, idmedewerker) VALUES (idfactuur, '$idklant', '$datum', 'NEE', null)";
-        $resultFactuur = $dbh->query($factuur);
 
         if (mysqli_query($dbh, $sql) && mysqli_query($dbh, $factuur)) {
+            $idfactuur = $dbh->insert_id;
+            foreach ($_SESSION['cart_item'] as $item){
+                $idartikel = $item['idartikel'];
+                $aantal = $_SESSION['totaal'];
+                $totaalPrijs = $_SESSION['totaalPrijs'];
+
+                $artikel = "insert into artikel_has_factuur(artikel_idartikel, factuur_idfactuur, aantal, totaalPrijs) VALUES ('$idartikel', '$idfactuur', '$aantal', '$totaalPrijs')";
+                $result = $dbh->query($artikel);
+            }
+
             $_SESSION['gebruiker'] = array("idklant" => "$idklant", "naam" => $naam, "tussenvoegsel" => $tussenvoegsel, "achternaam" => $achternaam, "gebruikersnaam" => $gebruikersnaam, "wachtwoord" => $wachtwoord);
             header('location: ../profiel/bestellingen.php');
         } else {
@@ -63,18 +72,17 @@ class WinkelmandController
         $idklant = $_SESSION['gebruiker']['idklant'];
 
         $factuur = "insert into factuur (idfactuur, idklant, datum, afgehaald, idmedewerker) VALUES (idfactuur, '$idklant', '$datum', 'NEE', null)";
-        $resultFactuur = $dbh->query($factuur);
 
-        foreach ($_SESSION['cart_item'] as $item){
-            $idartikel = $item['idartikel'];
+        if (mysqli_query($dbh, $factuur)) {
             $idfactuur = $dbh->insert_id;
-            $aantal = $_SESSION['totaal'];
-            $totaalPrijs = $_SESSION['totaalPrijs'];
+            foreach ($_SESSION['cart_item'] as $item){
+                $idartikel = $item['idartikel'];
+                $aantal = $_SESSION['totaal'];
+                $totaalPrijs = $_SESSION['totaalPrijs'];
 
-            $artikel = "insert into artikel_has_factuur(artikel_idartikel, factuur_idfactuur, aantal, totaalPrijs) VALUES ('$idartikel', '$idfactuur', '$aantal', '$totaalPrijs')";
-        }
-
-        if (mysqli_query($dbh, $factuur) && mysqli_query($dbh, $artikel)) {
+                $artikel = "insert into artikel_has_factuur(artikel_idartikel, factuur_idfactuur, aantal, totaalPrijs) VALUES ('$idartikel', '$idfactuur', '$aantal', '$totaalPrijs')";
+                $result = $dbh->query($artikel);
+            }
             header('location: ../profiel/bestellingen.php');
         } else {
             echo "Error: " . $factuur . "<br>" . mysqli_error($dbh);
