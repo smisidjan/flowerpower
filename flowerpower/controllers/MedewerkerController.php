@@ -15,7 +15,7 @@ class MedewerkerController
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        $sql = "insert into medewerker (idmedewerker, naam, tussenvoegsel, achternaam, rol, wachtwoord, email, telefoonnummer, geboortedatum) VALUES (idmedewerker, '$naam', '$tussenvoegsel', '$achternaam', '$rol', wachtwoord, '$email', '$telefoonnummer', '$geboortedatum')";
+        $sql = "insert into medewerker (idmedewerker, naam, tussenvoegsel, achternaam, rol, wachtwoord, email, telefoonnummer, geboortedatum) VALUES (idmedewerker, '$naam', '$tussenvoegsel', '$achternaam', '$rol', '0000', '$email', '$telefoonnummer', '$geboortedatum')";
 
         if (mysqli_query($dbh, $sql)) {
             echo "<div style='margin-top: 5px;' class='alert alert-success'><strong>Gelukt!</strong> De medewerker is toegevoegd!</div>";

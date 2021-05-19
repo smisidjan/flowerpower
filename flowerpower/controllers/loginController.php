@@ -19,9 +19,7 @@ class LoginController
 
         if ($inloggenMedewerker->fetch()) {
             $_SESSION['medewerker'] = $gebruikersnaam;
-//            while ($rowMedewerker = $inloggenMedewerker->fetch()) {
-//                $_SESSION['medewerker'] = array("idmedewerker" => $rowMedewerker['idmedewerker'], "naam" => $rowMedewerker['naam'], "tussenvoegsel" => $rowMedewerker['tussenvoegsel'], "achternaam" => $rowMedewerker['achternaam'], "rol" => $rowMedewerker['rol'], "gebruikersnaam" => $rowMedewerker['email'], "telefoonnummer" => $rowMedewerker['telefoonnummer'], "geboortedatum" => $rowMedewerker['geboortedatum']);
-//            }
+
             header('location: ../dashboard/index.php');
         } elseif ($inloggenKlant->fetch()) {
             while ($row = $inloggenKlant->fetch()) {
