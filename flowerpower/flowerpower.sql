@@ -68,15 +68,15 @@ DROP TABLE IF EXISTS `flowerpower`.`medewerker`;
 
 CREATE TABLE IF NOT EXISTS `flowerpower`.`medewerker`
 (
-    `idmedewerker`   INT                          NOT NULL AUTO_INCREMENT,
-    `naam`           VARCHAR(45)                  NULL,
-    `tussenvoegsel`  VARCHAR(45)                  NULL,
-    `achternaam`     VARCHAR(45)                  NULL,
-    `rol`            ENUM ('ADMIN', 'MEDEWERKER') NULL,
-    `wachtwoord`     VARCHAR(45)                  NOT NULL,
-    `email`          VARCHAR(45)                  NULL,
-    `telefoonnummer` VARCHAR(10)                  NULL,
-    `geboortedatum`  VARCHAR(45)                  NULL,
+    `idmedewerker`   INT         NOT NULL AUTO_INCREMENT,
+    `naam`           VARCHAR(45) NULL,
+    `tussenvoegsel`  VARCHAR(45) NULL,
+    `achternaam`     VARCHAR(45) NULL,
+    `rol`            VARCHAR(45) NULL,
+    `wachtwoord`     VARCHAR(45) NOT NULL,
+    `email`          VARCHAR(45) NULL,
+    `telefoonnummer` VARCHAR(10) NULL,
+    `geboortedatum`  VARCHAR(45) NULL,
     PRIMARY KEY (`idmedewerker`)
 )
     ENGINE = InnoDB;
@@ -89,10 +89,10 @@ DROP TABLE IF EXISTS `flowerpower`.`categorie`;
 
 CREATE TABLE IF NOT EXISTS `flowerpower`.`categorie`
 (
-    `idcategorie` INT                             NOT NULL AUTO_INCREMENT,
+    `idcategorie` INT                             NOT NULL,
     `naam`        VARCHAR(45)                     NOT NULL,
-    `afbeelding`  VARCHAR(45)                     NOT NULL,
-    `bg`          ENUM ('BLOEMEN', 'GELEGENHEID') NOT NULL,
+    `bg`          ENUM ("BLOEMEN", "GELEGENHEID") NOT NULL,
+    `afbeelding`  TEXT                            NOT NULL,
     PRIMARY KEY (`idcategorie`)
 )
     ENGINE = InnoDB;
@@ -105,17 +105,16 @@ DROP TABLE IF EXISTS `flowerpower`.`artikel`;
 
 CREATE TABLE IF NOT EXISTS `flowerpower`.`artikel`
 (
-    `idartikel`    INT                             NOT NULL AUTO_INCREMENT,
-    `naam`         VARCHAR(45)                     NULL,
-    `omschrijving` VARCHAR(254)                    NULL,
-    `prijs`        VARCHAR(45)                     NULL,
-    `afbeelding`   VARCHAR(45)                     NULL,
-    `idcategorie`  INT                             NOT NULL,
-    `bg`           ENUM ('BLOEMEN', 'GELEGENHEID') NOT NULL,
+    `idartikel`    INT          NOT NULL AUTO_INCREMENT,
+    `naam`         VARCHAR(45)  NULL,
+    `omschrijving` VARCHAR(254) NULL,
+    `prijs`        VARCHAR(45)  NULL,
+    `afbeelding`   TEXT         NULL,
+    `categorie`    INT          NOT NULL,
     PRIMARY KEY (`idartikel`),
-    INDEX `fk_artikel_categorieën1_idx` (`idcategorie` ASC),
-    CONSTRAINT `fk_artikel_categorieën1`
-        FOREIGN KEY (`idcategorie`)
+    INDEX `fk_artikel_categorie1_idx` (`categorie` ASC),
+    CONSTRAINT `fk_artikel_categorie1`
+        FOREIGN KEY (`categorie`)
             REFERENCES `flowerpower`.`categorie` (`idcategorie`)
             ON DELETE NO ACTION
             ON UPDATE NO ACTION
