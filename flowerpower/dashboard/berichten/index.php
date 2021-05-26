@@ -2,12 +2,13 @@
 include "../header.php";
 
 ?>
-<h3 style="text-align: left; margin-bottom: 10px;">Berichten</h3>
+<div style="margin-left: 20px; margin-right: 20px;">
+<h3 style="text-align: left; margin-bottom: 10px; margin-top: 100px;">Berichten</h3>
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb" style="float: right; background-color: white; margin-top: 50px;">
-        <li class="breadcrumb-item"><a href="../../default/index.php" style="color: #10AB43;">Home</a></li>
-        <li class="breadcrumb-item"><a href="../index.php" style="color: #10AB43;">FlowerPower</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Berichten</li>
+        <li class="breadcrumb-item"><a href="../../default/index.php" style="color: #10AB43; font-size: 11px;">Home</a></li>
+        <li class="breadcrumb-item"><a href="../index.php" style="color: #10AB43; font-size: 11px;">FlowerPower</a></li>
+        <li class="breadcrumb-item active" aria-current="page" style="font-size: 11px;">Berichten</li>
     </ol>
 </nav>
 <table class="table rounded"

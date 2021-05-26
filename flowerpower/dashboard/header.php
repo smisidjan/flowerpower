@@ -30,7 +30,7 @@
     session_destroy();
     header('location: ../login/index.php');
 }?>
-<div class="card" style="border: 1px solid #FF6F83; width: 100%; height: 150%;">
+<div>
     <div class="container1" style="float: right;">
         <div class="topnav" style="float: right; width: 200px; background-color: white;">
             <div class="dropdown " style="height: 170px;">
@@ -48,4 +48,5 @@
             </div>
         </div>
     </div>
-    <body>
+</div>
+    <body style="border: 3px solid #FF6F83; height: 1000px;">

@@ -41,51 +41,56 @@ if (isset($_GET['delete'])) {
 }
 
 ?>
-<h3 style="text-align: left; margin-bottom: 10px;" xmlns="http://www.w3.org/1999/html">Overzicht winkels</h3>
-<nav aria-label="breadcrumb">
-    <ol class="breadcrumb" style="float: right; background-color: white; margin-top: 50px;">
-        <li class="breadcrumb-item"><a href="../../default/index.php" style="color: #10AB43;">Home</a></li>
-        <li class="breadcrumb-item"><a href="../index.php" style="color: #10AB43;">FlowerPower</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Overzicht winkels</li>
-    </ol>
-</nav>
-<table class="table rounded"
-       style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 20rem; margin-bottom: 400px;">
-    <thead style="background-color: #C3DF0E; border-radius: 20rem;">
-    <tr>
-        <th scope="col" style='font-size: 17px;'>#</th>
-        <th scope="col" style='font-size: 17px; text-align: left;'>Naam</th>
-        <th scope="col" style='font-size: 17px;'>Adres</th>
-        <th scope="col" style='font-size: 17px;'>Huisnummer</th>
-        <th scope="col" style='font-size: 17px;'>Postcode</th>
-        <th scope="col" style='font-size: 17px;'>Plaats</th>
-        <th scope="col" style='font-size: 17px;'>Telefoonnummer</th>
-        <th scope="col" style='font-size: 17px;'>E-mailadres</th>
-        <th scope="col">
-            <button class="button button4" data-toggle="modal" data-target="#toevoegModal">Toevoegen</button>
-        </th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php
-    $sql = "SELECT * FROM winkel";
-    $result = $dbh->query($sql);
+<div style="margin-left: 20px; margin-right: 20px;">
+    <h3 style="text-align: left; margin-bottom: 10px; margin-top: 100px;" xmlns="http://www.w3.org/1999/html">Overzicht
+        winkels</h3>
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb" style="float: right; background-color: white; margin-top: 50px;">
+            <li class="breadcrumb-item"><a href="../../default/index.php"
+                                           style="color: #10AB43; font-size: 11px;">Home</a></li>
+            <li class="breadcrumb-item"><a href="../index.php" style="color: #10AB43; font-size: 11px;">FlowerPower</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page" style="font-size: 11px;">Overzicht winkels</li>
+        </ol>
+    </nav>
+    <table class="table rounded"
+           style="margin-top: 10px; border: 3px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); border-radius: 20rem; margin-bottom: 400px;">
+        <thead style="background-color: #C3DF0E; border-radius: 20rem;">
+        <tr>
+            <th scope="col" style='font-size: 17px;'>#</th>
+            <th scope="col" style='font-size: 17px; text-align: left;'>Naam</th>
+            <th scope="col" style='font-size: 17px;'>Adres</th>
+            <th scope="col" style='font-size: 17px;'>Huisnummer</th>
+            <th scope="col" style='font-size: 17px;'>Postcode</th>
+            <th scope="col" style='font-size: 17px;'>Plaats</th>
+            <th scope="col" style='font-size: 17px;'>Telefoonnummer</th>
+            <th scope="col" style='font-size: 17px;'>E-mailadres</th>
+            <th scope="col">
+                <button class="button button4" data-toggle="modal" data-target="#toevoegModal">Toevoegen</button>
+            </th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        $sql = "SELECT * FROM winkel";
+        $result = $dbh->query($sql);
 
-    while ($row = $result->fetch_assoc()) {
-        echo "<tr><th style='font-size: 17px;'>" . $row["idwinkel"] . "</th>";
-        echo "<td style='font-size: 17px; text-align: left;'>" . $row["naam"] . "</td>";
-        echo "<td style='font-size: 17px; text-align: left;'>" . $row["adres"] . "</td>";
-        echo "<td style='font-size: 17px; text-align: left;'>" . $row["huisnummer"] . "</td>";
-        echo "<td style='font-size: 17px; text-align: left;'>" . $row["postcode"] . "</td>";
-        echo "<td style='font-size: 17px; text-align: left;'>" . $row["plaats"] . "</td>";
-        echo "<td style='font-size: 17px; text-align: left; margin-left: -50px;'>" . $row["telefoon"] . "</td>";
-        echo "<td style='font-size: 17px; text-align: left;'>" . $row["email"] . "</td>";
-        echo "<td><span data-toggle='modal' data-target='#toevoegModal" . $row["idwinkel"] . "' style='font-size: 20px; text-align: center; margin-right: -70px; cursor:pointer;'>Bewerken</span><span data-toggle='modal' data-target='#myModal" . $row["idwinkel"] . "' style='cursor: pointer; color: black; float: right; margin-right: 20px;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr><th style='font-size: 17px;'>" . $row["idwinkel"] . "</th>";
+            echo "<td style='font-size: 17px; text-align: left;'>" . $row["naam"] . "</td>";
+            echo "<td style='font-size: 17px; text-align: left;'>" . $row["adres"] . "</td>";
+            echo "<td style='font-size: 17px; text-align: left;'>" . $row["huisnummer"] . "</td>";
+            echo "<td style='font-size: 17px; text-align: left;'>" . $row["postcode"] . "</td>";
+            echo "<td style='font-size: 17px; text-align: left;'>" . $row["plaats"] . "</td>";
+            echo "<td style='font-size: 17px; text-align: left; margin-left: -50px;'>" . $row["telefoon"] . "</td>";
+            echo "<td style='font-size: 17px; text-align: left;'>" . $row["email"] . "</td>";
+            echo "<td><span data-toggle='modal' data-target='#toevoegModal" . $row["idwinkel"] . "' style='font-size: 20px; text-align: center; margin-right: -70px; cursor:pointer;'>Bewerken</span><span data-toggle='modal' data-target='#myModal" . $row["idwinkel"] . "' style='cursor: pointer; color: black; float: right; margin-right: 20px;'><svg xmlns='http://www.w3.org/2000/svg' width='30' height='30' fill='currentColor' class='bi bi-trash-fill' viewBox='0 0 16 16'>
             <path d='M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z'/></svg></span></td></tr>";
-    }
-    ?>
-    </tbody>
-</table>
+        }
+        ?>
+        </tbody>
+    </table>
+</div>
 <?php $sql = "SELECT * FROM winkel";
 $result = $dbh->query($sql);
 while ($row = $result->fetch_assoc()) { ?>
@@ -98,7 +103,8 @@ while ($row = $result->fetch_assoc()) { ?>
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
                 <div class="modal-body">
-                    <h4 class="modal-title" style="margin-bottom: 30px;">Weet u zeker dat u <?php echo $row["naam"] ?> wilt
+                    <h4 class="modal-title" style="margin-bottom: 30px;">Weet u zeker dat u <?php echo $row["naam"] ?>
+                        wilt
                         verwijderen?</h4>
                     <a href="index.php?delete=<?php echo $row["idwinkel"] ?>">
                         <input class="button button4"

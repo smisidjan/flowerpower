@@ -12,7 +12,7 @@ if (isset($_SESSION['medewerker'])) {
         $_SESSION['rol'] = $rowRol['rol'];
     }
     ?>
-    <div class="row" style="margin-top: 100px; margin-bottom: 400px;">
+    <div class="row" style="margin-top: 200px; margin-bottom: 400px; margin-right: 20px; margin-left: 20px;">
         <div class="column">
             <div class="card">
                 <h4 style="text-align: left;">Bestellinglijst</h4>

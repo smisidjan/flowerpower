@@ -5,9 +5,9 @@ class MedewerkerController
 {
     public function voegMedewerkerToe($naam, $tussenvoegsel, $achternaam, $rol, $email, $telefoonnummer, $geboortedatum) {
         $host = 'localhost';
-        $user = 'flowerpower_roc_dev_nl_flowerpower';
-        $pass = '9GrVD4w2948H';
-        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
+        $user = 'root';
+        $pass = 'root';
+        $dbnaam = "flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
@@ -26,9 +26,9 @@ class MedewerkerController
 
     public function wijzigMedewerker($idmedewerker, $naam, $tussenvoegsel, $achternaam, $rol, $email, $telefoonnummer, $geboortedatum) {
         $host = 'localhost';
-        $user = 'flowerpower_roc_dev_nl_flowerpower';
-        $pass = '9GrVD4w2948H';
-        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
+        $user = 'root';
+        $pass = 'root';
+        $dbnaam = "flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
@@ -58,9 +58,9 @@ class MedewerkerController
     public function verwijderMedewerker($id)
     {
         $host = 'localhost';
-        $user = 'flowerpower_roc_dev_nl_flowerpower';
-        $pass = '9GrVD4w2948H';
-        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
+        $user = 'root';
+        $pass = 'root';
+        $dbnaam = "flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
