@@ -8,8 +8,10 @@
                 while ($row = $result->fetch_assoc()) { ?>
                     <li class="splide__slide" style="border: 1px solid #FF059B;">
                         <div class="splide__slide__container">
-                            <img src="<?php echo $row["afbeelding"] ?>">
-                        </div><?php echo $row["naam"] ?></li>
+                            <img src="images/<?php echo $row["afbeelding"] ?>" style="display: inline-block;">
+                            <p style="text-align: right; float: inside; "><?php echo $row["naam"] ?></p>
+                        </div>
+                    </li>
                 <?php } ?>
             </ul>
         </div>
@@ -18,8 +20,15 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         new Splide('.splide', {
+            type   : 'loop',
             perPage: 3,
             perMove: 1,
+            heightRatio: 0.5,
+            cover  : true,
+            fixedHeight: 200,
+            rewind    : true,
+            gap       : 10,
+            pagination: false,
         }).mount();
     });
 </script>
