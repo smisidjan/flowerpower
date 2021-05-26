@@ -29,7 +29,7 @@ if (isset($_POST['registreer'])) {
         <div class="row">
             <div class="col-sm-6">
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
-                    <div class="card">
+                    <div class="card" style="border: 2px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                         <div class="card-body">
                             <h4 class="card-title" style="text-align: center">Inloggen met je FlowerPower account</h4>
                             <br>
@@ -37,14 +37,14 @@ if (isset($_POST['registreer'])) {
                                 <div class="col-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-                                        <input type="text" name="email" placeholder="Email" class="form-control" required>
+                                        <input type="text" name="email" placeholder="Email" class="form-control" required style="border: 1px solid black; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                                     </div>
                                 </div>
                                 <br>
                                 <div class="col-12">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-                                        <input type="password" name="wachtwoord" placeholder="Wachtwoord"  class="form-control" required>
+                                        <input type="password" name="wachtwoord" placeholder="Wachtwoord"  class="form-control" required style="border: 1px solid black; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                                     </div>
                                 </div>
                                 <br>
@@ -59,7 +59,7 @@ if (isset($_POST['registreer'])) {
             </div>
             <div class="col-sm-6">
                 <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post" id="registreren">
-                    <div class="card">
+                    <div class="card" style="border: 2px solid #C3DF0E; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                         <div class="card-body">
                             <h4 class="card-title" style="text-align: center">Account aanmaken</h4><br>
                             <p class="card-text">
@@ -67,7 +67,7 @@ if (isset($_POST['registreer'])) {
                                 <div class="col-12 col-m-7">
                                     <div class="input-group">
                                         <span class="input-group-addon"></span>
-                                        <input type="text" class="form-control" name="naam" placeholder="Naam" required>
+                                        <input type="text" class="form-control" name="naam" placeholder="Naam" required style="border: 1px solid black; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                                     </div>
                                 </div>
                             </div>
@@ -77,7 +77,7 @@ if (isset($_POST['registreer'])) {
                                     <div class="input-group">
                                         <span class="input-group-addon"></span>
                                         <input type="text" class="form-control" name="tussenvoegsel"
-                                               placeholder="Tussenvoegsel">
+                                               placeholder="Tussenvoegsel"style="border: 1px solid black; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                                     </div>
                                 </div>
                             </div>
@@ -87,7 +87,7 @@ if (isset($_POST['registreer'])) {
                                     <div class="input-group">
                                         <span class="input-group-addon"></span>
                                         <input type="text" class="form-control" name="achternaam"
-                                               placeholder="Achternaam" required>
+                                               placeholder="Achternaam" required style="border: 1px solid black; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +98,7 @@ if (isset($_POST['registreer'])) {
                                         <span class="input-group-addon"><i
                                                     class="glyphicon glyphicon-earphone"></i></span>
                                         <input id="telefoon" type="text" class="form-control" name="telefoon"
-                                               placeholder="Telefoonnummer">
+                                               placeholder="Telefoonnummer" style="border: 1px solid black; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                                     </div>
                                 </div>
                             </div>
@@ -108,7 +108,7 @@ if (isset($_POST['registreer'])) {
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
                                         <input id="email" type="text" class="form-control" name="email"
-                                               placeholder="Email" required>
+                                               placeholder="Email" required style="border: 1px solid black; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                                     </div>
                                 </div>
                             </div>
@@ -118,23 +118,23 @@ if (isset($_POST['registreer'])) {
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
                                         <input id="wachtwoord" type="password" class="form-control" name="wachtwoord"
-                                               placeholder="Wachtwoord" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required>
+                                               placeholder="Wachtwoord" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" required style="border: 1px solid black; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);">
                                     </div>
                                 </div>
                             </div>
-                            <div id="message">
-                                <h3>Wachtwoord moet het volgende bevatten:</h3>
-                                <p id="letter" class="invalid">Een <b>kleine</b> letter</p>
-                                <p id="capital" class="invalid">Een <b>hoofd</b> letter</p>
-                                <p id="number" class="invalid">Een <b>nummer</b></p>
-                                <p id="length" class="invalid">Minimaal <b>8 karakters</b></p>
-                            </div>
-                            <br>
-                            <div class="form-group">
+<!--                            <div id="message">-->
+<!--                                <h3>Wachtwoord moet het volgende bevatten:</h3>-->
+<!--                                <p id="letter" class="invalid">Een <b>kleine</b> letter</p>-->
+<!--                                <p id="capital" class="invalid">Een <b>hoofd</b> letter</p>-->
+<!--                                <p id="number" class="invalid">Een <b>nummer</b></p>-->
+<!--                                <p id="length" class="invalid">Minimaal <b>8 karakters</b></p>-->
+<!--                            </div>-->
+<!--                            <br>-->
+                            <div class="form-group" style="margin-top: 20px;">
                                 <input style="background-color: #FF6F83; box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);" type="submit" name="registreer" value="verstuur"
                                        class="form-control">
                             </div>
-                            </p>
+<!--                            </p>-->
                         </div>
                     </div>
                 </form>

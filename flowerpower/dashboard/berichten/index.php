@@ -33,34 +33,37 @@ include "../header.php";
     $row_count = $result->num_rows;
     while ($row = $result->fetch_assoc()) {
         echo "<tr><th style='font-size: 17px; text-align: left;'>" . $row["idcontact"] . "</th><td style='font-size: 17px; text-align: left; padding-left: 100px'>" . $row["naam"] . "</td><td style='font-size: 17px; text-align: left;'>" . $row["telefoon"] . "</td><td style='font-size: 17px; text-align: left;'>" . $row["email"] . "</td></td>";
-        echo "<td><button data-toggle='modal' data-target='#myModal' class='button button4'>Bekijken</button></td></tr>";
+        echo "<td><button data-toggle='modal' data-target='#myModal" . $row["idcontact"] . "' class='button button4'>Bekijken</button></td></tr>";
     }
     ?>
     </tbody>
 </table>
+    <?php $sql = "SELECT * FROM contact";
+    $result = $dbh->query($sql);
+    while ($row = $result->fetch_assoc()) { ?>
 <!-- Modal bekijken -->
-<div class="modal fade" id="myModal" role="dialog">
+<div class="modal fade" id="myModal<?php echo $row["idcontact"] ?>" role="dialog">
     <div class="modal-dialog modal-dialog-centered">
         <!-- Modal content-->
         <div class="modal-content" style="border: 2px solid black;">
             <div class="modal-header">
-                <h4 style="font-style: normal;">Bericht van (...) bekijken</h4>
+                <h4 style="font-style: normal;">Bericht van <?php echo $row["naam"] ?> bekijken</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             <div class="modal-body">
                 <div class="row" style="margin-bottom: 20px;">
-                    <div class="col-12" style="text-align: left; font-size: 18px;">
-                        <p>Naam</p>
+                    <div class="col-12" style="text-align: left; font-size: 18px; font-weight: bold;">
+                        <p><?php echo $row["naam"] ?></p>
                     </div>
                     <div class="col-12" style="text-align: left; font-size: 13px; margin-bottom: -10px;">
-                    <p>Telefoonnummer</p>
+                    <p><?php echo $row["telefoon"] ?></p>
                     </div>
                     <div class="col-12" style="text-align: left; font-size: 13px;">
-                    <p>Email</p>
+                    <p><?php echo $row["email"] ?></p>
                     </div>
                     <hr class="solid">
-                    <div class="col-12" style="text-align: left; font-size: 18px;">
-                        <textarea class="form-control form-rounded">Notitie</textarea>
+                    <div class="col-12" style="text-align: left; font-size: 18px; margin-top: 20px;">
+                        <textarea class="form-control form-rounded" readonly><?php echo $row["notitie"] ?></textarea>
                     </div>
                 </div>
 
@@ -71,3 +74,4 @@ include "../header.php";
         </div>
     </div>
 </div>
+    <?php } ?>
