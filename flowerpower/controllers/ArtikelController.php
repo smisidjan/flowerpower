@@ -6,9 +6,9 @@ class ArtikelController
     public function voegArtikelToe($naam, $omschrijving, $prijs, $afbeelding, $idcategorie)
     {
         $host = 'localhost';
-        $user = 'root';
-        $pass = 'root';
-        $dbnaam = "flowerpower";
+        $user = 'flowerpower_roc_dev_nl_flowerpower';
+        $pass = '9GrVD4w2948H';
+        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
@@ -29,9 +29,9 @@ class ArtikelController
 
     public function wijzigArtikel($idartikel, $naam, $omschrijving, $prijs,$afbeelding, $categorie) {
         $host = 'localhost';
-        $user = 'root';
-        $pass = 'root';
-        $dbnaam = "flowerpower";
+        $user = 'flowerpower_roc_dev_nl_flowerpower';
+        $pass = '9GrVD4w2948H';
+        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
@@ -59,9 +59,9 @@ class ArtikelController
     public function verwijderArtikel($id)
     {
         $host = 'localhost';
-        $user = 'root';
-        $pass = 'root';
-        $dbnaam = "flowerpower";
+        $user = 'flowerpower_roc_dev_nl_flowerpower';
+        $pass = '9GrVD4w2948H';
+        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 

@@ -6,9 +6,9 @@ class LoginController
     public function getLogin($gebruikersnaam, $wachtwoord)
     {
         $host = 'localhost';
-        $user = 'root';
-        $pass = 'root';
-        $dbnaam = "flowerpower";
+        $user = 'flowerpower_roc_dev_nl_flowerpower';
+        $pass = '9GrVD4w2948H';
+        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
         $dbh = new PDO('mysql:host=localhost; dbname=flowerpower; port=3306', $user, $pass);
 
@@ -36,9 +36,9 @@ class LoginController
     public function getAanmelding($naam, $tussenvoegsel, $achternaam, $telefoonnummer, $gebruikersnaam, $wachtwoord)
     {
         $host = 'localhost';
-        $user = 'root';
-        $pass = 'root';
-        $dbnaam = "flowerpower";
+        $user = 'flowerpower_roc_dev_nl_flowerpower';
+        $pass = '9GrVD4w2948H';
+        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 

@@ -5,9 +5,9 @@ class WinkelmandController
 {
     public function voegArtikelToe($id) {
         $host = 'localhost';
-        $user = 'root';
-        $pass = 'root';
-        $dbnaam = "flowerpower";
+        $user = 'flowerpower_roc_dev_nl_flowerpower';
+        $pass = '9GrVD4w2948H';
+        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
@@ -26,9 +26,9 @@ class WinkelmandController
 
     public function afrekenenNieuw($naam, $tussenvoegsel, $achternaam, $adres, $huisnummer ,$postcode, $plaats ,$telefoonnummer, $geboortedatum, $gebruikersnaam, $wachtwoord) {
         $host = 'localhost';
-        $user = 'root';
-        $pass = 'root';
-        $dbnaam = "flowerpower";
+        $user = 'flowerpower_roc_dev_nl_flowerpower';
+        $pass = '9GrVD4w2948H';
+        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
@@ -61,9 +61,9 @@ class WinkelmandController
 
     public function gebruiker($adres, $huisnummer, $postcode, $plaats) {
         $host = 'localhost';
-        $user = 'root';
-        $pass = 'root';
-        $dbnaam = "flowerpower";
+        $user = 'flowerpower_roc_dev_nl_flowerpower';
+        $pass = '9GrVD4w2948H';
+        $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
         $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
 
