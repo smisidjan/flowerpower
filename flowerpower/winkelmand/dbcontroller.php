@@ -1,9 +1,10 @@
 <?php
 class DBController {
+
 	private $host = "localhost";
-	private $user = "root";
-	private $password = "root";
-	private $database = "flowerpower";
+	private $user = "flowerpower_roc_dev_nl_flowerpower";
+	private $password = "9GrVD4w2948H";
+	private $database = "flowerpower_roc_dev_nl_flowerpower";
 	private $conn;
 	
 	function __construct() {
