@@ -59,7 +59,6 @@ require "../default/dbh.php";
             }
         }
     }
-
     ?>
 </div>
 </body>
