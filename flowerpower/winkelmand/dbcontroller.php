@@ -1,6 +1,5 @@
 <?php
 class DBController {
-
 	private $host = "localhost";
 	private $user = "flowerpower_roc_dev_nl_flowerpower";
 	private $password = "9GrVD4w2948H";
