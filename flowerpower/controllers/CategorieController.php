@@ -19,7 +19,7 @@ class CategorieController
         $sql = "insert into categorie (idcategorie, naam, bg, afbeelding) VALUES (idcategorie, '$naam', '$bg', '$afbeelding')";
 
         if (mysqli_query($dbh, $sql)) {
-            echo "<div style='margin-top: 5px;' class='alert alert-success'><strong>Gelukt!</strong> Categorie <strong>$naam</strong> is toegevoegd!</div>";
+            echo "<div style='margin-top: 100px;' class='alert alert-success'><strong>Gelukt!</strong> Categorie <strong>$naam</strong> is toegevoegd!</div>";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($dbh);
         }
@@ -46,7 +46,7 @@ class CategorieController
 
 
         if (mysqli_query($dbh, $sql)) {
-            echo "<div style='margin-top: 5px;' class='alert alert-success'><strong>Gelukt!</strong> De categorie is gewijzigd!</div>";
+            echo "<div style='margin-top: 100px;' class='alert alert-success'><strong>Gelukt!</strong> De categorie is gewijzigd!</div>";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($dbh);
         }
@@ -68,7 +68,7 @@ class CategorieController
         $sql = "DELETE FROM categorie WHERE idcategorie=$id";
 
         if (mysqli_query($dbh, $sql)) {
-            echo "<div style='margin-top: 5px;' class='alert alert-danger'><strong>Letop!</strong> Categorie $id is verwijderd!</div>";
+            echo "<div style='margin-top: 100px;' class='alert alert-danger'><strong>Letop!</strong> Categorie $id is verwijderd!</div>";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($dbh);
         }

@@ -29,7 +29,7 @@ require "../default/dbh.php";
                 } ?>">
                     <button style="border: none; background-color: white;" type="submit" value="<?php echo $row["idcategorie"] ?>" name="categorie"
                             id="categorie">
-                        <img src="images/<?php echo $row["afbeelding"] ?>" style="height: 200px; width: 100%;">
+                        <img src="../default/images/<?php echo $row["afbeelding"] ?>" style="height: 200px; width: 100%;">
                         <div class="centered"><?php echo $row["naam"] ?></div>
                     </button>
                 </div>

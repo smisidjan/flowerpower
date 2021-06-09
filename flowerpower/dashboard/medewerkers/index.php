@@ -51,7 +51,6 @@ if (isset($_GET['delete'])) {
     $id = $_GET['delete'];
     $verwijder->verwijderMedewerker($id);
 }
-
 ?>
 <div style="margin-left: 20px; margin-right: 20px;">
 <h3 style="text-align: left; margin-bottom: 10px; margin-top: 100px;" xmlns="http://www.w3.org/1999/html">Overzicht medewerkers</h3>

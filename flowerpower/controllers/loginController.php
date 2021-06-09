@@ -10,25 +10,26 @@ class LoginController
         $pass = '9GrVD4w2948H';
         $dbnaam = "flowerpower_roc_dev_nl_flowerpower";
 
-        $dbh = new PDO('mysql:host=localhost; dbname=flowerpower; port=3306', $user, $pass);
+        $dbh = mysqli_connect($host, $user, $pass, $dbnaam);
+
+        if (!$dbh) {
+            die("Connection failed: " . mysqli_connect_error());
+        }
 
         $inloggenMedewerker = $dbh->query("select * from medewerker where email = '$gebruikersnaam' and wachtwoord = '$wachtwoord'")
         or die("Error while searching");
 
         $inloggenKlant = $dbh->query("select * from klant where email = '$gebruikersnaam' and wachtwoord = '$wachtwoord'")
         or die("Error while searching");
-
-        if ($inloggenMedewerker->fetch()) {
+        if ($inloggenMedewerker->fetch_assoc()) {
             $_SESSION['medewerker'] = $gebruikersnaam;
 
             header('location: ../dashboard/index.php');
-        } elseif ($inloggenKlant->fetch()) {
-            while ($row = $inloggenKlant->fetch()) {
+        } else {
+            while ($row = $inloggenKlant->fetch_assoc()) {
                 $_SESSION['gebruiker'] = array("idklant" => $row['idklant'], "naam" => $row['naam'], "tussenvoegsel" => $row['tussenvoegsel'], "achternaam" => $row['achternaam'], "adres" => $row['adres'], "huisnummer" => $row['huisnummer'], "postcode" => $row['postcode'], "plaats" => $row['plaats'], "geboortedatum" => $row['geboortedatum'], "gebruikersnaam" => $gebruikersnaam, "wachtwoord" => $wachtwoord);
             }
             header('location: ../profiel/index.php');
-        } else {
-            echo "Sorry geen toegang!";
         }
 
     }

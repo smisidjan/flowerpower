@@ -88,7 +88,7 @@ if (isset($_POST['submit'])) {
 
                                         if ($result = $dbh -> query($sqlHoofd) or $result = $dbh -> query($sqlAms) or $result = $dbh -> query($sqlDen)) {
                                             while ($row = $result->fetch_assoc()) {
-                                                echo "<img src='data:image/jpeg;base64,/".base64_encode($row['afbeelding'])."' style='width: 100%; height: 100%;'>";
+                                                echo "<img src='../default/images/".$row['afbeelding']."' style='width: 100%; height: 100%;'>";
                                             }
                                         }
                                         ?>

@@ -8,7 +8,7 @@
                 while ($row = $result->fetch_assoc()) { ?>
                     <li class="splide__slide" style="border: 1px solid #FF059B;">
                         <div class="splide__slide__container">
-                            <img src="images/<?php echo $row["afbeelding"] ?>" style="display: inline-block;">
+                            <img src="images/<?php echo $row["afbeelding"] ?>" style="display: inline-block; width: 100%; height: 100%;">
                             <p style="text-align: right; float: inside; "><?php echo $row["naam"] ?></p>
                         </div>
                     </li>

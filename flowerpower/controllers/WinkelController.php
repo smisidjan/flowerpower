@@ -18,7 +18,7 @@ class WinkelController
         $sql = "insert into winkel (idwinkel, naam, adres, huisnummer, postcode, plaats, telefoon, email, afbeelding) VALUES (idwinkel, '$naam', '$adres', '$huisnummer', '$postcode', '$plaats', '$telefoonnummer', '$email', '$afbeelding')";
 
         if (mysqli_query($dbh, $sql)) {
-            echo "<div style='margin-top: 5px;' class='alert alert-success'><strong>Gelukt!</strong> De winkel is toegevoegd!</div>";
+            echo "<div style='margin-top: 100px;' class='alert alert-success'><strong>Gelukt!</strong> De winkel is toegevoegd!</div>";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($dbh);
         }
@@ -72,7 +72,7 @@ class WinkelController
             $geboortedatum = " ";
         }
 
-        $sql = "UPDATE medewerker
+        $sql = "UPDATE winkel
          SET  
              naam = $naam,
              tussenvoegsel = $tussenvoegsel, 
@@ -85,7 +85,7 @@ class WinkelController
 
 
         if (mysqli_query($dbh, $sql)) {
-            echo "<div style='margin-top: 5px;' class='alert alert-success'><strong>Gelukt!</strong> De winkel is gewijzigd!</div>";
+            echo "<div style='margin-top: 100px;' class='alert alert-success'><strong>Gelukt!</strong> De winkel is gewijzigd!</div>";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($dbh);
         }
@@ -107,7 +107,7 @@ class WinkelController
         $sql = "DELETE FROM winkel WHERE idwinkel=$id";
 
         if (mysqli_query($dbh, $sql)) {
-            echo "<div style='margin-top: 5px;' class='alert alert-danger'><strong>Letop!</strong> Winkel $id is verwijderd!</div>";
+            echo "<div style='margin-top: 100px;' class='alert alert-danger'><strong>Letop!</strong> Winkel $id is verwijderd!</div>";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($dbh);
         }
