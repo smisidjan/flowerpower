@@ -23,7 +23,7 @@ class BestellinglijstController
 
 
         if (mysqli_query($dbh, $sql)) {
-            echo "<div style='margin-top: 5px;' class='alert alert-success'><strong>Gelukt!</strong> De bestelling is gewijzigd!</div>";
+            echo "<div style='margin-top: 100px;' class='alert alert-success'><strong>Gelukt!</strong> De bestelling is gewijzigd!</div>";
         } else {
             echo "Error: " . $sql . "<br>" . mysqli_error($dbh);
         }
