@@ -36,52 +36,42 @@ class WinkelController
             die("Connection failed: " . mysqli_connect_error());
         }
 
-        if (!empty($naam)) {
-            $naam = $_POST['naam'];
-        } else {
+        if (empty($naam)) {
             $naam = " ";
         }
-        if (!empty($tussenvoegsel)) {
-            $tussenvoegsel = $_POST['tussenvoegsel'];
-        } else {
-            $tussenvoegsel = " ";
+        if (empty($adres)) {
+            $adres = " ";
         }
-        if (!empty($achternaam)) {
-            $achternaam = $_POST['achternaam'];
-        } else {
-            $achternaam = " ";
+        if (empty($huisnummer)) {
+            $huisnummer = " ";
         }
-        if (!empty($rol)) {
-            $rol = $_POST['rol'];
-        } else {
-            $rol = " ";
+        if (empty($postcode)) {
+            $postcode = " ";
         }
-        if (!empty($email)) {
-            $email = $_POST['email'];
-        } else {
+        if (empty($plaats)) {
+            $plaats = " ";
+        }
+        if (empty($email)) {
             $email = " ";
         }
-        if (!empty($telefoonnummer)) {
-            $telefoonnummer = $_POST['telefoonnummer'];
-        } else {
+        if (empty($telefoonnummer)) {
             $telefoonnummer = " ";
         }
-        if (!empty($geboortedatum)) {
-            $geboortedatum = $_POST['geboortedatum'];
-        } else {
-            $geboortedatum = " ";
+        if (empty($afbeelding)) {
+            $afbeelding = "test";
         }
 
         $sql = "UPDATE winkel
          SET  
-             naam = $naam,
-             tussenvoegsel = $tussenvoegsel, 
-             achternaam = $achternaam, 
-             rol= $rol, 
-             email = $email,
-             telefoonnummer = $telefoonnummer, 
-             geboortedatum = $geboortedatum
-             WHERE idmedewerker = $idwinkel";
+             naam = '$naam',
+             adres = '$adres', 
+             huisnummer = '$huisnummer', 
+             postcode= '$postcode', 
+             plaats = '$plaats', 
+             telefoon = '$telefoonnummer',
+             email = '$email',
+             afbeelding = '$afbeelding'
+             WHERE idwinkel = '$idwinkel'";
 
 
         if (mysqli_query($dbh, $sql)) {
