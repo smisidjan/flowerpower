@@ -40,16 +40,16 @@ if (isset($_SESSION['gebruiker'])) {
                             while ($row = $result->fetch_assoc()) {
                                 echo "<tr><th style='font-size: 17px;'>" . $row["idfactuur"] . "</th>";
                                 echo "<td style='font-size: 17px; text-align: left;'>" . $row["datum"] . "</td>";
+                            }
 
-                                $sql1 = 'SELECT * FROM klant WHERE idklant = ' . $row["idklant"] . '.';
-                                $result1 = $dbh->query($sql1);
-
-                                while ($row1 = $result1->fetch_assoc()) {
-                                    echo "<td style='font-size: 17px; text-align: left;'>" . $row1["adres"] ." ". $row1["huisnummer"] ." ". $row1["postcode"] ." ". $row1["plaats"] ."</td>";
-                                }
+//                            $sql1 = 'SELECT * FROM klant WHERE idklant = ' . $idklant . '.';
+//                            $result1 = $dbh->query($sql1);
+//                                while ($row1 = $result1->fetch_assoc()) {
+//                                    echo "<td style='font-size: 17px; text-align: left;'>" . $row1["adres"] ." ". $row1["huisnummer"] ." ". $row1["postcode"] ." ". $row1["plaats"] ."</td>";
+//                                }
                                 echo "<td style='font-size: 17px; text-align: left;'><a href='factuur.php?id=" . $row["idfactuur"] . "' style='cursor: pointer' class='button button4'>Bekijken</a></td></tr>";
 
-                            }
+
 
                             ?>
                             </tbody>

@@ -51,7 +51,7 @@ include '../default/header.php';
     <h3 style="text-align: left; margin-bottom: 10px; margin-top: 100px;">Winkelmandje</h3>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb" style="float: left; background-color: white; margin-top: 50px;">
-            <li class="breadcrumb-item"><a href="../../default/index.php" style="color: #10AB43;">Home</a></li>
+            <li class="breadcrumb-item"><a href="../default/index.php" style="color: #10AB43;">Home</a></li>
             <li class="breadcrumb-item active" aria-current="page">Winkelmandje</li>
         </ol>
     </nav>
